@@ -143,17 +143,18 @@ ul.nav-tabs~article p span{
 }
 
 #News{
-	padding-left:.5em;
+	padding-left:0;
 }
 
 #News ul li{
 	line-height:1.5em;
-	margin-top:1.2em;
 	list-style-type:none;
+	margin-bottom:1em;
 }
 
 span.glyphicon-circle-arrow-right{
 	font-size:18px;
+	padding-right:1em;
 }
 
 #News ul li>a{
@@ -193,10 +194,6 @@ a.more:hover{
 	font-weight:bold;
 }
 
-footer div.row{
-	background-color:#C0C0C0;
-	margin:5px 1px;
-}
 
 footer ul{
 	list-style-type:none;

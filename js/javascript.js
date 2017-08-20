@@ -1,6 +1,7 @@
 $(function(){
 	$('ul.nav-tabs~article').hide();
 	$('#Welcome').show();
+	$("[data-toggle='tooltip']").tooltip();
 });
 $('ul.nav-tabs li').click(function(){
 	$('ul.nav-tabs li').removeClass("active");
