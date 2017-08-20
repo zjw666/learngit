@@ -17,7 +17,7 @@ body{
 }
 
 #search{
-	padding-top:0.3em;
+	padding-top:.5em;
 }
 
 nav{
@@ -45,7 +45,15 @@ nav{
 	display:inline-block;
 	height:100%;
 }
+#navbar>div>ul>div>li>a:link{
+	text-decoration:none;
+}
 
+#navbar>div>ul>div>li>a:visited{
+	font-weight:bold;
+	background-color:#DC143C;
+	text-decoration:none;
+}
 
 #navbar>div>ul>div>li>a:hover{
 	font-weight:bold;
@@ -59,11 +67,6 @@ nav{
 	text-decoration:none;
 }
 
-#navbar>div>ul>div>li>a:visited{
-	font-weight:bold;
-	background-color:#DC143C;
-	text-decoration:none;
-}
 
 div.navbar-header{
 	background-color:#A52A2A;
