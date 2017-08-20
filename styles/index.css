@@ -46,11 +46,6 @@ nav{
 	height:100%;
 }
 
-#navbar>div>ul>div>li>a:visited{
-	font-weight:bold;
-	background-color:#DC143C;
-	text-decoration:none;
-}
 
 #navbar>div>ul>div>li>a:hover{
 	font-weight:bold;
@@ -63,6 +58,13 @@ nav{
 	background-color:#DC143C;
 	text-decoration:none;
 }
+
+#navbar>div>ul>div>li>a:visited{
+	font-weight:bold;
+	background-color:#DC143C;
+	text-decoration:none;
+}
+
 div.navbar-header{
 	background-color:#A52A2A;
 }
@@ -113,23 +115,72 @@ ul.nav-tabs li.active a{
 	color:black;
 }
 
-#welcome{
+ul.nav-tabs~article{
 	padding-top:.5em;
 	padding-left:1em;
 	padding-right:1em;
 	background-color:#FFFFFF;
 	font-size:20px;
-	line-height:200%;
+	line-height:180%;
 	border-left:1px solid #ddd;
 	border-bottom:1px solid #ddd;
 	border-right:1px solid #ddd;
 	min-height:14.7em;
 }
+ul.nav-tabs~article>p{
+	margin:0;
+}
 
-#welcome span{
+ul.nav-tabs~article p span{
 	float:left;
 	font-size:300%;
 	font-family:algerian,courier;
-	line-height:130%;
+	line-height:120%;
 	width:1em;
+}
+
+#News{
+	padding-left:.5em;
+}
+
+#News ul li{
+	line-height:1.5em;
+	margin-top:1.2em;
+}
+
+#News ul li>a{
+	color:black;
+}
+
+span.new{
+	font-style:italic;
+	color:red;
+}
+
+span.glyphicon-fire{
+	font-style:none;
+	font-size:20px;
+}
+
+span.time{
+	font-size:15px;
+	display:inline;
+	height:1.5em;
+}
+
+a.more{
+	color:red;
+	font-size:15px;
+	font-style:italic;
+	margin:0;
+	padding:0;
+	display:block;
+	position:absolute;
+	bottom:0;
+	right:25px;
+}
+
+a.more:hover{
+	text-decoration:none;
+	font-weight:bold;
 }
