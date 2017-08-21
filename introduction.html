@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Marine Geology Office 201</title>
 		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-		<link href="styles/index.css" rel="stylesheet" media="screen" />
+		<link href="styles/introduction.css" rel="stylesheet" media="screen" />
 	</head>
-	<body>
+	<body data-spy="scroll" data-target="#scroll">
 		<header>
 			<div class="container">
 				<div class="row">
@@ -81,92 +81,44 @@
 		</header>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-5 col-xs-12">
-					<div class="carousel slide" id="Carousel" data-ride="carousel" data-interval="4000">
-						<!-- 轮播页码 -->
-						<ol class="carousel-indicators">
-							<li data-target="#Carousel" data-slide-to="0" class="active"></li>
-							<li data-target="#Carousel" data-slide-to="1"></li>
-							<li data-target="#Carousel" data-slide-to="2"></li>
-							<li data-target="#Carousel" data-slide-to="3"></li>
-							<li data-target="#Carousel" data-slide-to="4"></li>
-						</ol>
-						<!-- 轮播项目 -->
-						<div class="carousel-inner">
-							<div class="item active">
-								<img src="images/slide1.jpg" alt="闪电" />
-								<div class="carousel-caption"><b>Thunderstorm</b></div>
-							</div>
-							<div class="item">
-								<img src="images/slide2.jpg" alt="模拟课程" />
-								<div class="carousel-caption"><b>Simulation course</b></div>
-							</div>
-							<div class="item">
-								<img src="images/slide3.jpg" alt="生日" />
-								<div class="carousel-caption"><b>Birthday</b></div>
-							</div>
-							<div class="item">
-								<img src="images/slide4.jpg" alt="聚餐" />
-								<div class="carousel-caption"><b>Lunch</b></div>
-							</div>
-							<div class="item">
-								<img src="images/slide5.jpg" alt="小明" />
-								<div class="carousel-caption"><b>Xiao Ming</b></div>
-							</div>
-						</div>
-						<!-- 轮播导航-->
-						<a class="carousel-control left" href="#Carousel" data-slide="prev">
-							<span class="glyphicon glyphicon-chevron-left">
-							</span>
-						</a>
-						<a class="carousel-control right" href="#Carousel" data-slide="next">
-							<span class="glyphicon glyphicon-chevron-right">
-							</span>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-7 col-xs-12">
-					<ul class="nav nav-tabs nav-justified">
-						<li name="Welcome" class="active"><a href="#Welcome">Welcome</a></li>
-						<li name="Introduction"><a href="#Introduction">Introduction</a></li>
-						<li name="News" ><a href="#News">News</a></li>
+				<div id="scroll" class="col-md-3 col-xs-5">
+					<ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="60">
+						<li class="active"><a href="#Location">Location</a></li>
+						<li><a href="#Department">Department</a></li>
+						<li><a href="#Major">Major</a></li>
+						<li><a href="#Destination">Destination</a></li>
 					</ul>
-					<article id="Welcome">
-						<p><span>W</span>elcome to our office!!! We'd like to make friends with you and invite you to join our family. 
-						Let's have fun and make progress together. For more information about us, please look at the <a href="#">Introduction</a> page.
+				</div>
+				<div class="col-md-9 col-xs-7">
+					<article>
+						<p id="Location">
+						浙江大学海洋学院（舟山校区），坐落于中国第一大群岛和重要港口城市浙江省舟山市，
+						校址位于舟山定海区惠民桥地块，校区占地58公顷，总建筑面积24万平方米。是一所以“高起点、
+						强辐射、可持续、国际化”为发展理念的学科型、研究型学院。其前身为2003年组建的浙江大学海
+						洋学科交叉中心，历经海洋研究中心、海洋科学与工程学系、海洋学院（筹）、海洋学院（舟山校区）
+						等发展阶段。
 						</p>
-					</article>
-					<article id="Introduction">
-						<p><span>O</span>ur office is called "Marine Geology Office 201". The office is located in the Ocean Academic building, which is in opposite of
-						 the YuanZheng hotel. In this office, 11 students study and work everday, including 1 postdoctor, 5 doctors and 5 masters. They
-						 all are students of <a href="#">Prof ChunFeng Li</a> and <a href="#">Prof Yingmin Wang</a>. The main research interests of us are Marine
-						  Geology, Geophysics and Sedimentary.
+						<p id="Department">
+						学院现设有海洋科学系、海洋工程学系、海洋信息学系和海洋经济与管理学系（筹），建有港口海岸与近海工程、
+						海洋生物、海洋地质与资源、海洋工程与技术、物理海洋、海岛海岸带、海洋传感与网络、海洋化学与环境等8个
+						研究所，筹建船舶与海洋结构、海洋电子工程、水下机器人等3个研究所。在建有海洋工程装备国家地方联合工程
+						实验室、海洋岩土工程与材料浙江省重点实验室、海洋观测-成像试验区浙江省重点实验室、海洋装备试验浙江省
+						工程实验室、海洋工程材料浙江省工程实验室、海上试验浙江省科技创新服务平台和浙江省“智慧东海”协同创新中
+						心，和“四池、六槽、一筒、一台”海洋工程试验设施群、浙江大学摘箬山岛海洋科技生态岛等。与国家海洋局共建
+						有浙江大学海洋研究院。
 						</p>
-						<a class="more" href="#">more...</a>
-					</article>
-					<article id="News">
-						<ul>
-							<li>
-								<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Congratulation to HaiTeng Zhuo for applying for the NSFC project successfully!</a> 
-								<span class="new">
-									<span class="glyphicon glyphicon-fire"></span> new
-								</span>
-								<span class="time pull-right">2017-08-20</span>
-							</li>
-							<li>
-								<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Congratulation to complete the simulation course successfully!</a>
-								<span class="time pull-right">2017-08-13</span>
-							</li>
-							<li>
-								<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Happy birthday to our bro Duo Zhou!</a>
-								<span class="time pull-right">2017-08-08</span>
-							</li>
-							<li>
-								<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Summer vacation is coming!</a>
-								<span class="time pull-right">2017-07-01</span>
-							</li>
-						</ul>
-						<a class="more" href="#">more...</a>
+						<p id="Major">
+						学院拥有海洋工程与技术、港口航道与海岸工程、海洋科学、船舶与海洋工程4个本科专业；拥有2个一级学科硕士
+						点、5个二级学科博士点、2个工程硕士专业。现有全日制在校学生1217名（其中，本科生682名；研究生535名，含留
+						学生45名）。学院现有专任教师109名，其中教授26名，副教授 38名，讲师45名，其中海外博士占44%，海归人才占58%
+						。拥有国家千人5名，高端外专3名，国家青年千人1名，国家杰青1名，浙江省特级专家1名，外籍教师10余名。现有内
+						设机构10个，学校事业编制行政管理人员30名，校编实验技术人员7名，舟山编制人员6名，专职科研人员1名，博士后
+						20名，院、所项目聘用人员47名，兼任兼职、讲座教授29名。</p>
+						<p id="Destination">
+						海洋学院瞄准国家在资源、环境、权益与深海等领域的战略目标和地方在海工装备、环境保护等方面的科技需求，围绕
+						深海装备与资源勘探技术、海洋安全保障技术、海洋环境监测与生态修复等重点方向，着力推进科研能力和平台建设。
+						依托舟山海洋区位优势和浙江大学多学科综合优势，海洋学院努力建设成为我国重要的国家级海洋科教基地和海洋人才高地。
+						</p>
 					</article>
 				</div>
 			</div>
