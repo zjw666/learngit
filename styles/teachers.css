@@ -99,39 +99,7 @@ ul.navbar-nav{
 	margin-right:0;
 }
 
-ul.nav-pills.nav-stacked li a{
-	text-align:center;
-	color:black;
-	font-weight:bold;
-}
 
-ul.nav-pills.nav-stacked li a:hover{
-	background-color:#DC143C;
-}
-
-ul.nav-pills.nav-stacked li.active>a{
-	background-color:#DC143C;
-	color:white;
-}
-
-ul.nav-pills.nav-stacked{
-	background-color:white;
-}
-
-
-ul.nav-pills.nav-stacked.affix{  /* 不直接使用top，从而使其不会被顶部导航栏遮挡 */
-	padding-top:20px;
-	margin-top:-10px;
-	width:262.5px;
-}
-
-
-article{
-	background-color:white;
-	padding:1em 1em;
-	font-size:20px;
-	line-height:3em;
-}
 
 footer ul{
 	list-style-type:none;
