@@ -19,11 +19,9 @@ $('a').focus(function(){        //去掉所有链接获得焦点时的虚线外�
 	$(this).blur();
 });
 
-$(window).resize(function(){   //使affix导航栏宽度动态变化
-	$("ul.nav-pills.nav-stacked.affix").width($("#scroll").width());
-});
 
 $(window).scroll(function(){   //使affix导航栏宽度动态变化
 	$("ul.nav-pills.nav-stacked.affix").width($("#scroll").width());
 });
+
 
