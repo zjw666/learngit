@@ -116,6 +116,7 @@ ul.nav-pills.nav-stacked li.active>a{
 
 ul.nav-pills.nav-stacked{
 	background-color:white;
+	border:1px solid #ddd;
 }
 
 
@@ -131,6 +132,7 @@ article{
 	padding:1em 1em;
 	font-size:20px;
 	line-height:3em;
+	border:1px solid #ddd;
 }
 
 footer ul{

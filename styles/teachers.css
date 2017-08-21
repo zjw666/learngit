@@ -99,7 +99,21 @@ ul.navbar-nav{
 	margin-right:0;
 }
 
+#introduction div.col-md-8{
+	padding-left:5%;
+}
 
+#introduction div.col-md-4 p{
+	padding-top:5%;
+}
+
+#introduction div.col-md-4{
+	padding-left:5%;
+}
+
+#teaching div.col-md-4{
+	margin-left:12%;
+}
 
 footer ul{
 	list-style-type:none;
