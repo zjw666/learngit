@@ -115,6 +115,24 @@ ul.navbar-nav{
 	margin-left:12%;
 }
 
+#project p{
+	padding:0 5%;
+	line-height:2em;
+}
+
+#award p{
+	padding:0 5%;
+	line-height:2em;
+}
+
+a[data-toggle='collapse']{
+	color:black;
+}
+
+a[data-toggle='collapse']:hover{
+	text-decoration:none;
+}
+
 footer ul{
 	list-style-type:none;
 }

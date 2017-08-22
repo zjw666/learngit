@@ -99,40 +99,38 @@ ul.navbar-nav{
 	margin-right:0;
 }
 
-ul.nav-pills.nav-stacked li a{
-	text-align:center;
+#introduction div.col-md-8{
+	padding-left:5%;
+}
+
+#introduction div.col-md-4 p{
+	padding-top:5%;
+}
+
+#introduction div.col-md-4{
+	padding-left:5%;
+}
+
+#teaching div.col-md-4{
+	margin-left:12%;
+}
+
+#project p{
+	padding:0 5%;
+	line-height:2em;
+}
+
+#award p{
+	padding:0 5%;
+	line-height:2em;
+}
+
+a[data-toggle='collapse']{
 	color:black;
-	font-weight:bold;
 }
 
-ul.nav-pills.nav-stacked li a:hover{
-	background-color:#DC143C;
-}
-
-ul.nav-pills.nav-stacked li.active>a{
-	background-color:#DC143C;
-	color:white;
-}
-
-ul.nav-pills.nav-stacked{
-	background-color:white;
-	border:1px solid #ddd;
-}
-
-
-ul.nav-pills.nav-stacked.affix{  /* 不直接使用top，从而使其不会被顶部导航栏遮挡 */
-	padding-top:15px;
-	margin-top:-5px;
-	width:165px;
-}
-
-
-article{
-	background-color:white;
-	padding:1em 1em;
-	font-size:20px;
-	line-height:3em;
-	border:1px solid #ddd;
+a[data-toggle='collapse']:hover{
+	text-decoration:none;
 }
 
 footer ul{

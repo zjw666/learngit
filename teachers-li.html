@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Marine Geology Office 201</title>
 		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-		<link href="styles/teachers.css" rel="stylesheet" media="screen" />
+		<link href="styles/teachers-li.css" rel="stylesheet" media="screen" />
 	</head>
 	<body>
 		<header>
@@ -59,8 +59,8 @@
 											<b class="caret"></b>
 										</a>
 										<ul class="dropdown-menu" role="meun">
-											<li><a href="#">ChunFeng Li</a></li>
-											<li><a href="#">YingMin Wang</a></li>
+											<li><a href="teachers-li.html">ChunFeng Li</a></li>
+											<li><a href="teachers-wang.html">YingMin Wang</a></li>
 										</ul>
 									</li>
 								</div>
@@ -86,11 +86,11 @@
 						<li class="list-group-item">
 							<h2 class="text-center">XXXXX</h2>
 							<div class="panel-group" id="li-group">
-								<div id ="introduction" class="panel panel-danger">
+								<div class="panel panel-danger">
 									<div class="panel-heading">
-										<h3>Introduction</h3>
+										<a data-toggle="collapse" href="#introduction"><h3>Introduction</h3></a>
 									</div>
-									<div class="panel-body">
+									<div id ="introduction" class="panel-body collapse in">
 										<div class="row">
 											<div class="col-md-4">
 												<img class="img-responsive" src="images/tmp.jpg" alt="photo" />
@@ -143,11 +143,11 @@
 										</div>
 									</div>
 								</div>
-								<div id ="teaching" class="panel panel-danger">
+								<div class="panel panel-danger">
 									<div class="panel-heading">
-										<h3>Teaching</h3>
+										<a data-toggle="collapse" href="#teaching"><h3>Teaching</h3></a>
 									</div>
-									<div class="panel-body">
+									<div id ="teaching" class="panel-body collapse">
 										<div class="row">
 											<div class="col-md-4">
 												<p style="display:inline-block; padding-right:5%;"><b>本科生课程</b>：<br/>
@@ -178,18 +178,37 @@
 								</div>
 								<div class="panel panel-danger">
 									<div class="panel-heading">
-										<h3>Project</h3>
+										<a data-toggle="collapse" href="#project"><h3>Project</h3></a>
 									</div>
-									<div class="panel-body">
-										<p></p>
+									<div id ="project" class="panel-body collapse">
+										<p>
+										1. 国家自然科学基金重点项目，编号91428039，根据IODP349航次成果重构南海海盆的构造演化模式，2015/1－2018/12，300万元。<br/>
+										2. 国际大洋发现计划IODP349航次，中国科技部与美国自然科学基金委资助，南海扩张过程及其对东南亚构造、气候与深部地幔过程的启示，2013/1－2015/12，1000万美元。<br/>
+										3. 海洋地质国家重点实验室重点项目，编号MG20130101，南海北部洋陆过渡带岩石圈破裂过程与机理，2014/1－2016/12, 300万元。<br/>
+										4. 国家自然科学基金重点项目，编号91028007，高分辨率磁异常测量研究南海海盆扩张过程及洋壳磁性层结构与演化，2011/1－2014/12，1100万元。<br/>
+										5. 教育部高等学校博士学科点专项科研基金，编号20100072110036，南海东部马尼拉俯冲带的岩石圈结构与动力学研究，2011/1－2013/12，8万元。<br/>
+										6. 教育部新世纪优秀人才基金, 编号NCET-10-0601，中国东部及邻近海域的中－新生代地球动力学分析，2010/1－2011/12，50万元。<br/>
+										7. 科技部863重点项目子课题，编号2008AA093001，钻探站位选择研究与IODP建议书编写，2008/8－2011/12，60万元。<br/>
+										8. 国家自然科学基金，编号40876022，日本南海海槽俯冲增生楔前缘的构造变形分析―兼与马尼拉俯冲带的对比，2009/1－2011/12，48万元。<br/>
+										9. 国际地学对比项目，编号IGCP-559，地壳结构与成像－构造对地貌、资源和灾害的控制），2008/1－2010/12，6万美元。<br/>
+										10. 科技部重点基础973项目子课题，编号2007CB411702，南海新生代大陆边缘的构造演化模式，2007/7－2011/8，154万元。<br/>
+										11. 海洋地质国家重点实验室重点项目，编号MG20080103，南海大陆边缘构造动力学及资源潜力研究，2008/8－2010/12, 150万元。<br/>
+										12. 国家科技重大专项子课题，编号2008ZX05023－03－002-01，南海北部中生界盆地区域地质研究，2008/10－2010/10，150万元。
+										</p>
 									</div>
 								</div>
 								<div class="panel panel-danger">
 									<div class="panel-heading">
-										<h3>Award</h3>
+										<a data-toggle="collapse" href="#award"><h3>Award</h3></a>
 									</div>
-									<div class="panel-body">
-										<p></p>
+									<div id="award" class="panel-body collapse">
+										<p>
+										•  海洋地质国家重点实验室主任奖, 2013。<br/>
+										•  第一届刘光鼎地球物理青年科学技术奖, 2010。<br/>
+										•  同济大学攀登高层次优秀人才, 2010。<br/>
+										•  教育部2009年度新世纪优秀人才。<br/>
+										•  同济大学2007届毕业设计（论文）优秀指导教师。
+										</p>
 									</div>
 								</div>
 							</div>
