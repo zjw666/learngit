@@ -133,6 +133,31 @@ a[data-toggle='collapse']:hover{
 	text-decoration:none;
 }
 
+#img-container{
+	position:relative;
+}
+
+#mask{                    /* 通过遮罩来实现图片变暗的效果 */
+	position:absolute;
+	width:274px;
+	height:100%;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	background:black;
+	opacity:0;
+}
+
+
+#img-container button{
+	position:absolute;
+	background-color:white;
+	z-index:2;
+}
+
+
+
 footer ul{
 	list-style-type:none;
 }

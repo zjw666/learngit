@@ -99,38 +99,15 @@ ul.navbar-nav{
 	margin-right:0;
 }
 
-#introduction div.col-md-8{
-	padding-left:5%;
+article{
+	border:1px solid #ddd;
+	background-color:white;
 }
 
-#introduction div.col-md-4 p{
-	padding-top:5%;
-}
-
-#introduction div.col-md-4{
-	padding-left:5%;
-}
-
-#teaching div.col-md-4{
-	margin-left:12%;
-}
-
-#project p{
-	padding:0 5%;
-	line-height:2em;
-}
-
-#award p{
-	padding:0 5%;
-	line-height:2em;
-}
-
-a[data-toggle='collapse']{
-	color:black;
-}
-
-a[data-toggle='collapse']:hover{
-	text-decoration:none;
+#map{
+	width:60%;
+	padding-top:1em;
+	margin-left:18%;
 }
 
 footer ul{
