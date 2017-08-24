@@ -110,6 +110,28 @@ article{
 	margin-left:18%;
 }
 
+#location{
+	position:relative;
+}
+
+#location img.img-circle{
+	position:absolute;
+	top:-150%;
+	max-width:180%;
+	left:-40%;
+}
+
+span.glyphicon-map-marker{
+	font-size:18px;
+	background:none;
+}
+div.marker{
+		position:absolute;
+}
+#zjw{
+	top:56%;
+	left:48%;
+}
 footer ul{
 	list-style-type:none;
 }
