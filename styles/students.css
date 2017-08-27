@@ -124,6 +124,7 @@ article{
 span.glyphicon-map-marker{
 	font-size:18px;
 	background:none;
+	color:red;
 }
 div.marker{
 		position:absolute;
@@ -132,6 +133,36 @@ div.marker{
 	top:56%;
 	left:48%;
 }
+
+@-moz-keyframes myfirst                  /* 地图头像旋转动画-Firefox*/
+{
+	from {-moz-transform: rotateY(0deg);}
+	to {-moz-transform: rotateY(360deg);}
+}
+
+@keyframes myfirst{                     /* 地图头像旋转动画*/
+	from {-moz-transform: rotateY(0deg);}
+	to {-moz-transform: rotateY(360deg);}
+}
+
+@-webkit-keyframes myfirst{            /* 地图头像旋转动画-Safari 和 Chrome*/
+	from {-moz-transform: rotateY(0deg);}
+	to {-moz-transform: rotateY(360deg);}
+}
+
+@-o-keyframes myfirst{                 /* 地图头像旋转动画-Opera*/
+	from {-moz-transform: rotateY(0deg);}
+	to {-moz-transform: rotateY(360deg);}
+}
+
+#location img.img-circle:hover{
+	animation: myfirst 2s;
+	-moz-animation: myfirst 2s;
+	-webkit-animation: myfirst 2s;
+	-o-animation: myfirst 2s;	
+}
+
+
 footer ul{
 	list-style-type:none;
 }
