@@ -114,6 +114,10 @@ article{
 	position:relative;
 }
 
+article h2{
+	text-align:center;
+}
+
 #location img.img-circle{
 	position:absolute;
 	top:-150%;
@@ -132,6 +136,51 @@ div.marker{
 #zjw{
 	top:56%;
 	left:48%;
+}
+
+#wmh{
+	top:42%;
+	left:65%;
+}
+
+#gsm{
+	top:44%;
+	left:57.5%;
+}
+
+#hwa{
+	top:39%;
+	left:59%;
+}
+
+#lxx{
+	top:57.5%;
+	left:69.5%;
+}
+
+#zs{
+	top:60%;
+	left:68%;
+}
+
+#wxx{
+	top:47%;
+	left:55%;
+}
+
+#zht{
+	top:75%;
+	left:62%;
+}
+
+#zd{
+	top:56%;
+	left:60%;
+}
+
+#wyl{
+	top:59.5%;
+	left:53%;
 }
 
 @-moz-keyframes myfirst                  /* 地图头像旋转动画-Firefox*/
