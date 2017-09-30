@@ -52,7 +52,7 @@ function button_change(){    //使头像按钮适应屏幕大小
 	});
 }
 
-$('#img-container button').click(function(){   //实现头像按钮的页面跳转
+$('#img-container button').click(function(){   //实现老师头像按钮的页面跳转
 	var ID=$(this).attr("id");
 	if (ID=="li"){
 		window.open("http://mypage.zju.edu.cn/cfli");}

@@ -211,7 +211,41 @@ div.marker{
 	-o-animation: myfirst 2s;	
 }
 
+#classification{
+	background-color:#f2dede;
+	margin-left:10px;
+}
 
+#classification li a{
+	color:black;
+	text-align:center;
+	font-weight:bold;
+	font-size:1em;
+}
+
+#list{
+	height:300px;
+	border:1px solid gray;
+}
+
+#list ul{
+	list-style-type:none;
+}
+
+#list ul li{
+	float:left;
+	padding-left:20px;
+}
+
+#list ul img{
+	width:100px;
+	height:100px;
+}
+
+#persons{
+	margin-top:10px;
+	margin-bottom:10px;
+}
 footer ul{
 	list-style-type:none;
 }
