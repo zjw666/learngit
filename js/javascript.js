@@ -5,7 +5,7 @@ $(function(){
 	$("ul.nav-pills.nav-stacked.affix").width($("#scroll").width());  //使affix导航栏宽度动态变化
 	$('#img-container button').hide();  //隐藏头像中的访问主页按钮
 	button_change();          //初始化头像按钮大小
-	$data=$("#list").clone();
+	$data=$("#list").clone();  //克隆头像列表，为头像分类动画做准备
 	person_object = {
 		zjw:"本科毕业于西南石油大学，现硕士研究生在读。爱好乒乓球和羽毛球，喜欢和朋友一起愉快地玩耍。处于人生十字口中一只迷茫的小白，最近由于毕业问题，心里充满了烦恼和忧虑，希望能早点做完项目，顺利发表文章毕业，最终能找到一份自己喜爱的工作。邮箱：591342608@qq.com",
 		wmh:"本科毕业于西南石油大学，现硕士研究生在读。爱好乒乓球和羽毛球，喜欢和朋友一起愉快地玩耍。处于人生十字口中一只迷茫的小白，最近由于毕业问题，心里充满了烦恼和忧虑，希望能早点做完项目，顺利发表文章毕业，最终能找到一份自己喜爱的工作。邮箱：2591342608@qq.com",
@@ -105,4 +105,17 @@ $('#classification li').click(function(){    //头像分类动画
 	});
 });
 
-
+$("#list a").click(function(event){  //动画完成后需重新捆绑事件
+		var img = $(this).children()[0];
+		var name = img.alt;
+		var url= img.src;
+		$("#personal").stop(stopAll=false,goToEnd=true);
+		$("#personal").css("opacity","0");
+		$("#personal h2").text(name);
+		$("#personal img").attr("src",url);
+		$("#personal p").text(person_object[name]);
+		$("#personal").animate({
+			opacity:'1'
+		},1000);
+		event.preventDefault();
+	});
