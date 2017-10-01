@@ -114,7 +114,7 @@ article{
 	position:relative;
 }
 
-article h2{
+article>h2{
 	text-align:center;
 }
 
@@ -212,40 +212,82 @@ div.marker{
 }
 
 #classification{
+	margin:10px auto;
+}
+
+#classification li{
+	width:20%;
 	background-color:#f2dede;
-	margin-left:10px;
+	float:left;
+	height:40px;
+	overflow:hidden;
+}
+
+#li{
+	width:50% !important;
+	clear:left;
+}
+
+#wang{
+	width:50% !important;
 }
 
 #classification li a{
 	color:black;
 	text-align:center;
 	font-weight:bold;
-	font-size:1em;
+	font-size:1.1em;
 }
 
-#list{
-	height:300px;
-	border:1px solid gray;
+#classification li a:hover{
+	background-color:#E9967A;
 }
 
-#list ul{
+
+.cur{
+	background-color:#E9967A !important;
+}
+
+
+.source{
 	list-style-type:none;
+	padding:10px 10px;
+	height:300px !important;
+	width:100% !important;
+	border-right:1px solid #ddd;
 }
 
-#list ul li{
+.source li{
 	float:left;
-	padding-left:20px;
+	padding-right:10px;
+	padding-bottom:10px;
 }
 
-#list ul img{
-	width:100px;
-	height:100px;
+.source li img{
+	max-width:90px;
+	max-height:90px;
+}
+
+.source li span{
+	text-align:center;
+	padding:10% 40%;
 }
 
 #persons{
-	margin-top:10px;
-	margin-bottom:10px;
+	margin:10px 10px;
 }
+
+#personal img{
+	max-width:150px;
+	max-height:150px;
+	float:right;
+}
+
+#personal p{
+	font-size:20px;
+}
+
+
 footer ul{
 	list-style-type:none;
 }

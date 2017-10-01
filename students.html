@@ -127,34 +127,89 @@
 								<img class="img-circle img-responsive" src="images/tmp.jpg" alt="zht" />
 							</div>
 						</div>
-						<div class="row" id="persons">
-							<div class="col-md-2">
-								<ul class="nav nav-tabs nav-stacked" id="classification">
-									<li><a href="#">All</a></li>
-									<li><a href="#">Boys</a></li>
-									<li><a href="#">Girls</a></li>
-									<li><a href="#">Masters</a></li>
-									<li><a href="#">Doctors</a></li>
-									<li><a href="#">Li's students</a></li>
-									<li><a href="#">Wang's students</a></li>
+						<div class="row">
+							<div class="col-md-6 col-md-push-3 col-xs-12">
+								<ul class="nav" id="classification">
+									<li id="all" class="cur"><a href="#person">All</a></li>
+									<li id="boys"><a href="#person">Boys</a></li>
+									<li id="girls"><a href="#person">Girls</a></li>
+									<li id="masters"><a href="#person">Masters</a></li>
+									<li id="doctors"><a href="#person">Doctors</a></li>
+									<li id="li"><a href="#person">Li's students</a></li>
+									<li id="wang"><a href="#person">Wang's students</a></li>
 								</ul>
 							</div>
-							<div class="col-md-6">
-								<div id="list">
-									<ul>
-										<li><a href="#"><img class="img-circle img-responsive" src="images/1.jpg" alt="1"></a></li>
-										<li><a href="#"><img class="img-circle img-responsive" src="images/2.jpg" alt="2"></a></li>
-										<li><a href="#"><img class="img-circle img-responsive" src="images/3.jpg" alt="3"></a></li>
-										<li><a href="#"><img class="img-circle img-responsive" src="images/4.jpg" alt="4"></a></li>
-										<li><a href="#"><img class="img-circle img-responsive" src="images/5.jpg" alt="5"></a></li>
-										<li><a href="#"><img class="img-circle img-responsive" src="images/6.jpg" alt="6"></a></li>
-										<li><a href="#"><img class="img-circle img-responsive" src="images/7.jpg" alt="7"></a></li>
-										<li><a href="#"><img class="img-circle img-responsive" src="images/8.jpg" alt="8"></a></li>
-										<li><a href="#"><img class="img-circle img-responsive" src="images/9.jpg" alt="9"></a></li>
-										<li><a href="#"><img class="img-circle img-responsive" src="images/10.jpg" alt="10"></a></li>
-										<li><a href="#"><img class="img-circle img-responsive" src="images/11.jpg" alt="10"></a></li>
-										<li><a href="#"><img class="img-circle img-responsive" src="images/12.jpg" alt="10"></a></li>
-									</ul>
+						</div>
+						<div class="row" id="persons">
+							<div class="col-md-6 col-xs-12">
+								<ul id="list" class="source">
+									<li data-id="id-1" class="boys masters wang">
+										<a href="#">
+											<img class="img-circle img-responsive" src="images/1.jpg" alt="zjw">
+										</a>
+										<span>zjw</span>
+									</li>
+									<li data-id="id-2" class="boys doctors wang">
+										<a href="#">
+											<img class="img-circle img-responsive" src="images/2.jpg" alt="wmh">
+										</a>
+										<span>wmh</span>
+									</li>
+									<li data-id="id-3" class="girls masters wang">
+										<a href="#">
+											<img class="img-circle img-responsive" src="images/3.jpg" alt="gsm">
+										</a>
+										<span>gsm</span>
+									</li>
+									<li data-id="id-4" class="girls masters li">
+										<a href="#">
+											<img class="img-circle img-responsive" src="images/4.jpg" alt="hwa">
+										</a>
+										<span>hwa</span>
+									</li>
+									<li data-id="id-5" class="girls doctors li">
+										<a href="#">
+											<img class="img-circle img-responsive" src="images/5.jpg" alt="lxx">
+										</a>
+										<span>lxx</span>
+									</li>
+									<li data-id="id-6" class="boys masters li">
+										<a href="#">
+											<img class="img-circle img-responsive" src="images/6.jpg" alt="zs">
+										</a>
+										<span>zs</span>
+									</li>
+									<li data-id="id-7" class="boys doctors wang">
+										<a href="#">
+											<img class="img-circle img-responsive" src="images/7.jpg" alt="wxx">
+										</a>
+										<span>wxx</span>
+									</li>
+									<li data-id="id-8" class="boys doctors li">
+										<a href="#">
+											<img class="img-circle img-responsive" src="images/8.jpg" alt="zd">
+										</a>
+										<span>zd</span>
+									</li>
+									<li data-id="id-9" class="boys masters li">
+										<a href="#">
+											<img class="img-circle img-responsive" src="images/9.jpg" alt="wyl">
+										</a>
+										<span>wyl</span>
+									</li>
+									<li data-id="id-10" class="boys doctors wang">
+										<a href="#">
+											<img class="img-circle img-responsive" src="images/10.jpg" alt="zht">
+										</a>
+										<span>zht</span>
+									</li>
+								</ul>
+							</div>
+							<div class="col-md-6 col-xs-12">
+								<div id="personal">
+									<h2>zjw</h2>
+									<img class="img-responsive" src="images/1.jpg" alt="photo">
+									<p>本科毕业于西南石油大学，现硕士研究生在读。爱好乒乓球和羽毛球，喜欢和朋友一起愉快地玩耍。处于人生十字口中一只迷茫的小白，最近由于毕业问题，心里充满了烦恼和忧虑，希望能早点做完项目，顺利发表文章毕业，最终能找到一份自己喜爱的工作。邮箱：591342608@qq.com</p>
 								</div>
 							</div>
 						</div>
@@ -181,6 +236,7 @@
 		</footer>
 		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/quicksand.js"></script>
 		<script src="js/javascript.js"></script>
 	</body>
 </html>
