@@ -208,7 +208,8 @@ div.marker{
 	animation: myfirst 2s;
 	-moz-animation: myfirst 2s;
 	-webkit-animation: myfirst 2s;
-	-o-animation: myfirst 2s;	
+	-o-animation: myfirst 2s;
+	cursor:pointer;
 }
 
 #classification{
@@ -278,13 +279,14 @@ div.marker{
 }
 
 #personal img{
-	max-width:150px;
-	max-height:150px;
+	max-width:140px;
+	max-height:140px;
 	float:right;
 }
 
 #personal p{
 	font-size:20px;
+	line-height:35px;
 }
 
 

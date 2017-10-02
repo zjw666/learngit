@@ -105,17 +105,30 @@ $('#classification li').click(function(){    //头像分类动画
 	});
 });
 
-$("#list a").click(function(event){  //动画完成后需重新捆绑事件
-		var img = $(this).children()[0];
-		var name = img.alt;
-		var url= img.src;
-		$("#personal").stop(stopAll=false,goToEnd=true);
-		$("#personal").css("opacity","0");
-		$("#personal h2").text(name);
-		$("#personal img").attr("src",url);
-		$("#personal p").text(person_object[name]);
-		$("#personal").animate({
-			opacity:'1'
-		},1000);
-		event.preventDefault();
-	});
+$("#list a").click(function(event){  //为各个人物头像捆绑点击事件
+	var img = $(this).children()[0];
+	var name = img.alt;
+	var url= img.src;
+	$("#personal").stop(stopAll=false,goToEnd=true);
+	$("#personal").css("opacity","0");
+	$("#personal h2").text(name);
+	$("#personal img").attr("src",url);
+	$("#personal p").text(person_object[name]);
+	$("#personal").animate({
+		opacity:'1'
+	},1000);
+	event.preventDefault();
+});
+	
+$("#location img").click(function(){  //连接地图头像与人物介绍界面
+	var name=this.alt;
+	var url= this.src;
+	$("#personal").stop(stopAll=false,goToEnd=true);
+	$("#personal").css("opacity","0");
+	$("#personal h2").text(name);
+	$("#personal img").attr("src",url);
+	$("#personal p").text(person_object[name]);
+	$("#personal").animate({
+		opacity:'1'
+	},1000);
+});	
