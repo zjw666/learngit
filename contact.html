@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Marine Geology Office 201</title>
 		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-		<link href="styles/news.css" rel="stylesheet" media="screen" />
+		<link href="styles/contact.css" rel="stylesheet" media="screen" />
 	</head>
 	<body>
 		<header>
@@ -82,78 +82,68 @@
 		<div class="container">
 			<article>
 				<div class="row">
-					<div class="col-md-2 col-sm-3 hidden-xs">
-						<div id="border">
-							<h3>新闻分类</h3>
-							<ul id="type-news">
-								<li><a href="#">日常生活</a></li>
-								<li><a href="#">科研工作</a></li>
-								<li><a href="#">喜讯</a></li>
-							</ul>
-						</div>
+					<div class="col-md-6 col-sm-8 col-xs-12 col-md-push-3 col-sm-push-2">
+						<form role="form">
+							<fieldset>
+								<legend>联系我们</legend>
+								<div class="form-group">
+									<label>姓名</label>
+									<input class="form-control" type="text" placeholder="请输入你的姓名" name="name" maxlength="20" required />
+								</div>
+								<div class="form-group">
+									<label>性别</label>
+									<div>
+										<label class="radio-inline">
+											<input type="radio" value="man" checked name="sex" />
+											男
+										</label>
+										<label class="radio-inline">
+											<input type="radio" value="woman" name="sex" />
+											女
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>出生年月</label>
+									<input class="form-control" name="date" type="date" placeholder="请输入你的出生年月，例如：1994/06/06" maxlength="15" />
+								</div>
+								<div class="form-group">
+									<label>邮箱</label>
+									<input class="form-control" type="email" name="email" placeholder="请输入你的电子邮箱地址" required />
+								</div>
+								<div class="form-group">
+									<label>发送的消息</label>
+									<textarea class="form-control" maxlength="300" rows="5" name="content"></textarea>
+								</div>
+								<div class="form-group">
+									<label>类型</label>
+									<div>
+										<label>
+											<input type="checkbox" name="privacy" value="true" checked />
+											公开
+										</label>
+										<label>
+											<input type="checkbox" name="important" value="true" />
+											重要
+										</label>
+									</div>
+								</div>
+							</fieldset>
+						</form>
 					</div>
-					<div class="col-md-10 col-sm-9 col-xs-12">
-						<ul id="content-news">
-							<li>
-								<a href="#">用爱关怀健康安全 用心护卫平安校园</a>
-								<span>[2017/10/2]</span>
-								<hr/>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="media-list">
+							<li class="media">
+								<a href="#" class="media-left">
+									<img src="images/tmp.jpg" class="img-responsive media-object" alt="photo" />
+								</a>
+								<div class="media-body">
+									<h4>用户名</h4>
+									<p>这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。</p>
+								</div>
 							</li>
-							<li>
-								<a href="#">树国安意识，强敌情观念</a>
-								<span>[2017/10/2]</span>
-								<hr/>
-							</li>
-							<li>
-								<a href="#">学院开展节前安保工作部署</a>
-								<span>[2017/10/2]</span>
-								<hr/>
-							</li>
-							<li>
-								<a href="#">英国格拉斯哥大学Manousos研究员访问我院</a>
-								<span>[2017/10/2]</span>
-								<hr/>
-							</li>
-							<li>
-								<a href="#">海洋学院参加舟山休闲皮划艇赛获佳绩</a>
-								<span>[2017/10/2]</span>
-								<hr/>
-							</li>
-							<li>
-								<a href="#">海洋学院与洞头区签约合作</a>
-								<span>[2017/10/2]</span>
-								<hr/>
-							</li>
-							<li>
-								<a href="#">第十八届中国海洋（岸）工程学术研讨会在舟山校区召开</a>
-								<span>[2017/10/2]</span>
-								<hr/>
-							</li>
-							<li>
-								<a href="#">机关教工第三党支部学习习总书记7.26讲话精神</a>
-								<span>[2017/10/2]</span>
-								<hr/>
-							</li>
-							<li>
-								<a href="#">人工上升流试验平台在青岛鳌山湾下水</a>
-								<span>[2017/10/2]</span>
-								<hr/>
-							</li>
-							<li>
-								<a href="#">哈工程校长一行来海洋学院调研</a>
-								<span>[2017/10/2]</span>
-								<hr/>
-							</li>
-						</ul>
-						<ul id="pages" class="pagination pagination-sm pagination-xs">
-							<li><a href="#">首页</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">...</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
 						</ul>
 					</div>
 				</div>

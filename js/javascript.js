@@ -18,7 +18,7 @@ $(function(){
 		wyl:"本科毕业于西南石油大学，现硕士研究生在读。爱好乒乓球和羽毛球，喜欢和朋友一起愉快地玩耍。处于人生十字口中一只迷茫的小白，最近由于毕业问题，心里充满了烦恼和忧虑，希望能早点做完项目，顺利发表文章毕业，最终能找到一份自己喜爱的工作。邮箱：9591342608@qq.com",
 		zht:"本科毕业于西南石油大学，现硕士研究生在读。爱好乒乓球和羽毛球，喜欢和朋友一起愉快地玩耍。处于人生十字口中一只迷茫的小白，最近由于毕业问题，心里充满了烦恼和忧虑，希望能早点做完项目，顺利发表文章毕业，最终能找到一份自己喜爱的工作。邮箱：10591342608@qq.com"
 	}
-	
+	news_change();
 });
 
 $('ul.nav-tabs li').click(function(){            //标签页之间内容转换
@@ -132,3 +132,13 @@ $("#location img").click(function(){  //连接地图头像与人物介绍界面
 		opacity:'1'
 	},1000);
 });	
+
+function news_change(){        //使新闻导航栏的高度与内容栏相同
+	var news_contents=$('#content-news').parent().height();
+	$('#border').height(news_contents);
+}
+
+$('#pages li').click(function(){  //分页按钮的active类添加
+	$(this).siblings().removeClass('active');
+	$(this).addClass('active');
+});
