@@ -114,6 +114,34 @@ form textarea{
 	display:block;
 }
 
+#check div label{
+	padding-left:10px;
+}
+
+#check button{
+	float:right;
+}
+
+#well{
+	margin-left:20px;
+}
+
+div.well{
+	padding:10px 20px;
+	margin:10px 20px;
+}
+
+div.well h4{
+	padding-top:10px;
+}
+
+ul.media-list img{
+	width:60px;
+	height:60px;
+}
+
+
+
 footer ul{
 	list-style-type:none;
 }
