@@ -47,8 +47,10 @@ $(window).resize(function(){   //使遮罩宽度与头像宽度保持一致
 
 $('#img-container').hover(     //头像按钮淡入淡出以及遮罩透明度变化
 	function(){
+	var button = $('#img-container button');
+	$(button).stop(true);
 	$('#mask').css("opacity","0.5");
-	$('#img-container button').fadeIn("500");},
+	$(button).fadeIn("500");},
 	function(){
 	$('#img-container button').fadeOut("500");
 	$('#mask').css("opacity","0");}
@@ -148,16 +150,22 @@ $('#type-news li').click(function(){  //新闻导航栏按钮的激活状态添�
 	$(this).addClass('current-news');
 });
 
-$('#content-news li a').click(function(){
+$('#content-news li a').click(function(){ //实现新闻内容的跳转
 	var heading = $(this).text();
 	var parent = $('#content-news').parent();
+	var time=$(this).next().text().slice(1,11).split('/');
 	$(parent).empty();
 	var header=$('<h2></h2>').text(heading);
-	$(header).attr('id')="news-header";
-	var author=$('<span></span>').text("作者：zjw")
-	var time=$($(this).next()).text();
-	alert(time);
-	var note=$('<p></p>').text()
-	
-	
+	var author="zjw",
+		contents="这里是新闻的内容。这里是新闻的内容。这里是新闻的内容。这里是新闻的内容。这里是新闻的内容。这里是新闻的内容。",
+		author_span=$('<span></span>').text("作者："+author),
+		time_span=$('<span></span>').html("时间："+time[0]+"年 "+time[1]+"月 "+time[2]+"日"),  //在html方法中&nbsp;会被解释为空格，而在text方法中，则不会被解释
+		space="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+		note=$('<p></p>'),
+		news_contents=$('<article></article>').text(contents);
+	$(header).attr('id',"news-header");
+	$(note).attr('id',"news-note");
+	$(news_contents).attr('id',"news-contents");
+	$(note).append(author_span,space,time_span);
+	$(parent).append(header,note,news_contents);
 });
