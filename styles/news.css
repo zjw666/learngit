@@ -135,6 +135,10 @@ article h3{
 	background-color:#ddd;
 }
 
+.current-news{
+	background-color:#ddd;
+}
+
 #type-news li a{
 	color:black;
 	font-size:17px;

@@ -142,3 +142,22 @@ $('#pages li').click(function(){  //分页按钮的active类添加
 	$(this).siblings().removeClass('active');
 	$(this).addClass('active');
 });
+
+$('#type-news li').click(function(){  //新闻导航栏按钮的激活状态添加
+	$(this).siblings().removeClass('current-news');
+	$(this).addClass('current-news');
+});
+
+$('#content-news li a').click(function(){
+	var heading = $(this).text();
+	var parent = $('#content-news').parent();
+	$(parent).empty();
+	var header=$('<h2></h2>').text(heading);
+	$(header).attr('id')="news-header";
+	var author=$('<span></span>').text("作者：zjw")
+	var time=$($(this).next()).text();
+	alert(time);
+	var note=$('<p></p>').text()
+	
+	
+});
