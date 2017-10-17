@@ -157,12 +157,12 @@ $('#content-news li a').click(function(){ //实现新闻内容的跳转
 	$(parent).empty();
 	var header=$('<h2></h2>').text(heading);
 	var author="zjw",
-		contents="这里是新闻的内容。这里是新闻的内容。这里是新闻的内容。这里是新闻的内容。这里是新闻的内容。这里是新闻的内容。",
+		contents="{{post.content}}",
 		author_span=$('<span></span>').text("作者："+author),
 		time_span=$('<span></span>').html("时间："+time[0]+"年 "+time[1]+"月 "+time[2]+"日"),  //在html方法中&nbsp;会被解释为空格，而在text方法中，则不会被解释
 		space="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
 		note=$('<p></p>'),
-		news_contents=$('<article></article>').text(contents);
+		news_contents=$('<article></article>').html(contents);
 	$(header).attr('id',"news-header");
 	$(note).attr('id',"news-note");
 	$(news_contents).attr('id',"news-contents");

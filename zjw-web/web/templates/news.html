@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -5,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Marine Geology Office 201</title>
 		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-		<link href="styles/news.css" rel="stylesheet" media="screen" />
+		<link href="{% static 'styles/news.css' %}" rel="stylesheet" media="screen" />
 	</head>
 	<body>
 		<header>
@@ -14,7 +15,7 @@
 					<div class="col-sm-8 col-xs-12">
 						<div class="row">
 							<div class="col-sm-3 hidden-xs">
-								<a href="http://www.zju.edu.cn/"><img id="logo" src="images/school.gif" class="img-responsive" alt="ZJU" /></a>
+								<a href="http://www.zju.edu.cn/"><img id="logo" src="{% static 'images/school.gif' %}" class="img-responsive" alt="ZJU" /></a>
 							</div>
 							<div class="col-sm-9 col-xs-12">
 								<h1 id="title"><b><i>Marine Geology Office 201</i></b></h1>
@@ -94,11 +95,13 @@
 					</div>
 					<div id="article-content" class="col-md-10 col-sm-9 col-xs-12">
 						<ul id="content-news">
+							{% for post in article_list %}
 							<li>
-								<a href="#">用爱关怀健康安全 用心护卫平安校园</a>
-								<span>[2017/10/02]</span>
+								<a href="#">{{post.title}}</a>
+								<span>[{{post.time|date}}]</span>
 								<hr/>
 							</li>
+							{% endfor %}
 							<li>
 								<a href="#">树国安意识，强敌情观念</a>
 								<span>[2017/10/01]</span>
@@ -168,9 +171,9 @@
 					</div>
 					<div class="col-md-2 col-xs-12">
 						<ul class="pull-right">
-							<li><a href="#" data-toggle="tooltip" data-html="true" title="<img src='images/QQ.jpg' style='height:80px; width:80px;'>"><img src="images/tx.jpg" alt="QQ"></a></li>
-							<li><a href="#" data-toggle="tooltip" data-html="true" title="<img src='images/wechat.jpg' style='height:80px; width:80px;'>"><img src="images/wx.jpg" alt="Wechat"></a></li>
-							<li><a href="http://weibo.com/u/3125492073?is_all=1" target="_blank"><img src="images/xl.jpg" alt="Blog"></a></li>
+							<li><a href="#" data-toggle="tooltip" data-html="true" title="<img src='{% static "images/QQ.jpg" %}' style='height:80px; width:80px;'>"><img src="{% static 'images/tx.jpg' %}" alt="QQ"></a></li>
+							<li><a href="#" data-toggle="tooltip" data-html="true" title="<img src='{% static "images/wechat.jpg" %}' style='height:80px; width:80px;'>"><img src="{% static 'images/wx.jpg' %}" alt="Wechat"></a></li>
+							<li><a href="http://weibo.com/u/3125492073?is_all=1" target="_blank"><img src="{% static 'images/xl.jpg' %}" alt="Blog"></a></li>
 						</ul>
 					</div>
 				</div>
@@ -178,6 +181,6 @@
 		</footer>
 		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="js/javascript.js"></script>
+		<script src="{% static 'js/javascript.js' %}"></script>
 	</body>
 </html>
