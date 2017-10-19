@@ -10,4 +10,5 @@ def index(request):
 
 def detail(request,pk):
 	post=get_object_or_404(Article,pk=pk)
-	return render(request,'content.html',context={'post':post})
+	length=len(Article.objects.all())
+	return render(request,'content.html',context={'post':post,'length':length})

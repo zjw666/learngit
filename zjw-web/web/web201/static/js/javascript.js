@@ -19,6 +19,7 @@ $(function(){
 		zht:"本科毕业于西南石油大学，现硕士研究生在读。爱好乒乓球和羽毛球，喜欢和朋友一起愉快地玩耍。处于人生十字口中一只迷茫的小白，最近由于毕业问题，心里充满了烦恼和忧虑，希望能早点做完项目，顺利发表文章毕业，最终能找到一份自己喜爱的工作。邮箱：10591342608@qq.com"
 	}
 	news_change();
+	news_check();
 });
 
 $('ul.nav-tabs li').click(function(){            //标签页之间内容转换
@@ -151,11 +152,38 @@ $('#type-news li').click(function(){  //新闻导航栏按钮的激活状态添�
 });
 
 $('#pages-content button').click(function(){
-	alert(window.location.pathname);
+	text = window.location.pathname.slice(0,6);
+	num = Number(window.location.pathname.slice(6,7));
 	if ($(this).attr('id')=='left'){
-		alert('left');
+		url= 'http://'+window.location.host+text+(num-1)+'/';
+		window.open(url,'_self');
 	}else{
-		alert('right');
+		url= 'http://'+window.location.host+text+(num+1)+'/';
+		window.open(url,'_self');
 	}
 });
+
+function news_check(){
+	if ($('#pages-content button').length > 0)
+	{
+		num = Number(window.location.pathname.slice(6,7));
+		length = Number($('#article-content article').attr('id'));
+		if (num <= 1){
+			$('#left').addClass('disabled');
+			$('#left').attr('disabled',true);
+			$('#left-text').text("这是第一篇新闻了");
+		}else if (num>=length)
+		{
+			$('#right').addClass('disabled');
+			$('#right').attr('disabled',true);
+			$('#right-text').text("这是最后一篇新闻了");
+		}else
+		{
+			$('#left').attr('disabled',false);
+			$('#left').removeClass('disabled');
+			$('#right').attr('disabled',false);
+			$('#right').removeClass('disabled');
+		}
+	}
+}
 

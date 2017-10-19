@@ -94,14 +94,20 @@
 						</div>
 					</div>
 					<div id="article-content" class="col-md-10 col-sm-9 col-xs-12">
-						<article>
+						<article id="{{length}}">
 							<h2>{{post.title}}</h2>
 							<p><span>作者：{{post.author}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>时间：{{post.time|date}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>阅读量：</span></p>
 							<div>{{post.content}}</div>
 						</article>
 						<div id="pages-content">
-							<button id='left' class='btn btn-default pull-left btn-sm'><span class="glyphicon glyphicon-chevron-left"></span></button>
-							<button id='right' class='btn btn-default pull-right btn-sm'><span class="glyphicon glyphicon-chevron-right"></span></button>
+							<div class="pull-left">
+								<span id="left-text"></span>&nbsp;
+								<button id='left' class='btn btn-default btn-sm'><span class="glyphicon glyphicon-chevron-left"></span></button>
+							</div>
+							<div class="pull-right">
+								<button id='right' class='btn btn-default btn-sm'><span class="glyphicon glyphicon-chevron-right"></span></button>
+								&nbsp;<span id="right-text"></span>
+							</div>
 						</div>
 					</div>
 				</div>
