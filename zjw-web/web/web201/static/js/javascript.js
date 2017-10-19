@@ -136,7 +136,7 @@ $("#location img").click(function(){  //连接地图头像与人物介绍界面
 });	
 
 function news_change(){        //使新闻导航栏的高度与内容栏相同
-	var news_contents=$('#content-news').parent().height();
+	var news_contents=$('#article-content').height();
 	$('#border').height(news_contents);
 }
 
@@ -150,22 +150,12 @@ $('#type-news li').click(function(){  //新闻导航栏按钮的激活状态添�
 	$(this).addClass('current-news');
 });
 
-$('#content-news li a').click(function(){ //实现新闻内容的跳转
-	var heading = $(this).text();
-	var parent = $('#content-news').parent();
-	var time=$(this).next().text().slice(1,11).split('/');
-	$(parent).empty();
-	var header=$('<h2></h2>').text(heading);
-	var author="zjw",
-		contents="{{post.content}}",
-		author_span=$('<span></span>').text("作者："+author),
-		time_span=$('<span></span>').html("时间："+time[0]+"年 "+time[1]+"月 "+time[2]+"日"),  //在html方法中&nbsp;会被解释为空格，而在text方法中，则不会被解释
-		space="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
-		note=$('<p></p>'),
-		news_contents=$('<article></article>').html(contents);
-	$(header).attr('id',"news-header");
-	$(note).attr('id',"news-note");
-	$(news_contents).attr('id',"news-contents");
-	$(note).append(author_span,space,time_span);
-	$(parent).append(header,note,news_contents);
+$('#pages-content button').click(function(){
+	alert(window.location.pathname);
+	if ($(this).attr('id')=='left'){
+		alert('left');
+	}else{
+		alert('right');
+	}
 });
+

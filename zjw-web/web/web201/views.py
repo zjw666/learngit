@@ -1,3 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
+from django.http import HttpResponse
+from .models import Article
 
-# Create your views here.
+def index(request):
+	article_list=Article.objects.all().order_by('-time')
+	return render(request,'news.html',context={
+		'article_list':article_list
+	})
+
+def detail(request,pk):
+	post=get_object_or_404(Article,pk=pk)
+	return render(request,'content.html',context={'post':post})
