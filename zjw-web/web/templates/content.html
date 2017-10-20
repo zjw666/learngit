@@ -82,7 +82,7 @@
 		</header>
 		<div class="container">
 			<article>
-				<div class="row">
+				<div class="row" id="row">
 					<div class="col-md-2 col-sm-3 hidden-xs">
 						<div id="border">
 							<h3>新闻分类</h3>
@@ -101,12 +101,12 @@
 						</article>
 						<div id="pages-content">
 							<div class="pull-left">
-								<span id="left-text"></span>&nbsp;
+								<span id="left-text" class="news-text hidden-xs text-right">{{post_pre}}</span>
 								<button id='left' class='btn btn-default btn-sm'><span class="glyphicon glyphicon-chevron-left"></span></button>
 							</div>
 							<div class="pull-right">
 								<button id='right' class='btn btn-default btn-sm'><span class="glyphicon glyphicon-chevron-right"></span></button>
-								&nbsp;<span id="right-text"></span>
+								<span id="right-text" class="news-text hidden-xs">{{post_next}}</span>
 							</div>
 						</div>
 					</div>

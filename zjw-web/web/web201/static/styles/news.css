@@ -151,6 +151,14 @@ article h3{
 	text-decoration:none;
 }
 
+#row{
+	margin:0;
+}
+
+#row div:first-child{
+	padding:0;
+}
+
 #border{
 	border-right:1px solid #ddd;
 }
@@ -202,6 +210,7 @@ article h3{
 	padding:15px;
 }
 
+
 #article-content article{
 	border:0;
 	padding:0 20px;
@@ -216,11 +225,17 @@ article h3{
 }
 
 #pages-content{
-	padding:10px 20%;
-	margin-bottom:20px;
+	padding-left:5%;
+	padding-right:5%;
+	margin-top:10px;
 	height:50px;
 	color:black;
 	font-size:15px;
+}
+
+.news-text{
+	width:200px;
+	display:inline-block;
 }
 
 footer ul{

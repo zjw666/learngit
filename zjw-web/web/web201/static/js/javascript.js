@@ -20,6 +20,7 @@ $(function(){
 	}
 	news_change();
 	news_check();
+	words_num_check();
 });
 
 $('ul.nav-tabs li').click(function(){            //标签页之间内容转换
@@ -44,6 +45,7 @@ $(window).scroll(function(){   //使affix导航栏宽度动态变化
 $(window).resize(function(){   //使遮罩宽度与头像宽度保持一致
 	$('#mask').width($('img[alt="photo"]').width());
 	button_change();
+	news_change();
 });
 
 $('#img-container').hover(     //头像按钮淡入淡出以及遮罩透明度变化
@@ -187,3 +189,15 @@ function news_check(){
 	}
 }
 
+function words_num_check(){
+	span1=$($('.news-text')[0]).text();
+	span2=$($('.news-text')[1]).text();
+	if (span1.length > 15){
+		news_title=span1.slice(0,11)+'...';
+		$($('.news-text')[0]).text(news_title);
+	}
+	if (span2.length > 15){
+		news_title=span2.slice(0,11)+'...';
+		$($('.news-text')[1]).text(news_title);
+	}
+}
