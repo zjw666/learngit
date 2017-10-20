@@ -1,204 +1,108 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Marine Geology Office 201</title>
-		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-		<link href="styles/contact.css" rel="stylesheet" media="screen" />
-	</head>
-	<body>
-		<header>
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-8 col-xs-12">
-						<div class="row">
-							<div class="col-sm-3 hidden-xs">
-								<a href="http://www.zju.edu.cn/"><img id="logo" src="images/school.gif" class="img-responsive" alt="ZJU" /></a>
-							</div>
-							<div class="col-sm-9 col-xs-12">
-								<h1 id="title"><b><i>Marine Geology Office 201</i></b></h1>
-							</div>
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+<link href="{% static 'styles/contact.css' %}" rel="stylesheet" media="screen" />
+{% endblock css %}
+
+{% block main %}	
+<article>
+	<div class="row">
+		<div class="col-md-6 col-sm-8 col-xs-12 col-md-push-3 col-sm-push-2">
+			<form role="form">
+				<fieldset>
+					<legend>联系我们</legend>
+					<div class="form-group">
+						<label>姓名</label>
+						<input class="form-control" type="text" placeholder="请输入你的姓名" name="name" maxlength="20" required  oninvalid="setCustomValidity('请输入你的姓名');" oninput="setCustomValidity('');" />
+					</div>
+					<div class="form-group">
+						<label>性别</label>
+						<div>
+							<label class="radio-inline">
+								<input type="radio" value="man" checked name="sex" />
+								男
+							</label>
+							<label class="radio-inline">
+								<input type="radio" value="woman" name="sex" />
+								女
+							</label>
 						</div>
 					</div>
-					<div class="col-sm-4 col-xs-12">
-						<form role="form" id="search">
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Search..." />
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-								</span>
-							</div>
-						</form>
+					<div class="form-group">
+						<label>出生年月</label>
+						<input class="form-control" name="date" type="date" placeholder="请输入你的出生年月，例如：1994/06/06" maxlength="15" />
 					</div>
-				</div>
-			</div>
-			<div class="container">
-				<nav class="navbar" role="navigation">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand visible-xs" href="#">Start</a>
+					<div class="form-group">
+						<label>邮箱</label>
+						<input class="form-control" type="email" name="email" placeholder="请输入你的电子邮箱地址" required oninvalid="setCustomValidity('请输入你的邮箱');" oninput="setCustomValidity('');" />
 					</div>
-					<div class="collapse navbar-collapse" id="navbar">
-						<div class="row">
-							<ul class="nav navbar-nav">
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="index.html">Home</a></li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="introduction.html">Introduction</a></li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											Teachers
-											<b class="caret"></b>
-										</a>
-										<ul class="dropdown-menu" role="meun">
-											<li><a href="teachers-li.html">ChunFeng Li</a></li>
-											<li><a href="teachers-wang.html">YingMin Wang</a></li>
-										</ul>
-									</li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="students.html">Students</a></li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="news.html">News</a></li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="contact.html">Contact</a></li>
-								</div>
-							</ul>
+					<div class="form-group">
+						<label>发送的消息</label>
+						<textarea class="form-control" maxlength="300" rows="5" name="content" required oninvalid="setCustomValidity('请输入你要发送的信息');" oninput="setCustomValidity('');"></textarea>
+					</div>
+					<div class="form-group" id='check'>
+						<label>类型</label>
+						<div>
+							<label>
+								<input type="checkbox" name="privacy" value="true" checked />
+								公开
+							</label>
+							<label>
+								<input type="checkbox" name="important" value="true" />
+								重要
+							</label>
+							<button type="submit" class="btn btn-default">提交</button>
 						</div>
 					</div>
-				</nav>
-			</div>
-		</header>
-		<div class="container">
-			<article>
-				<div class="row">
-					<div class="col-md-6 col-sm-8 col-xs-12 col-md-push-3 col-sm-push-2">
-						<form role="form">
-							<fieldset>
-								<legend>联系我们</legend>
-								<div class="form-group">
-									<label>姓名</label>
-									<input class="form-control" type="text" placeholder="请输入你的姓名" name="name" maxlength="20" required  oninvalid="setCustomValidity('请输入你的姓名');" oninput="setCustomValidity('');" />
-								</div>
-								<div class="form-group">
-									<label>性别</label>
-									<div>
-										<label class="radio-inline">
-											<input type="radio" value="man" checked name="sex" />
-											男
-										</label>
-										<label class="radio-inline">
-											<input type="radio" value="woman" name="sex" />
-											女
-										</label>
-									</div>
-								</div>
-								<div class="form-group">
-									<label>出生年月</label>
-									<input class="form-control" name="date" type="date" placeholder="请输入你的出生年月，例如：1994/06/06" maxlength="15" />
-								</div>
-								<div class="form-group">
-									<label>邮箱</label>
-									<input class="form-control" type="email" name="email" placeholder="请输入你的电子邮箱地址" required oninvalid="setCustomValidity('请输入你的邮箱');" oninput="setCustomValidity('');" />
-								</div>
-								<div class="form-group">
-									<label>发送的消息</label>
-									<textarea class="form-control" maxlength="300" rows="5" name="content" required oninvalid="setCustomValidity('请输入你要发送的信息');" oninput="setCustomValidity('');"></textarea>
-								</div>
-								<div class="form-group" id='check'>
-									<label>类型</label>
-									<div>
-										<label>
-											<input type="checkbox" name="privacy" value="true" checked />
-											公开
-										</label>
-										<label>
-											<input type="checkbox" name="important" value="true" />
-											重要
-										</label>
-										<button type="submit" class="btn btn-default">提交</button>
-									</div>
-								</div>
-							</fieldset>
-						</form>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<h3 id="well">评论区</h3>
-						<div class="well">
-							<ul class="media-list">
-								<li class="media">
-									<a href="#" class="media-left">
-										<img src="images/tmp.jpg" class="media-object img-circle" alt="photo" />
-									</a>
-									<div class="media-body">
-										<h4 class="media-heading">用户名1</h4>
-										<p>这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。</p>
-									</div>
-								</li>
-								<li class="media">
-									<a href="#" class="media-left">
-										<img src="images/tmp.jpg" class="media-object img-circle" alt="photo" />
-									</a>
-									<div class="media-body">
-										<h4 class="media-heading">用户名2</h4>
-										<p>这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。</p>
-										<div class="media">
-											<a href="#" class="media-left">
-												<img src="images/tmp.jpg" class="media-object img-circle" alt="photo" />
-											</a>
-											<div class="media-body">
-												<h4 class="media-heading">用户名3</h4>
-												<p>这是对评论的回复。这是对评论的回复。这是对评论的回复。这是对评论的回复。这是对评论的回复。这是对评论的回复。</p>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="media">
-									<a href="#" class="media-left">
-										<img src="images/tmp.jpg" class="media-object img-circle" alt="photo" />
-									</a>
-									<div class="media-body">
-										<h4 class="media-heading">用户名4</h4>
-										<p>这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。</p>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</article>
+				</fieldset>
+			</form>
 		</div>
-		<footer>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-10 col-xs-12">
-						<p class="text-center">Zhejiang University (Zhoushan campus) | 1 Zheda Road | Zhoushan, Zhejiang Province | <span class="glyphicon glyphicon-envelope"></span> 316021 | <span class="glyphicon glyphicon-phone-alt"></span> 123456789</p>
-						<p class="text-center">&copy; 2017-2018 Marine Geology office 201 <a href="http://www.miitbeian.gov.cn/">浙ICP备17037327号</a></p>
-					</div>
-					<div class="col-md-2 col-xs-12">
-						<ul class="pull-right">
-							<li><a href="#" data-toggle="tooltip" data-html="true" title="<img src='images/QQ.jpg' style='height:80px; width:80px;'>"><img src="images/tx.jpg" alt="QQ"></a></li>
-							<li><a href="#" data-toggle="tooltip" data-html="true" title="<img src='images/wechat.jpg' style='height:80px; width:80px;'>"><img src="images/wx.jpg" alt="Wechat"></a></li>
-							<li><a href="http://weibo.com/u/3125492073?is_all=1" target="_blank"><img src="images/xl.jpg" alt="Blog"></a></li>
-						</ul>
-					</div>
-				</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h3 id="well">评论区</h3>
+			<div class="well">
+				<ul class="media-list">
+					<li class="media">
+						<a href="#" class="media-left">
+							<img src="{% static 'images/tmp.jpg' %}" class="media-object img-circle" alt="photo" />
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">用户名1</h4>
+							<p>这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。</p>
+						</div>
+					</li>
+					<li class="media">
+						<a href="#" class="media-left">
+							<img src="{% static 'images/tmp.jpg' %}" class="media-object img-circle" alt="photo" />
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">用户名2</h4>
+							<p>这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。</p>
+							<div class="media">
+								<a href="#" class="media-left">
+									<img src="{% static 'images/tmp.jpg' %}" class="media-object img-circle" alt="photo" />
+								</a>
+								<div class="media-body">
+									<h4 class="media-heading">用户名3</h4>
+									<p>这是对评论的回复。这是对评论的回复。这是对评论的回复。这是对评论的回复。这是对评论的回复。这是对评论的回复。</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="media">
+						<a href="#" class="media-left">
+							<img src="{% static 'images/tmp.jpg' %}" class="media-object img-circle" alt="photo" />
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">用户名4</h4>
+							<p>这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。</p>
+						</div>
+					</li>
+				</ul>
 			</div>
-		</footer>
-		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="js/javascript.js"></script>
-	</body>
-</html>
+		</div>
+	</div>
+</article>
+{% endblock main %}

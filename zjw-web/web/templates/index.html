@@ -1,195 +1,99 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Marine Geology Office 201</title>
-		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-		<link href="styles/index.css" rel="stylesheet" media="screen" />
-	</head>
-	<body>
-		<header>
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-8 col-xs-12">
-						<div class="row">
-							<div class="col-sm-3 hidden-xs">
-								<a href="http://www.zju.edu.cn/"><img id="logo" src="images/school.gif" class="img-responsive" alt="ZJU" /></a>
-							</div>
-							<div class="col-sm-9 col-xs-12">
-								<h1 id="title"><b><i>Marine Geology Office 201</i></b></h1>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4 col-xs-12">
-						<form role="form" id="search">
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Search..." />
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-								</span>
-							</div>
-						</form>
-					</div>
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+<link href="{% static 'styles/index.css' %}" rel="stylesheet" media="screen" />
+{% endblock css %}
+
+{% block main %}
+<div class="row">
+	<div class="col-md-5 col-xs-12">
+		<div class="carousel slide" id="Carousel" data-ride="carousel" data-interval="4000">
+			<!-- 轮播页码 -->
+			<ol class="carousel-indicators">
+				<li data-target="#Carousel" data-slide-to="0" class="active"></li>
+				<li data-target="#Carousel" data-slide-to="1"></li>
+				<li data-target="#Carousel" data-slide-to="2"></li>
+				<li data-target="#Carousel" data-slide-to="3"></li>
+				<li data-target="#Carousel" data-slide-to="4"></li>
+			</ol>
+			<!-- 轮播项目 -->
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="{% static 'images/slide1.jpg' %}" alt="闪电" />
+					<div class="carousel-caption"><b>Thunderstorm</b></div>
+				</div>
+				<div class="item">
+					<img src="{% static 'images/slide2.jpg' %}" alt="模拟课程" />
+					<div class="carousel-caption"><b>Simulation course</b></div>
+				</div>
+				<div class="item">
+					<img src="{% static 'images/slide3.jpg' %}" alt="生日" />
+					<div class="carousel-caption"><b>Birthday</b></div>
+				</div>
+				<div class="item">
+					<img src="{% static 'images/slide4.jpg' %}" alt="聚餐" />
+					<div class="carousel-caption"><b>Lunch</b></div>
+				</div>
+				<div class="item">
+					<img src="{% static 'images/slide5.jpg' %}" alt="小明" />
+					<div class="carousel-caption"><b>Xiao Ming</b></div>
 				</div>
 			</div>
-			<div class="container">
-				<nav class="navbar" role="navigation">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand visible-xs" href="#">Start</a>
-					</div>
-					<div class="collapse navbar-collapse" id="navbar">
-						<div class="row">
-							<ul class="nav navbar-nav">
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="index.html">Home</a></li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="introduction.html">Introduction</a></li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											Teachers
-											<b class="caret"></b>
-										</a>
-										<ul class="dropdown-menu" role="meun">
-											<li><a href="teachers-li.html">ChunFeng Li</a></li>
-											<li><a href="teachers-wang.html">YingMin Wang</a></li>
-										</ul>
-									</li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="students.html">Students</a></li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="news.html">News</a></li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="contact.html">Contact</a></li>
-								</div>
-							</ul>
-						</div>
-					</div>
-				</nav>
-			</div>
-		</header>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-5 col-xs-12">
-					<div class="carousel slide" id="Carousel" data-ride="carousel" data-interval="4000">
-						<!-- 轮播页码 -->
-						<ol class="carousel-indicators">
-							<li data-target="#Carousel" data-slide-to="0" class="active"></li>
-							<li data-target="#Carousel" data-slide-to="1"></li>
-							<li data-target="#Carousel" data-slide-to="2"></li>
-							<li data-target="#Carousel" data-slide-to="3"></li>
-							<li data-target="#Carousel" data-slide-to="4"></li>
-						</ol>
-						<!-- 轮播项目 -->
-						<div class="carousel-inner">
-							<div class="item active">
-								<img src="images/slide1.jpg" alt="闪电" />
-								<div class="carousel-caption"><b>Thunderstorm</b></div>
-							</div>
-							<div class="item">
-								<img src="images/slide2.jpg" alt="模拟课程" />
-								<div class="carousel-caption"><b>Simulation course</b></div>
-							</div>
-							<div class="item">
-								<img src="images/slide3.jpg" alt="生日" />
-								<div class="carousel-caption"><b>Birthday</b></div>
-							</div>
-							<div class="item">
-								<img src="images/slide4.jpg" alt="聚餐" />
-								<div class="carousel-caption"><b>Lunch</b></div>
-							</div>
-							<div class="item">
-								<img src="images/slide5.jpg" alt="小明" />
-								<div class="carousel-caption"><b>Xiao Ming</b></div>
-							</div>
-						</div>
-						<!-- 轮播导航-->
-						<a class="carousel-control left" href="#Carousel" data-slide="prev">
-							<span class="glyphicon glyphicon-chevron-left">
-							</span>
-						</a>
-						<a class="carousel-control right" href="#Carousel" data-slide="next">
-							<span class="glyphicon glyphicon-chevron-right">
-							</span>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-7 col-xs-12">
-					<ul class="nav nav-tabs nav-justified">
-						<li name="Welcome" class="active"><a href="#Welcome">Welcome</a></li>
-						<li name="Introduction"><a href="#Introduction">Introduction</a></li>
-						<li name="News" ><a href="#News">News</a></li>
-					</ul>
-					<article id="Welcome">
-						<p><span>W</span>elcome to our office!!! We'd like to make friends with you and invite you to join our family. 
-						Let's have fun and make progress together. For more information about us, please look at the <a href="introduction.html">Introduction</a> page.
-						</p>
-					</article>
-					<article id="Introduction">
-						<p><span>O</span>ur office is called "Marine Geology Office 201". The office is located in the Ocean Academic building, which is in opposite of
-						 the YuanZheng hotel. In this office, 11 students study and work everday, including 1 postdoctor, 5 doctors and 5 masters. They
-						 all are students of <a href="teachers-li.html">Prof ChunFeng Li</a> and <a href="teachers-wang.html">Prof Yingmin Wang</a>. The main research interests of us are Marine
-						  Geology, Geophysics and Sedimentary.
-						</p>
-						<a class="more" href="introduction.html">more...</a>
-					</article>
-					<article id="News">
-						<ul>
-							<li>
-								<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Congratulation to HaiTeng Zhuo for applying for the NSFC project successfully!</a> 
-								<span class="new">
-									<span class="glyphicon glyphicon-fire"></span> new
-								</span>
-								<span class="time pull-right">2017-08-20</span>
-							</li>
-							<li>
-								<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Congratulation to complete the simulation course successfully!</a>
-								<span class="time pull-right">2017-08-13</span>
-							</li>
-							<li>
-								<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Happy birthday to our bro Duo Zhou!</a>
-								<span class="time pull-right">2017-08-08</span>
-							</li>
-							<li>
-								<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Summer vacation is coming!</a>
-								<span class="time pull-right">2017-07-01</span>
-							</li>
-						</ul>
-						<a class="more" href="news.html">more...</a>
-					</article>
-				</div>
-			</div>
+			<!-- 轮播导航-->
+			<a class="carousel-control left" href="#Carousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left">
+				</span>
+			</a>
+			<a class="carousel-control right" href="#Carousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right">
+				</span>
+			</a>
 		</div>
-		<footer>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-10 col-xs-12">
-						<p class="text-center">Zhejiang University (Zhoushan campus) | 1 Zheda Road | Zhoushan, Zhejiang Province | <span class="glyphicon glyphicon-envelope"></span> 316021 | <span class="glyphicon glyphicon-phone-alt"></span> 123456789</p>
-						<p class="text-center">&copy; 2017-2018 Marine Geology office 201 <a href="http://www.miitbeian.gov.cn/">浙ICP备17037327号</a></p>
-					</div>
-					<div class="col-md-2 col-xs-12">
-						<ul class="pull-right">
-							<li><a href="#" data-toggle="tooltip" data-html="true" title="<img src='images/QQ.jpg' style='height:80px; width:80px;'>"><img src="images/tx.jpg" alt="QQ"></a></li>
-							<li><a href="#" data-toggle="tooltip" data-html="true" title="<img src='images/wechat.jpg' style='height:80px; width:80px;'>"><img src="images/wx.jpg" alt="Wechat"></a></li>
-							<li><a href="http://weibo.com/u/3125492073?is_all=1" target="_blank"><img src="images/xl.jpg" alt="Blog"></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="js/javascript.js"></script>
-	</body>
-</html>
+	</div>
+	<div class="col-md-7 col-xs-12">
+		<ul class="nav nav-tabs nav-justified">
+			<li name="Welcome" class="active"><a href="#Welcome">Welcome</a></li>
+			<li name="Introduction"><a href="#Introduction">Introduction</a></li>
+			<li name="News" ><a href="#News">News</a></li>
+		</ul>
+		<article id="Welcome">
+			<p><span>W</span>elcome to our office!!! We'd like to make friends with you and invite you to join our family. 
+			Let's have fun and make progress together. For more information about us, please look at the <a href="introduction.html">Introduction</a> page.
+			</p>
+		</article>
+		<article id="Introduction">
+			<p><span>O</span>ur office is called "Marine Geology Office 201". The office is located in the Ocean Academic building, which is in opposite of
+			 the YuanZheng hotel. In this office, 11 students study and work everday, including 1 postdoctor, 5 doctors and 5 masters. They
+			 all are students of <a href="teachers-li.html">Prof ChunFeng Li</a> and <a href="teachers-wang.html">Prof Yingmin Wang</a>. The main research interests of us are Marine
+			  Geology, Geophysics and Sedimentary.
+			</p>
+			<a class="more" href="{% url 'web201:introduction' %}">more...</a>
+		</article>
+		<article id="News">
+			<ul>
+				<li>
+					<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Congratulation to HaiTeng Zhuo for applying for the NSFC project successfully!</a> 
+					<span class="new">
+						<span class="glyphicon glyphicon-fire"></span> new
+					</span>
+					<span class="time pull-right">2017-08-20</span>
+				</li>
+				<li>
+					<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Congratulation to complete the simulation course successfully!</a>
+					<span class="time pull-right">2017-08-13</span>
+				</li>
+				<li>
+					<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Happy birthday to our bro Duo Zhou!</a>
+					<span class="time pull-right">2017-08-08</span>
+				</li>
+				<li>
+					<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Summer vacation is coming!</a>
+					<span class="time pull-right">2017-07-01</span>
+				</li>
+			</ul>
+			<a class="more" href="{% url 'web201:index' %}">more...</a>
+		</article>
+	</div>
+</div>
+{% endblock main %}

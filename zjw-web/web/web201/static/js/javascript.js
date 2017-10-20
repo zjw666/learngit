@@ -125,7 +125,7 @@ $("#list a").click(function(event){  //为各个人物头像捆绑点击事件
 	event.preventDefault();
 });
 	
-$("#location img").click(function(){  //连接地图头像与人物介绍界面
+$("#location div img").click(function(){  //连接地图头像与人物介绍界面
 	var name=this.alt;
 	var url= this.src;
 	$("#personal").stop(stopAll=false,goToEnd=true);
@@ -193,11 +193,11 @@ function words_num_check(){
 	span1=$($('.news-text')[0]).text();
 	span2=$($('.news-text')[1]).text();
 	if (span1.length > 15){
-		news_title=span1.slice(0,11)+'...';
+		news_title=span1.slice(0,15)+'...';
 		$($('.news-text')[0]).text(news_title);
 	}
 	if (span2.length > 15){
-		news_title=span2.slice(0,11)+'...';
+		news_title=span2.slice(0,15)+'...';
 		$($('.news-text')[1]).text(news_title);
 	}
 }

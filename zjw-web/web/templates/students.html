@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -5,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Marine Geology Office 201</title>
 		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-		<link href="styles/students.css" rel="stylesheet" media="screen" />
+		<link href="{% static 'styles/students.css' %}" rel="stylesheet" media="screen" />
 	</head>
 	<body>
 		<header>
@@ -14,7 +15,7 @@
 					<div class="col-sm-8 col-xs-12">
 						<div class="row">
 							<div class="col-sm-3 hidden-xs">
-								<a href="http://www.zju.edu.cn/"><img id="logo" src="images/school.gif" class="img-responsive" alt="ZJU" /></a>
+								<a href="http://www.zju.edu.cn/"><img id="logo" src="{% static 'images/school.gif' %}" class="img-responsive" alt="ZJU" /></a>
 							</div>
 							<div class="col-sm-9 col-xs-12">
 								<h1 id="title"><b><i>Marine Geology Office 201</i></b></h1>
@@ -47,10 +48,10 @@
 						<div class="row">
 							<ul class="nav navbar-nav">
 								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="index.html">Home</a></li>
+									<li><a href="{% url 'web201:home' %}">Home</a></li>
 								</div>
 								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="introduction.html">Introduction</a></li>
+									<li><a href="{% url 'web201:introduction' %}">Introduction</a></li>
 								</div>
 								<div class="col-lg-2 col-md-4 col-sm-4">
 									<li class="dropdown">
@@ -59,19 +60,19 @@
 											<b class="caret"></b>
 										</a>
 										<ul class="dropdown-menu" role="meun">
-											<li><a href="teachers-li.html">ChunFeng Li</a></li>
-											<li><a href="teachers-wang.html">YingMin Wang</a></li>
+											<li><a href="{% url 'web201:teachers' 'li'%}">ChunFeng Li</a></li>
+											<li><a href="{% url 'web201:teachers' 'wang'%}">YingMin Wang</a></li>
 										</ul>
 									</li>
 								</div>
 								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="students.html">Students</a></li>
+									<li><a href="{% url 'web201:students' %}">Students</a></li>
 								</div>
 								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="news.html">News</a></li>
+									<li><a href="{% url 'web201:index' %}">News</a></li>
 								</div>
 								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="{% url 'web201:contact' %}">Contact</a></li>
 								</div>
 							</ul>
 						</div>
@@ -85,46 +86,46 @@
 					<article>
 						<h2 class="hidden-xs">The Students' Home</h2>
 						<div id="location" class="hidden-xs">
-							<img id="map" class="img-responsive" alt="map" src="images/map.jpg" />
+							<img id="map" class="img-responsive" alt="map" src="{% static 'images/map.jpg' %}" />
 							<div id="zjw" class="marker">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								<img class="img-circle img-responsive" src="images/tmp.jpg" alt="zjw" />
+								<img class="img-circle img-responsive" src="{% static 'images/tmp.jpg' %}" alt="zjw" />
 							</div>
 							<div id="wmh" class="marker">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								<img class="img-circle img-responsive" src="images/tmp.jpg" alt="wmh" />
+								<img class="img-circle img-responsive" src="{% static 'images/tmp.jpg' %}" alt="wmh" />
 							</div>
 							<div id="gsm" class="marker">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								<img class="img-circle img-responsive" src="images/tmp.jpg" alt="gsm" />
+								<img class="img-circle img-responsive" src="{% static 'images/tmp.jpg' %}" alt="gsm" />
 							</div>
 							<div id="hwa" class="marker">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								<img class="img-circle img-responsive" src="images/tmp.jpg" alt="hwa" />
+								<img class="img-circle img-responsive" src="{% static 'images/tmp.jpg' %}" alt="hwa" />
 							</div>
 							<div id="lxx" class="marker">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								<img class="img-circle img-responsive" src="images/tmp.jpg" alt="lxx" />
+								<img class="img-circle img-responsive" src="{% static 'images/tmp.jpg' %}" alt="lxx" />
 							</div>
 							<div id="zs" class="marker">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								<img class="img-circle img-responsive" src="images/tmp.jpg" alt="zs" />
+								<img class="img-circle img-responsive" src="{% static 'images/tmp.jpg' %}" alt="zs" />
 							</div>
 							<div id="wxx" class="marker">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								<img class="img-circle img-responsive" src="images/tmp.jpg" alt="wxx" />
+								<img class="img-circle img-responsive" src="{% static 'images/tmp.jpg' %}" alt="wxx" />
 							</div>
 							<div id="zd" class="marker">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								<img class="img-circle img-responsive" src="images/tmp.jpg" alt="zd" />
+								<img class="img-circle img-responsive" src="{% static 'images/tmp.jpg' %}" alt="zd" />
 							</div>
 							<div id="wyl" class="marker">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								<img class="img-circle img-responsive" src="images/tmp.jpg" alt="wyl" />
+								<img class="img-circle img-responsive" src="{% static 'images/tmp.jpg' %}" alt="wyl" />
 							</div>
 							<div id="zht" class="marker">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								<img class="img-circle img-responsive" src="images/tmp.jpg" alt="zht" />
+								<img class="img-circle img-responsive" src="{% static 'images/tmp.jpg' %}" alt="zht" />
 							</div>
 						</div>
 						<div class="row">
@@ -145,61 +146,61 @@
 								<ul id="list" class="source">
 									<li data-id="id-1" class="boys masters wang">
 										<a href="#">
-											<img class="img-circle img-responsive" src="images/1.jpg" alt="zjw">
+											<img class="img-circle img-responsive" src="{% static 'images/1.jpg' %}" alt="zjw">
 										</a>
 										<span>zjw</span>
 									</li>
 									<li data-id="id-2" class="boys doctors wang">
 										<a href="#">
-											<img class="img-circle img-responsive" src="images/2.jpg" alt="wmh">
+											<img class="img-circle img-responsive" src="{% static 'images/2.jpg' %}" alt="wmh">
 										</a>
 										<span>wmh</span>
 									</li>
 									<li data-id="id-3" class="girls masters wang">
 										<a href="#">
-											<img class="img-circle img-responsive" src="images/3.jpg" alt="gsm">
+											<img class="img-circle img-responsive" src="{% static 'images/3.jpg' %}" alt="gsm">
 										</a>
 										<span>gsm</span>
 									</li>
 									<li data-id="id-4" class="girls masters li">
 										<a href="#">
-											<img class="img-circle img-responsive" src="images/4.jpg" alt="hwa">
+											<img class="img-circle img-responsive" src="{% static 'images/4.jpg' %}" alt="hwa">
 										</a>
 										<span>hwa</span>
 									</li>
 									<li data-id="id-5" class="girls doctors li">
 										<a href="#">
-											<img class="img-circle img-responsive" src="images/5.jpg" alt="lxx">
+											<img class="img-circle img-responsive" src="{% static 'images/5.jpg' %}" alt="lxx">
 										</a>
 										<span>lxx</span>
 									</li>
 									<li data-id="id-6" class="boys masters li">
 										<a href="#">
-											<img class="img-circle img-responsive" src="images/6.jpg" alt="zs">
+											<img class="img-circle img-responsive" src="{% static 'images/6.jpg' %}" alt="zs">
 										</a>
 										<span>zs</span>
 									</li>
 									<li data-id="id-7" class="boys doctors wang">
 										<a href="#">
-											<img class="img-circle img-responsive" src="images/7.jpg" alt="wxx">
+											<img class="img-circle img-responsive" src="{% static 'images/7.jpg' %}" alt="wxx">
 										</a>
 										<span>wxx</span>
 									</li>
 									<li data-id="id-8" class="boys doctors li">
 										<a href="#">
-											<img class="img-circle img-responsive" src="images/8.jpg" alt="zd">
+											<img class="img-circle img-responsive" src="{% static 'images/8.jpg' %}" alt="zd">
 										</a>
 										<span>zd</span>
 									</li>
 									<li data-id="id-9" class="boys masters li">
 										<a href="#">
-											<img class="img-circle img-responsive" src="images/9.jpg" alt="wyl">
+											<img class="img-circle img-responsive" src="{% static 'images/9.jpg' %}" alt="wyl">
 										</a>
 										<span>wyl</span>
 									</li>
 									<li data-id="id-10" class="boys doctors wang">
 										<a href="#">
-											<img class="img-circle img-responsive" src="images/10.jpg" alt="zht">
+											<img class="img-circle img-responsive" src="{% static 'images/10.jpg' %}" alt="zht">
 										</a>
 										<span>zht</span>
 									</li>
@@ -208,7 +209,7 @@
 							<div class="col-md-6 col-xs-12">
 								<div id="personal">
 									<h2>zjw</h2>
-									<img class="img-responsive" src="images/1.jpg" alt="photo">
+									<img class="img-responsive" src="{% static 'images/1.jpg' %}" alt="photo">
 									<p>本科毕业于西南石油大学，现硕士研究生在读。爱好乒乓球和羽毛球，喜欢和朋友一起愉快地玩耍。处于人生十字口中一只迷茫的小白，最近由于毕业问题，心里充满了烦恼和忧虑，希望能早点做完项目，顺利发表文章毕业，最终能找到一份自己喜爱的工作。邮箱：591342608@qq.com</p>
 								</div>
 							</div>
@@ -226,9 +227,9 @@
 					</div>
 					<div class="col-md-2 col-xs-12">
 						<ul class="pull-right">
-							<li><a href="#" data-toggle="tooltip" data-html="true" title="<img src='images/QQ.jpg' style='height:80px; width:80px;'>"><img src="images/tx.jpg" alt="QQ"></a></li>
-							<li><a href="#" data-toggle="tooltip" data-html="true" title="<img src='images/wechat.jpg' style='height:80px; width:80px;'>"><img src="images/wx.jpg" alt="Wechat"></a></li>
-							<li><a href="http://weibo.com/u/3125492073?is_all=1" target="_blank"><img src="images/xl.jpg" alt="Blog"></a></li>
+							<li><a href="#" data-toggle="tooltip" data-html="true" title="<img src='{% static "images/QQ.jpg" %}' style='height:80px; width:80px;'>"><img src="{% static 'images/tx.jpg' %}" alt="QQ"></a></li>
+							<li><a href="#" data-toggle="tooltip" data-html="true" title="<img src='{% static "images/wechat.jpg" %}' style='height:80px; width:80px;'>"><img src="{% static 'images/wx.jpg' %}" alt="Wechat"></a></li>
+							<li><a href="http://weibo.com/u/3125492073?is_all=1" target="_blank"><img src="{% static 'images/xl.jpg' %}" alt="Blog"></a></li>
 						</ul>
 					</div>
 				</div>
@@ -236,7 +237,7 @@
 		</footer>
 		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="js/quicksand.js"></script>
-		<script src="js/javascript.js"></script>
+		<script src="{% static 'js/quicksand.js' %}"></script>
+		<script src="{% static 'js/javascript.js' %}"></script>
 	</body>
 </html>

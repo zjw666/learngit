@@ -4,12 +4,27 @@ from .models import Article
 
 def home(request):
 	return render(request,'index.html')
+	
+def introduction(request):
+	return render(request,'introduction.html')
+	
+def teachers(request,name):
+	if name=='li':
+		return render(request,'teachers-li.html')
+	if name=='wang':
+		return render(request,'teachers-wang.html')
+
+def students(request):
+	return render(request,'students.html')
 
 def index(request):
 	article_list=Article.objects.all().order_by('-time')
 	return render(request,'news.html',context={
 		'article_list':article_list
 	})
+
+def contact(request):
+	return render(request,'contact.html')
 
 def detail(request,pk):
 	post=get_object_or_404(Article,pk=pk)

@@ -1,239 +1,144 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Marine Geology Office 201</title>
-		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-		<link href="styles/teachers.css" rel="stylesheet" media="screen" />
-	</head>
-	<body>
-		<header>
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-8 col-xs-12">
-						<div class="row">
-							<div class="col-sm-3 hidden-xs">
-								<a href="http://www.zju.edu.cn/"><img id="logo" src="images/school.gif" class="img-responsive" alt="ZJU" /></a>
-							</div>
-							<div class="col-sm-9 col-xs-12">
-								<h1 id="title"><b><i>Marine Geology Office 201</i></b></h1>
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+<link href="{% static 'styles/teachers.css' %}" rel="stylesheet" media="screen" />
+{% endblock css %}
+
+
+{% block main %}		
+<div class="row">
+	<div class="col-md-12">
+		<ul class="list-group">
+			<li class="list-group-item">
+				<h2 class="text-center">XXXXX</h2>
+				<div class="panel-group" id="li-group">
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							<a data-toggle="collapse" href="#introduction"><h3>Introduction</h3></a>
+						</div>
+						<div id ="introduction" class="panel-body collapse in">
+							<div class="row">
+								<div class="col-md-4">
+									<div id="img-container">
+										<img class="img-responsive" src="{% static 'images/tmp.jpg' %}" alt="photo" />
+										<div id="mask">
+										</div>
+										<button id="wang" type="button" class="btn"><span class="glyphicon glyphicon-home"></span> 访问他的主页</button>
+									</div>
+									<p><b>联系地址</b><br/>
+										浙江省舟山市定海区浙大路1号，浙江大学舟山校区海科楼301<br/>
+										邮编：316021
+									</p>
+									<p><b>联系方式</b><br/>
+										电话：13501103904<br/>
+										电子信箱：wym3939@vip.sina.com
+									</p>
+								</div>
+								<div class="col-md-8">
+									<p><b>个人简介</b><br/>
+									王英民，男，1954年5月生，辽宁沈阳人，博士，中共党员，浙江大学海洋学院教授
+									，博士生导师。研究方向：层序地层学、沉积相、地震储层预测、含油气盆地分析
+									等。发表论文约200篇，出版专著3部、译著2部。负责完成和承担国家科技攻关、国
+									家“863”、“973”、自然科学基金以及部省级课题31项，横向项目48项。获得部省级科
+									技成果一、二、三等奖15项，发明专利1项，霍英东优秀青年教师三等奖和中国青年
+									地质科技银锤奖各1项。1997年获国务院政府特殊津贴。1998年被评为地质矿产部百
+									名跨世纪人才，1999年被评为教育部百名跨世纪人才。
+									</p>
+									<p>
+									<b>研究方向</b><br/>
+										主要致力于层序地层学、沉积相、地震储层预测、含油气盆地分析和
+										地层岩性圈闭预测等方向的研究，近几年来以被动陆缘盆地深水沉积
+										及油气勘探理论和技术方法、坡折带控层控相控藏规律和层序地层约
+										束下的地震储层预测技术为研究重点。以地质与地球物理紧密结合，
+										基础地质研究与油气成藏研究紧密结合为特色。其代表性学术成果有
+										湖盆坡折带控层控相控藏理论研究、南海深水远源沉积体系特征演化研
+										究、浅海陆架沉积模式及砂体展布特征研究，重力流与底流交互作用机
+										理研究、层序地层学工业化应用方法、在层序框架约束下的地震储层精
+										细预测方法、以及岩性地层复合圈闭形成条件及预测技术研究等
+									</p><p>
+									<b>教育背景</b><br/>
+										• 1978年2月-1981年1月，成都地质学院石油系攻读本科，获工学学士学位。<br/>
+										• 1982年2月-1985年1月，北京地质学院石油系攻读硕士，获工学硕士学位。<br/>
+										• 1995年9月-1998年6月，成都理工学院石油系在职攻读博士，获博士学位。<br/>
+									</p><p><b>主要科研工作经历</b><br/>
+										• 2014年7月-至今，浙江大学海洋学院教授。<br/>
+										• 1998年9月-2014年6月，中国石油大学（北京）教授，曾担任地球科学学院盆地与油藏分析中心副主任和支部书记。<br/>
+										• 1991年破格晋升副教授，1992年破格晋升教授，任硕士生导师和博士生副导师。曾担任石油系油气盆地分析研究室主任。<br/>
+										• 1985年2月-1998年8月，成都理工大学（曾分别称成都理工学院和成都地质学院）任教师<br/>
+										• 1971年3月-1978年1月，四川省渠县铁道兵川东水泥厂，工人。<br/>
+										• 1969年3月-1971年2月，黑龙江省嫩江县铁道兵农场，知青。
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-4 col-xs-12">
-						<form role="form" id="search">
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Search..." />
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-								</span>
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							<a data-toggle="collapse" href="#teaching"><h3>Teaching</h3></a>
+						</div>
+						<div id ="teaching" class="panel-body collapse">
+							<div class="row">
+								<div class="col-md-4">
+									<p><b>本科生课程</b>：<br/>
+										1. 地震地下地质学<br/>
+										2. 地震勘探实习<br/>
+										3. 地震资料解释基础<br/>
+										4. 地震资料解释大作业
+									</p>
+								</div>
+								<div class="col-md-4">
+									<p>
+										<b>研究生课程</b>：<br/>
+										1. 地震地下地质学<br/>
+										2. 地震资料地质解释<br/>
+										3. 海洋地质学<br/>
+										4. 三维地震解释<br/>
+									</p>
+								</div>
 							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="container">
-				<nav class="navbar" role="navigation">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand visible-xs" href="#">Start</a>
-					</div>
-					<div class="collapse navbar-collapse" id="navbar">
-						<div class="row">
-							<ul class="nav navbar-nav">
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="index.html">Home</a></li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="introduction.html">Introduction</a></li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											Teachers
-											<b class="caret"></b>
-										</a>
-										<ul class="dropdown-menu" role="meun">
-											<li><a href="teachers-li.html">ChunFeng Li</a></li>
-											<li><a href="teachers-wang.html">YingMin Wang</a></li>
-										</ul>
-									</li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="students.html">Students</a></li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="news.html">News</a></li>
-								</div>
-								<div class="col-lg-2 col-md-4 col-sm-4">
-									<li><a href="contact.html">Contact</a></li>
-								</div>
-							</ul>
 						</div>
 					</div>
-				</nav>
-			</div>
-		</header>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<ul class="list-group">
-						<li class="list-group-item">
-							<h2 class="text-center">XXXXX</h2>
-							<div class="panel-group" id="li-group">
-								<div class="panel panel-danger">
-									<div class="panel-heading">
-										<a data-toggle="collapse" href="#introduction"><h3>Introduction</h3></a>
-									</div>
-									<div id ="introduction" class="panel-body collapse in">
-										<div class="row">
-											<div class="col-md-4">
-												<div id="img-container">
-													<img class="img-responsive" src="images/tmp.jpg" alt="photo" />
-													<div id="mask">
-													</div>
-													<button id="wang" type="button" class="btn"><span class="glyphicon glyphicon-home"></span> 访问他的主页</button>
-												</div>
-												<p><b>联系地址</b><br/>
-													浙江省舟山市定海区浙大路1号，浙江大学舟山校区海科楼301<br/>
-													邮编：316021
-												</p>
-												<p><b>联系方式</b><br/>
-													电话：13501103904<br/>
-													电子信箱：wym3939@vip.sina.com
-												</p>
-											</div>
-											<div class="col-md-8">
-												<p><b>个人简介</b><br/>
-												王英民，男，1954年5月生，辽宁沈阳人，博士，中共党员，浙江大学海洋学院教授
-												，博士生导师。研究方向：层序地层学、沉积相、地震储层预测、含油气盆地分析
-												等。发表论文约200篇，出版专著3部、译著2部。负责完成和承担国家科技攻关、国
-												家“863”、“973”、自然科学基金以及部省级课题31项，横向项目48项。获得部省级科
-												技成果一、二、三等奖15项，发明专利1项，霍英东优秀青年教师三等奖和中国青年
-												地质科技银锤奖各1项。1997年获国务院政府特殊津贴。1998年被评为地质矿产部百
-												名跨世纪人才，1999年被评为教育部百名跨世纪人才。
-												</p>
-												<p>
-												<b>研究方向</b><br/>
-													主要致力于层序地层学、沉积相、地震储层预测、含油气盆地分析和
-													地层岩性圈闭预测等方向的研究，近几年来以被动陆缘盆地深水沉积
-													及油气勘探理论和技术方法、坡折带控层控相控藏规律和层序地层约
-													束下的地震储层预测技术为研究重点。以地质与地球物理紧密结合，
-													基础地质研究与油气成藏研究紧密结合为特色。其代表性学术成果有
-													湖盆坡折带控层控相控藏理论研究、南海深水远源沉积体系特征演化研
-													究、浅海陆架沉积模式及砂体展布特征研究，重力流与底流交互作用机
-													理研究、层序地层学工业化应用方法、在层序框架约束下的地震储层精
-													细预测方法、以及岩性地层复合圈闭形成条件及预测技术研究等
-												</p><p>
-												<b>教育背景</b><br/>
-													• 1978年2月-1981年1月，成都地质学院石油系攻读本科，获工学学士学位。<br/>
-													• 1982年2月-1985年1月，北京地质学院石油系攻读硕士，获工学硕士学位。<br/>
-													• 1995年9月-1998年6月，成都理工学院石油系在职攻读博士，获博士学位。<br/>
-												</p><p><b>主要科研工作经历</b><br/>
-													• 2014年7月-至今，浙江大学海洋学院教授。<br/>
-													• 1998年9月-2014年6月，中国石油大学（北京）教授，曾担任地球科学学院盆地与油藏分析中心副主任和支部书记。<br/>
-													• 1991年破格晋升副教授，1992年破格晋升教授，任硕士生导师和博士生副导师。曾担任石油系油气盆地分析研究室主任。<br/>
-													• 1985年2月-1998年8月，成都理工大学（曾分别称成都理工学院和成都地质学院）任教师<br/>
-													• 1971年3月-1978年1月，四川省渠县铁道兵川东水泥厂，工人。<br/>
-													• 1969年3月-1971年2月，黑龙江省嫩江县铁道兵农场，知青。
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="panel panel-danger">
-									<div class="panel-heading">
-										<a data-toggle="collapse" href="#teaching"><h3>Teaching</h3></a>
-									</div>
-									<div id ="teaching" class="panel-body collapse">
-										<div class="row">
-											<div class="col-md-4">
-												<p><b>本科生课程</b>：<br/>
-													1. 地震地下地质学<br/>
-													2. 地震勘探实习<br/>
-													3. 地震资料解释基础<br/>
-													4. 地震资料解释大作业
-												</p>
-											</div>
-											<div class="col-md-4">
-												<p>
-													<b>研究生课程</b>：<br/>
-													1. 地震地下地质学<br/>
-													2. 地震资料地质解释<br/>
-													3. 海洋地质学<br/>
-													4. 三维地震解释<br/>
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="panel panel-danger">
-									<div class="panel-heading">
-										<a data-toggle="collapse" href="#project"><h3>Project</h3></a>
-									</div>
-									<div id ="project" class="panel-body collapse">
-										<p>
-										1. 国家自然科学基金项目《大型坳陷湖盆坡折带的构造—古地貌—剥蚀沉积响应耦合》，2003-2005，课题长。<br/>
-										2. 国家自然科学基金项目《南海北部深水陆坡体系侵蚀-沉积响应过程及其控制因素研究》，2006-2008，课题长。<br/>
-										3. 国家自然科学基金面上项目《深水重力流与底流的交互作用研究》，2010－2012，课题长。<br/>
-										4. 国家自然科学基金面上项目《深水单向迁移水道的成因机理及其内的浊流、内潮流与等深流交互作用研究》，2014-2018，课题长<br/>
-										5. “973”项目子课题《叠合盆地典型复合油气系统演化与油气资源》，2001-2002，副课题长<br/>
-										6. “973”项目子课题《中国叠合盆地应力场分析与构造变形三维解析》，2001-2003，主研人员。<br/>
-										7. 中海油973项目子课题《南海北部陆坡深水区有利砂体形成机理及储层预测》，2009－2013，课题长。<br/>
-										8. 广州海洋地质调查局973子课题，《台湾海峡盆地地质油气演化及成藏效应,》，2004-2005,课题长。<br/>
-										9. 国家“863”课题《深水油气地球物理勘探技术》，2001-2005，副课题长。<br/>
-										10. 国家“863”子课题《无井约束地震储层预测技术》，2001-2005，课题长。<br/>
-										11. 国家863项目子课题《深水油气勘探地震解释技术》，2007－2010，课题长。<br/>
-										12. 海相残余盆地成藏动力学过程模拟及非构造圈闭识别方法，2000，地矿部跨世纪人才基金，课题长。
-										</p>
-									</div>
-								</div>
-								<div class="panel panel-danger">
-									<div class="panel-heading">
-										<a data-toggle="collapse" href="#award"><h3>Award</h3></a>
-									</div>
-									<div id="award" class="panel-body collapse">
-										<p>
-										•  1999年被评为教育部百名跨世纪人才。。<br/>
-										•  1998年被评为地质矿产部百名跨世纪人才。<br/>
-										•  1997年获国务院政府特殊津贴。<br/>
-										•  1991年获中国地质学会中国青年地质科技银锤奖。<br/>
-										•  1991年获霍英东优秀青年教师三等奖。<br/>
-										•  培养地质与物探结合的复合型人才，四川省优秀教学成果二等奖，1991，第1名。<br/>
-										•  2009年获高等学校科学研究优秀成果奖（科学技术）科技进步奖二等奖，第17名。<br/>
-										</p>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<footer>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-10 col-xs-12">
-						<p class="text-center">Zhejiang University (Zhoushan campus) | 1 Zheda Road | Zhoushan, Zhejiang Province | <span class="glyphicon glyphicon-envelope"></span> 316021 | <span class="glyphicon glyphicon-phone-alt"></span> 123456789</p>
-						<p class="text-center">&copy; 2017-2018 Marine Geology office 201 <a href="http://www.miitbeian.gov.cn/">浙ICP备17037327号</a></p>
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							<a data-toggle="collapse" href="#project"><h3>Project</h3></a>
+						</div>
+						<div id ="project" class="panel-body collapse">
+							<p>
+							1. 国家自然科学基金项目《大型坳陷湖盆坡折带的构造—古地貌—剥蚀沉积响应耦合》，2003-2005，课题长。<br/>
+							2. 国家自然科学基金项目《南海北部深水陆坡体系侵蚀-沉积响应过程及其控制因素研究》，2006-2008，课题长。<br/>
+							3. 国家自然科学基金面上项目《深水重力流与底流的交互作用研究》，2010－2012，课题长。<br/>
+							4. 国家自然科学基金面上项目《深水单向迁移水道的成因机理及其内的浊流、内潮流与等深流交互作用研究》，2014-2018，课题长<br/>
+							5. “973”项目子课题《叠合盆地典型复合油气系统演化与油气资源》，2001-2002，副课题长<br/>
+							6. “973”项目子课题《中国叠合盆地应力场分析与构造变形三维解析》，2001-2003，主研人员。<br/>
+							7. 中海油973项目子课题《南海北部陆坡深水区有利砂体形成机理及储层预测》，2009－2013，课题长。<br/>
+							8. 广州海洋地质调查局973子课题，《台湾海峡盆地地质油气演化及成藏效应,》，2004-2005,课题长。<br/>
+							9. 国家“863”课题《深水油气地球物理勘探技术》，2001-2005，副课题长。<br/>
+							10. 国家“863”子课题《无井约束地震储层预测技术》，2001-2005，课题长。<br/>
+							11. 国家863项目子课题《深水油气勘探地震解释技术》，2007－2010，课题长。<br/>
+							12. 海相残余盆地成藏动力学过程模拟及非构造圈闭识别方法，2000，地矿部跨世纪人才基金，课题长。
+							</p>
+						</div>
 					</div>
-					<div class="col-md-2 col-xs-12">
-						<ul class="pull-right">
-							<li><a href="#" data-toggle="tooltip" data-html="true" title="<img src='images/QQ.jpg' style='height:80px; width:80px;'>"><img src="images/tx.jpg" alt="QQ"></a></li>
-							<li><a href="#" data-toggle="tooltip" data-html="true" title="<img src='images/wechat.jpg' style='height:80px; width:80px;'>"><img src="images/wx.jpg" alt="Wechat"></a></li>
-							<li><a href="http://weibo.com/u/3125492073?is_all=1" target="_blank"><img src="images/xl.jpg" alt="Blog"></a></li>
-						</ul>
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							<a data-toggle="collapse" href="#award"><h3>Award</h3></a>
+						</div>
+						<div id="award" class="panel-body collapse">
+							<p>
+							•  1999年被评为教育部百名跨世纪人才。。<br/>
+							•  1998年被评为地质矿产部百名跨世纪人才。<br/>
+							•  1997年获国务院政府特殊津贴。<br/>
+							•  1991年获中国地质学会中国青年地质科技银锤奖。<br/>
+							•  1991年获霍英东优秀青年教师三等奖。<br/>
+							•  培养地质与物探结合的复合型人才，四川省优秀教学成果二等奖，1991，第1名。<br/>
+							•  2009年获高等学校科学研究优秀成果奖（科学技术）科技进步奖二等奖，第17名。<br/>
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
-		</footer>
-		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="js/javascript.js"></script>
-	</body>
-</html>
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock main %}
