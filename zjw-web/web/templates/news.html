@@ -12,9 +12,9 @@
 			<div id="border">
 				<h3>新闻分类</h3>
 				<ul id="type-news">
-					<li class="current-news"><a href="#">日常生活</a></li>
-					<li><a href="#">科研工作</a></li>
-					<li><a href="#">喜讯</a></li>
+					<li><a href="{% url 'web201:news' 'life' %}">日常生活</a></li>
+					<li><a href="{% url 'web201:news' 'academic' %}">科研工作</a></li>
+					<li><a href="{% url 'web201:news' 'happy' %}">喜讯</a></li>
 				</ul>
 			</div>
 		</div>
@@ -22,7 +22,7 @@
 			<ul id="content-news">
 				{% for post in article_list %}
 					<li>
-						<a href="{{post.get_absolute_url}}" class="post-{{post.pk}}">{{post.title}}</a>
+						<a href="{{post.get_absolute_url}}" class="{{post.pk}}">{{post.title}}</a>
 						<span>{{post.time|date}}</span>
 						<hr/>
 					</li>

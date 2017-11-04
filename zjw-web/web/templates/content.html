@@ -12,26 +12,26 @@
 			<div id="border">
 				<h3>新闻分类</h3>
 				<ul id="type-news">
-					<li class="current-news"><a href="#">日常生活</a></li>
-					<li><a href="#">科研工作</a></li>
-					<li><a href="#">喜讯</a></li>
+					<li><a href="{% url 'web201:news' 'life' %}">日常生活</a></li>
+					<li><a href="{% url 'web201:news' 'academic' %}">科研工作</a></li>
+					<li><a href="{% url 'web201:news' 'happy' %}">喜讯</a></li>
 				</ul>
 			</div>
 		</div>
 		<div id="article-content" class="col-md-10 col-sm-9 col-xs-12">
 			<article id="{{length}}">
 				<h2>{{post.title}}</h2>
-				<p><span>作者：{{post.author}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>时间：{{post.time|date}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>阅读量：</span></p>
+				<p><span>作者：{{post.author}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>时间：{{post.time|date}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>阅读量：{{post.views}}</span></p>
 				<div>{{post.content}}</div>
 			</article>
 			<div id="pages-content">
 				<div class="pull-left">
-					<span id="left-text" class="news-text hidden-xs text-right">{{post_pre}}</span>
+					<span id="left-text" class="news-text hidden-xs text-right" index="{{pre}}">{{pre_title}}</span>
 					<button id='left' class='btn btn-default btn-sm'><span class="glyphicon glyphicon-chevron-left"></span></button>
 				</div>
 				<div class="pull-right">
 					<button id='right' class='btn btn-default btn-sm'><span class="glyphicon glyphicon-chevron-right"></span></button>
-					<span id="right-text" class="news-text hidden-xs">{{post_next}}</span>
+					<span id="right-text" class="news-text hidden-xs" index="{{next}}">{{next_title}}</span>
 				</div>
 			</div>
 		</div>

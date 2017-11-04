@@ -59,13 +59,13 @@
 		</ul>
 		<article id="Welcome">
 			<p><span>W</span>elcome to our office!!! We'd like to make friends with you and invite you to join our family. 
-			Let's have fun and make progress together. For more information about us, please look at the <a href="introduction.html">Introduction</a> page.
+			Let's have fun and make progress together. For more information about us, please look at the <a href="{% url 'web201:introduction' %}">Introduction</a> page.
 			</p>
 		</article>
 		<article id="Introduction">
 			<p><span>O</span>ur office is called "Marine Geology Office 201". The office is located in the Ocean Academic building, which is in opposite of
 			 the YuanZheng hotel. In this office, 11 students study and work everday, including 1 postdoctor, 5 doctors and 5 masters. They
-			 all are students of <a href="teachers-li.html">Prof ChunFeng Li</a> and <a href="teachers-wang.html">Prof Yingmin Wang</a>. The main research interests of us are Marine
+			 all are students of <a href="{% url 'web201:teachers' 'li'%}">Prof ChunFeng Li</a> and <a href="{% url 'web201:teachers' 'wang'%}">Prof Yingmin Wang</a>. The main research interests of us are Marine
 			  Geology, Geophysics and Sedimentary.
 			</p>
 			<a class="more" href="{% url 'web201:introduction' %}">more...</a>
@@ -92,7 +92,7 @@
 					<span class="time pull-right">2017-07-01</span>
 				</li>
 			</ul>
-			<a class="more" href="{% url 'web201:index' %}">more...</a>
+			<a class="more" href="{% url 'web201:news' 'life' %}">more...</a>
 		</article>
 	</div>
 </div>

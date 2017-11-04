@@ -18,9 +18,10 @@ $(function(){
 		wyl:"本科毕业于西南石油大学，现硕士研究生在读。爱好乒乓球和羽毛球，喜欢和朋友一起愉快地玩耍。处于人生十字口中一只迷茫的小白，最近由于毕业问题，心里充满了烦恼和忧虑，希望能早点做完项目，顺利发表文章毕业，最终能找到一份自己喜爱的工作。邮箱：9591342608@qq.com",
 		zht:"本科毕业于西南石油大学，现硕士研究生在读。爱好乒乓球和羽毛球，喜欢和朋友一起愉快地玩耍。处于人生十字口中一只迷茫的小白，最近由于毕业问题，心里充满了烦恼和忧虑，希望能早点做完项目，顺利发表文章毕业，最终能找到一份自己喜爱的工作。邮箱：10591342608@qq.com"
 	}
-	news_change();
-	news_check();
-	words_num_check();
+	news_change();           //使新闻导航栏的高度与内容栏相同
+	news_check();            //检查是否翻到最后一篇新闻或第一篇新闻
+	words_num_check();        //设置新闻翻页提示的标题长度
+	news_type_check();        //添加新闻导航栏的当前激活功能
 });
 
 $('ul.nav-tabs li').click(function(){            //标签页之间内容转换
@@ -148,56 +149,61 @@ $('#pages li').click(function(){  //分页按钮的active类添加
 	$(this).addClass('active');
 });
 
-$('#type-news li').click(function(){  //新闻导航栏按钮的激活状态添加
-	$(this).siblings().removeClass('current-news');
-	$(this).addClass('current-news');
-});
 
-$('#pages-content button').click(function(){
-	text = window.location.pathname.slice(0,6);
-	num = Number(window.location.pathname.slice(6,7));
-	if ($(this).attr('id')=='left'){
-		url= 'http://'+window.location.host+text+(num-1)+'/';
-		window.open(url,'_self');
-	}else{
-		url= 'http://'+window.location.host+text+(num+1)+'/';
-		window.open(url,'_self');
+function news_type_check(){    //添加新闻导航栏的当前激活功能
+	var type = window.location.pathname;
+	if (type.lastIndexOf('life') != -1){
+		var li = $('#type-news li')[0];
+	}else if (type.lastIndexOf('academic') != -1){
+		var li = $('#type-news li')[1];
+	}else if (type.lastIndexOf('happy') != -1){
+		var li = $('#type-news li')[2];
 	}
+	$(li).siblings().removeClass('active');
+	$(li).addClass('current-news');
+}
+
+$('#pages-content button').click(function(){  //添加新闻详情页的翻页功能
+	var text = window.location.href.split('/');
+	text.pop();
+	text.pop();
+	if ($(this).attr('id')=='left'){
+		text.push($('#left-text').attr('index'));
+	}else{
+		text.push($('#right-text').attr('index'));	
+	}
+	var url = text.join('/');
+	window.open(url,'_self');
 });
 
-function news_check(){
-	if ($('#pages-content button').length > 0)
-	{
-		num = Number(window.location.pathname.slice(6,7));
-		length = Number($('#article-content article').attr('id'));
-		if (num <= 1){
-			$('#left').addClass('disabled');
-			$('#left').attr('disabled',true);
-			$('#left-text').text("这是第一篇新闻了");
-		}else if (num>=length)
-		{
-			$('#right').addClass('disabled');
-			$('#right').attr('disabled',true);
-			$('#right-text').text("这是最后一篇新闻了");
-		}else
-		{
-			$('#left').attr('disabled',false);
-			$('#left').removeClass('disabled');
-			$('#right').attr('disabled',false);
-			$('#right').removeClass('disabled');
-		}
+function news_check(){    //检查是否翻到最后一篇新闻或第一篇新闻
+	var left = $('#left'),
+		right = $('#right');
+	if ($('#left-text').attr('index') == '-1'){
+		$(left).attr('disabled',true);
+		$(left).addClass('disabled');
+	}else{
+		$(left).attr('disabled',false);
+		$(left).removeClass('disabled');
+	}
+	if ($('#right-text').attr('index') == '-1'){
+		$(right).attr('disabled',true);
+		$(right).addClass('disabled');
+	}else{
+		$(right).attr('disabled',false);
+		$(right).removeClass('disabled');
 	}
 }
 
-function words_num_check(){
-	span1=$($('.news-text')[0]).text();
-	span2=$($('.news-text')[1]).text();
+function words_num_check(){    //设置新闻翻页提示的标题长度
+	var span1=$($('.news-text')[0]).text();
+	var span2=$($('.news-text')[1]).text();
 	if (span1.length > 15){
-		news_title=span1.slice(0,15)+'...';
+		var news_title=span1.slice(0,15)+'...';
 		$($('.news-text')[0]).text(news_title);
 	}
 	if (span2.length > 15){
-		news_title=span2.slice(0,15)+'...';
+		var news_title=span2.slice(0,15)+'...';
 		$($('.news-text')[1]).text(news_title);
 	}
 }

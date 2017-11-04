@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from .models import Article
@@ -17,8 +18,8 @@ def teachers(request,name):
 def students(request):
 	return render(request,'students.html')
 
-def index(request):
-	article_list=Article.objects.all().order_by('-time')
+def news(request,type):
+	article_list=Article.objects.all().filter(category__name = type).order_by('-time')
 	return render(request,'news.html',context={
 		'article_list':article_list
 	})
@@ -26,15 +27,29 @@ def index(request):
 def contact(request):
 	return render(request,'contact.html')
 
-def detail(request,pk):
+def detail(request,type,pk):
 	post=get_object_or_404(Article,pk=pk)
-	length=len(Article.objects.all())
-	if int(pk)>1:
-		post_pre=get_object_or_404(Article,pk=str((int(pk)-1))).title
+	post.increase_views()
+	article_list=Article.objects.all().filter(category__name = type).order_by('-time')
+	index_list=[]
+	for i in range(len(article_list)):
+			index_list.append(article_list[i].pk)
+	index = index_list.index(int(pk))
+	if index <= 0:
+		pre=-1
+		next = index_list[index+1]
+	elif index >= len(index_list)-1:
+		next=-1
+		pre = index_list[index-1]
 	else:
-		post_pre=""
-	if int(pk)<length:
-		post_next=get_object_or_404(Article,pk=str((int(pk)+1))).title
+		pre = index_list[index-1]
+		next = index_list[index+1]
+	if pre == -1:
+		pre_title = '这是第一篇新闻了'
 	else:
-		post_next=""
-	return render(request,'content.html',context={'post':post,'length':length,'post_pre':post_pre,'post_next':post_next})
+		pre_title=Article.objects.get(id__exact=pre).title
+	if next == -1:
+		next_title='这是最后一篇新闻了'
+	else:
+		next_title=Article.objects.get(id__exact=next).title
+	return render(request,'content.html',context={'post':post,'pre':pre,'next':next,'pre_title':pre_title,'next_title':next_title})

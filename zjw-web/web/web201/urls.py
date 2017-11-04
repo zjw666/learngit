@@ -8,7 +8,7 @@ urlpatterns=[
 	url(r'^teachers-(?P<name>li|wang)/$',views.teachers,name="teachers"),
 	url(r'^students/$',views.students,name="students"),
 	url(r'^contact/$',views.contact,name="contact"),
-	url(r'^news/$',views.index,name="index"),
-	url(r'^post/(?P<pk>[0-9]+)/$',views.detail,name="detail"),
+	url(r'^news/(?P<type>life|academic|happy)/$',views.news,name="news"),
+	url(r'^news/(?P<type>life|academic|happy)/(?P<pk>[0-9]+)/$',views.detail,name="detail"),
 ]
 

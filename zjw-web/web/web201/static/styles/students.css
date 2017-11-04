@@ -258,6 +258,12 @@ div.marker{
 	border-right:1px solid #ddd;
 }
 
+@media screen and (max-width:992px){
+	.source{
+		border:0;
+	}
+}
+
 .source li{
 	float:left;
 	padding-right:10px;
