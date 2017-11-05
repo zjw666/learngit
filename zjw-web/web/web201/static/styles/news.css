@@ -190,9 +190,12 @@ article h3{
 }
 
 #pages{
-	padding-left:35%;
-	margin-bottom:10px;
-	margin-top:0;
+	display:table;
+	margin:10px auto;
+}
+
+#pages li{
+	display:table-cell;
 }
 
 #news-header{

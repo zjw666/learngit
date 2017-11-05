@@ -144,7 +144,7 @@ function news_change(){        //使新闻导航栏的高度与内容栏相同
 	$('#border').height(news_contents);
 }
 
-$('#pages li').click(function(){  //分页按钮的active类添加
+$('#pages li:contains(a)').click(function(){  //分页按钮的active类添加
 	$(this).siblings().removeClass('active');
 	$(this).addClass('active');
 });
