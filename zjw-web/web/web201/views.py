@@ -3,6 +3,8 @@ from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from .models import Article
 from django.core.paginator import Paginator
+from comments.forms import CommentForm
+from comments.models import Comment
 
 def home(request):
 	return render(request,'index.html')
@@ -74,7 +76,10 @@ def news(request,type):
 	})
 
 def contact(request):
-	return render(request,'contact.html')
+	form = CommentForm()
+	comment_list = Comment.objects.all().filter(allow = True).order_by('-created_time')
+	context={'form':form,'comment_list':comment_list}
+	return render(request,'contact.html',context=context)
 
 def detail(request,type,pk):
 	post=get_object_or_404(Article,pk=pk)

@@ -9,47 +9,49 @@
 <article>
 	<div class="row">
 		<div class="col-md-6 col-sm-8 col-xs-12 col-md-push-3 col-sm-push-2">
-			<form role="form">
+			<form role="form" action="{% url 'comments:contact' %}" method="post" >
+				{% csrf_token %}
 				<fieldset>
 					<legend>联系我们</legend>
 					<div class="form-group">
-						<label>姓名</label>
-						<input class="form-control" type="text" placeholder="请输入你的姓名" name="name" maxlength="20" required  oninvalid="setCustomValidity('请输入你的姓名');" oninput="setCustomValidity('');" />
+						<label for="{{ form.name.id_for_label }}">姓名</label>
+						{{form.name}}
+						{{form.name.errors}}
 					</div>
 					<div class="form-group">
-						<label>性别</label>
+						<label for="{{ form.sex.id_for_label }}">性别</label>
 						<div>
-							<label class="radio-inline">
-								<input type="radio" value="man" checked name="sex" />
-								男
-							</label>
-							<label class="radio-inline">
-								<input type="radio" value="woman" name="sex" />
-								女
-							</label>
+							{% for radio in form.sex %}
+								{{radio}}
+							{% endfor %}
 						</div>
 					</div>
 					<div class="form-group">
-						<label>出生年月</label>
-						<input class="form-control" name="date" type="date" placeholder="请输入你的出生年月，例如：1994/06/06" maxlength="15" />
+						<label for="{{ form.birth.id_for_label }}">出生年月</label>
+						{{form.birth}}
+						{{form.birth.errors}}
 					</div>
 					<div class="form-group">
-						<label>邮箱</label>
-						<input class="form-control" type="email" name="email" placeholder="请输入你的电子邮箱地址" required oninvalid="setCustomValidity('请输入你的邮箱');" oninput="setCustomValidity('');" />
+						<label for="{{ form.email.id_for_label }}">邮箱</label>
+						{{form.email}}
+						{{form.email.errors}}
 					</div>
 					<div class="form-group">
-						<label>发送的消息</label>
-						<textarea class="form-control" maxlength="300" rows="5" name="content" required oninvalid="setCustomValidity('请输入你要发送的信息');" oninput="setCustomValidity('');"></textarea>
+						<label for="{{ form.content.id_for_label }}">发送的消息</label>
+						{{form.content}}
+						{{form.content.errors}}
 					</div>
 					<div class="form-group" id='check'>
 						<label>类型</label>
 						<div>
-							<label>
-								<input type="checkbox" name="privacy" value="true" checked />
+							<label for="{{ form.public.id_for_label }}">
+								{{form.public}}
+								{{form.public.errors}}
 								公开
 							</label>
-							<label>
-								<input type="checkbox" name="important" value="true" />
+							<label for="{{ form.important.id_for_label }}">
+								{{form.important}}
+								{{form.important.errors}}
 								重要
 							</label>
 							<button type="submit" class="btn btn-default">提交</button>
@@ -64,42 +66,30 @@
 			<h3 id="well">评论区</h3>
 			<div class="well">
 				<ul class="media-list">
+				{% for comment in comment_list %}
 					<li class="media">
 						<a href="#" class="media-left">
 							<img src="{% static 'images/tmp.jpg' %}" class="media-object img-circle" alt="photo" />
 						</a>
 						<div class="media-body">
-							<h4 class="media-heading">用户名1</h4>
-							<p>这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。</p>
-						</div>
-					</li>
-					<li class="media">
-						<a href="#" class="media-left">
-							<img src="{% static 'images/tmp.jpg' %}" class="media-object img-circle" alt="photo" />
-						</a>
-						<div class="media-body">
-							<h4 class="media-heading">用户名2</h4>
-							<p>这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。</p>
+							<h4 class="media-heading">{{comment.name}}</h4>
+							<p>{{comment.content}}</p>
+							{% for reply in comment.reply %}
 							<div class="media">
 								<a href="#" class="media-left">
 									<img src="{% static 'images/tmp.jpg' %}" class="media-object img-circle" alt="photo" />
 								</a>
 								<div class="media-body">
-									<h4 class="media-heading">用户名3</h4>
-									<p>这是对评论的回复。这是对评论的回复。这是对评论的回复。这是对评论的回复。这是对评论的回复。这是对评论的回复。</p>
+									<h4 class="media-heading">{{reply.name}}</h4>
+									<p>{{reply.content}}</p>
 								</div>
 							</div>
+							{% endfor %}
 						</div>
 					</li>
-					<li class="media">
-						<a href="#" class="media-left">
-							<img src="{% static 'images/tmp.jpg' %}" class="media-object img-circle" alt="photo" />
-						</a>
-						<div class="media-body">
-							<h4 class="media-heading">用户名4</h4>
-							<p>这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。这是评论的内容。</p>
-						</div>
-					</li>
+				{% empty %}
+				暂无评论
+				{% endfor %}
 				</ul>
 			</div>
 		</div>
