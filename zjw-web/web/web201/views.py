@@ -5,9 +5,13 @@ from .models import Article
 from django.core.paginator import Paginator
 from comments.forms import CommentForm
 from comments.models import Comment
+from django.db.models import Q
 
 def home(request):
-	return render(request,'index.html')
+	articles = Article.objects.all().order_by('-time')[0:4]
+	first_article = articles[0]
+	other_articles = articles[1:]
+	return render(request,'index.html',context={'first_article':first_article,'other_articles':other_articles})
 	
 def introduction(request):
 	return render(request,'introduction.html')
@@ -76,9 +80,10 @@ def news(request,type):
 	})
 
 def contact(request):
+	response = request.GET.get('response',False)
 	form = CommentForm()
 	comment_list = Comment.objects.all().filter(allow = True).order_by('-created_time')
-	context={'form':form,'comment_list':comment_list}
+	context={'form':form,'comment_list':comment_list,'response':response}
 	return render(request,'contact.html',context=context)
 
 def detail(request,type,pk):
@@ -107,3 +112,12 @@ def detail(request,type,pk):
 	else:
 		next_title=Article.objects.get(id__exact=next).title
 	return render(request,'content.html',context={'post':post,'pre':pre,'next':next,'pre_title':pre_title,'next_title':next_title})
+
+def search(request):
+	q = request.GET.get('q')
+	error_msg = ''
+	if not q:
+		error_msg = "请输入关键词"
+		return render(request,'search.html',context={'error_msg':error_msg})
+	article_list = Article.objects.filter(Q(title__icontains=q)|Q(content__icontains=q))
+	return render(request,'search.html',context={'error_msg':error_msg,'article_list':article_list})

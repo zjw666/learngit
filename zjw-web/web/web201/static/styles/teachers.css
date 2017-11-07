@@ -66,6 +66,11 @@ nav{
 	text-decoration:none;
 }
 
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover{
+	background-color: #DC143C;
+	font-weight:bold !important; 
+}
+
 
 div.navbar-header{
 	background-color:#A52A2A;

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+<link href="{% static 'styles/news.css' %}" rel="stylesheet" media="screen" />
+{% endblock css %}
+
+{% block main %}
+<article>
+	<div class="row">
+		<div class="col-md-2 col-sm-3 hidden-xs">
+			<div id="border">
+				<h3>新闻分类</h3>
+				<ul id="type-news">
+					<li><a href="{% url 'web201:news' 'life' %}">日常生活</a></li>
+					<li><a href="{% url 'web201:news' 'academic' %}">科研工作</a></li>
+					<li><a href="{% url 'web201:news' 'happy' %}">喜讯</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="article-content" class="col-md-10 col-sm-9 col-xs-12">
+			<ul id="content-news">
+				{% if error_msg %}
+				<div class="alert alert-danger alert-dismissable">
+				{{error_msg}}
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				</div>
+				{% endif %}
+				{% for post in article_list %}
+					<li>
+						<a href="{{post.get_absolute_url}}" class="{{post.pk}}">{{post.title}}</a>
+						<span>{{post.time|date}}</span>
+						<hr/>
+					</li>
+				{% empty %}
+					<div>没有搜索到匹配的结果</div>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</article>
+{% endblock main %}
+

@@ -72,25 +72,23 @@
 		</article>
 		<article id="News">
 			<ul>
+				{% if first_article %}
 				<li>
-					<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Congratulation to HaiTeng Zhuo for applying for the NSFC project successfully!</a> 
+					<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">{{first_article.title}}</a>
 					<span class="new">
 						<span class="glyphicon glyphicon-fire"></span> new
 					</span>
-					<span class="time pull-right">2017-08-20</span>
+					<span class="time pull-right">{{first_article.time|date}}</span>
 				</li>
+				{% else %}
+				暂无新闻
+				{% endif %}
+				{% for article in other_articles %}
 				<li>
-					<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Congratulation to complete the simulation course successfully!</a>
-					<span class="time pull-right">2017-08-13</span>
+					<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">{{article.title}}</a>
+					<span class="time pull-right">{{article.time|date}}</span>
 				</li>
-				<li>
-					<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Happy birthday to our bro Duo Zhou!</a>
-					<span class="time pull-right">2017-08-08</span>
-				</li>
-				<li>
-					<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">Summer vacation is coming!</a>
-					<span class="time pull-right">2017-07-01</span>
-				</li>
+				{% endfor %}
 			</ul>
 			<a class="more" href="{% url 'web201:news' 'life' %}">more...</a>
 		</article>

@@ -24,11 +24,11 @@
 						</div>
 					</div>
 					<div class="col-sm-4 col-xs-12">
-						<form role="form" id="search">
+						<form role="form" id="search" method="get" action="{% url 'web201:search' %}">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Search..." />
+								<input type="search" class="form-control" placeholder="Search..." required name="q" />
 								<span class="input-group-btn">
-									<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+									<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 								</span>
 							</div>
 						</form>

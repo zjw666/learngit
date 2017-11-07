@@ -59,6 +59,12 @@
 					</div>
 				</fieldset>
 			</form>
+			{% if response %}
+				<div class="alert alert-success alert-dismissable">
+				提交成功！您发送的消息经筛选后将可能会出现在下方的评论栏中，敬请关注
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				</div>
+			{% endif %}
 		</div>
 	</div>
 	<div class="row">
@@ -73,14 +79,16 @@
 						</a>
 						<div class="media-body">
 							<h4 class="media-heading">{{comment.name}}</h4>
+							<span class="pull-right">{{comment.created_time}}</span>
 							<p>{{comment.content}}</p>
-							{% for reply in comment.reply %}
+							{% for reply in comment.reply_set.all %}
 							<div class="media">
 								<a href="#" class="media-left">
 									<img src="{% static 'images/tmp.jpg' %}" class="media-object img-circle" alt="photo" />
 								</a>
 								<div class="media-body">
 									<h4 class="media-heading">{{reply.name}}</h4>
+									<span class="pull-right">{{reply.created_time}}</span>
 									<p>{{reply.content}}</p>
 								</div>
 							</div>

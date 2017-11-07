@@ -23,4 +23,4 @@ class Comment(Base):
 	allow = models.BooleanField(default=False)
 	
 class Reply(Base):
-	comment = models.ForeignKey(Comment)
+	comment = models.ForeignKey(Comment,on_delete=models.CASCADE)
