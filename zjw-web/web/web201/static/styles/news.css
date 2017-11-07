@@ -48,11 +48,6 @@ nav{
 	text-decoration:none;
 }
 
-#navbar>div>ul>div>li>a:visited{
-	font-weight:bold;
-	background-color:#DC143C;
-	text-decoration:none;
-}
 
 #navbar>div>ul>div>li>a:hover{
 	font-weight:bold;
