@@ -74,7 +74,7 @@
 			<ul>
 				{% if first_article %}
 				<li>
-					<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">{{first_article.title}}</a>
+					<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="{{first_article.get_absolute_url}}">{{first_article.title}}</a>
 					<span class="new">
 						<span class="glyphicon glyphicon-fire"></span> new
 					</span>
@@ -85,7 +85,7 @@
 				{% endif %}
 				{% for article in other_articles %}
 				<li>
-					<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="#">{{article.title}}</a>
+					<span class="glyphicon glyphicon-circle-arrow-right"></span> <a href="{{article.get_absolute_url}}">{{article.title}}</a>
 					<span class="time pull-right">{{article.time|date}}</span>
 				</li>
 				{% endfor %}
