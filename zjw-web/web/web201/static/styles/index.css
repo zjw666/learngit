@@ -19,6 +19,24 @@ body{
 	padding-top:.5em;
 }
 
+a.user{
+	color:black;
+	
+}
+
+a.user:hover{
+	color:red;
+	text-decoration:none;
+}
+
+div.separate{
+	width:1px;
+	border-left:1px solid black;
+	height:14px;
+	display:inline-block;
+	margin:0 5px -2px 5px;
+}
+
 nav{
 	margin-top:0.5em;
 	line-height:1.7;

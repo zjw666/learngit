@@ -9,8 +9,12 @@ from django.db.models import Q
 
 def home(request):
 	articles = Article.objects.all().order_by('-time')[0:4]
-	first_article = articles[0]
-	other_articles = articles[1:]
+	if articles:
+		first_article = articles[0]
+		other_articles = articles[1:]
+	else:
+		first_article = []
+		other_articles = []
 	return render(request,'index.html',context={'first_article':first_article,'other_articles':other_articles})
 	
 def introduction(request):
