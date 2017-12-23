@@ -20,4 +20,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 	url(r'',include('web201.urls')),
 	url(r'',include('comments.urls')),
+	url(r'',include('users.urls')),
+	url(r'',include('django.contrib.auth.urls')),
 ]

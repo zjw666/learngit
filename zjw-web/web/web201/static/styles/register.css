@@ -1,0 +1,58 @@
+body{
+	margin-left:10%;
+	margin-right:10%;
+	margin-top:10%;
+}
+
+#heart{
+	width:100%;
+	padding-top:10%;
+}
+
+h2{
+	text-align:center;
+	font-weight:bold;
+	margin-top:-5px;
+}
+
+span.necessary{
+	color:red;
+}
+
+label{
+	font-size:17px;
+}
+
+div.form-group>div>label{
+	font-size:14px;
+	margin-right:20px;
+}
+
+
+#login_button{
+	display:inline;
+	padding-top:10px;
+}
+
+button{
+	background-color:#DC143C !important;
+	color:white !important;
+	font-weight:bold !important;
+}
+
+button:hover{
+	background-color:red !important;
+}
+
+footer ul{
+	list-style-type:none;
+}
+
+footer ul li{
+	float:left;
+	padding-right:10px;
+}
+footer ul li img{
+	width:20px;
+	height:20px;
+}
