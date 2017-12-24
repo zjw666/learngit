@@ -10,4 +10,6 @@ def register(request):
 	else:
 		form = RegisterForm()
 	return render(request,'register.html',context={'form':form})
+	
+
 			

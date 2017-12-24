@@ -29,6 +29,10 @@ a.user:hover{
 	text-decoration:none;
 }
 
+span.glyphicon-off{
+	font-size:12px;
+}
+
 div.separate{
 	width:1px;
 	border-left:1px solid black;

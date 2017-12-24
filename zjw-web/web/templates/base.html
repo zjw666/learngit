@@ -20,7 +20,12 @@
 		<header>
 			<div class="container">
 				<div class="pull-right">
-					<span class="glyphicon glyphicon-user"></span><span>&nbsp;</span><a class="user" href="#">您还未登录，点击登录</a><div class="separate"></div><a class="user" href="#">注册</a>
+					<span class="glyphicon glyphicon-user"></span><span>&nbsp;</span>
+					{% if user.is_authenticated %}
+						<span>欢迎你：<a class="user" href="#">{{user.username}}</a></span><div class="separate"></div><a class="user" href="#"><span class="glyphicon glyphicon-off"></span> 注销</a>
+					{% else %}
+						<a class="user" href="#">您还未登录，点击登录</a><div class="separate"></div><a class="user" href="#">注册</a>
+					{% endif %}
 				</div>
 				<div class="row">
 					<div class="col-sm-8 col-xs-12">

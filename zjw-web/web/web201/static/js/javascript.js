@@ -22,6 +22,7 @@ $(function(){
 	news_check();            //检查是否翻到最后一篇新闻或第一篇新闻
 	words_num_check();        //设置新闻翻页提示的标题长度
 	news_type_check();        //添加新闻导航栏的当前激活功能
+	input_add_class();        //为用户登录的输入框添加样式
 });
 
 $('ul.nav-tabs li').click(function(){            //标签页之间内容转换
@@ -206,4 +207,14 @@ function words_num_check(){    //设置新闻翻页提示的标题长度
 		var news_title=span2.slice(0,15)+'...';
 		$($('.news-text')[1]).text(news_title);
 	}
+}
+
+function input_add_class(){    //为用户登录的输入框添加样式
+	$("form.user_form input").addClass("form-control");  
+	$("#id_password").attr({"placeholder":"请输入密码",
+							"oninvalid":"setCustomValidity('请输入密码');",
+							"oninput":"setCustomValidity('');"})
+	$("form.user_form #id_username").attr({"placeholder":"请输入用户名",
+							"oninvalid":"setCustomValidity('请输入用户名');",
+							"oninput":"setCustomValidity('');"})
 }

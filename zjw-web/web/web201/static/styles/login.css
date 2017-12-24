@@ -10,6 +10,10 @@ body{
 	padding:0 20px;
 }
 
+div.well{
+	margin-top:20%;
+}
+
 #heart{
 	width:100%;
 	padding-top:10%;
@@ -35,7 +39,7 @@ div.form-group>div>label{
 }
 
 
-#login_button{
+#register_button{
 	display:inline;
 	padding-top:10px;
 }
