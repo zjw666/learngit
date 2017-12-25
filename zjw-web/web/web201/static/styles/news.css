@@ -19,6 +19,13 @@ body{
 	padding-top:.5em;
 }
 
+#user_pic{
+	width:20px;
+	height:20px;
+	margin-top:-5px;
+	border:1px #ddd solid;
+}
+
 a.user{
 	color:black;
 	
