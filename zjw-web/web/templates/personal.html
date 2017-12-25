@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+<link href="{% static 'styles/personal.css' %}" rel="stylesheet" media="screen" />
+{% endblock css %}
+
+{% block main %}	
+<article>
+	<div class="row">
+		<div class="col-md-3 col-sm-3 col-xs-3">
+			<img id="person_pic"  src='{% static "images/tmp.jpg" %}' alt="" />
+		</div>
+		<div class="claearfix visible-xs"></div>
+		<div id="information" class="col-md-9 col-sm-9 col-xs-9">
+			<h3 id="user_name">{{user.username}}</h3>
+			{% if user.sex == '1' %}
+				<img class="sex" src="{% static 'images/man.png' %}" alt="男" />
+			{% else %}
+				<img class="sex" src="{% static 'images/woman.png' %}" alt="女" />
+			{% endif %}
+			<p>{{user.signature}}</p>
+			<hr/>
+			<p>爱好：{{user.hobby}}</p>
+		</div>
+	</div>
+</article>
+{% endblock main %}

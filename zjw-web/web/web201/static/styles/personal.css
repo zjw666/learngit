@@ -48,7 +48,6 @@ div.separate{
 	display:inline-block;
 	margin:0 5px -2px 5px;
 }
-
 nav{
 	margin-top:0.5em;
 	line-height:1.7;
@@ -93,9 +92,8 @@ nav{
 
 .nav .open > a, .nav .open > a:focus, .nav .open > a:hover{
 	background-color: #DC143C;
-	font-weight:bold !important;
+	font-weight:bold !important; 
 }
-
 
 div.navbar-header{
 	background-color:#A52A2A;
@@ -129,100 +127,30 @@ ul.navbar-nav{
 	margin-right:0;
 }
 
-#Carousel b{
-	font-size:20px;
+article{
+	border:1px solid #ddd;
+	background-color:white;
 }
 
-#Carousel{
-	margin-bottom:1em;
+#user_name{
+	display:inline-block;
 }
 
-ul.nav-tabs a{
-	font-size:20px;
-	font-weight:bold;
-	color:gray;
+img.sex{
+	width:10px;
+	height:15px;
+	margin-top:-10px;
+	margin-left:5px;
 }
 
-ul.nav-tabs li.active a{
-	color:black;
+#person_pic{
+	width:100%;
+	padding:5% 0 5% 5%;
 }
 
-ul.nav-tabs~article{
-	padding-top:.5em;
-	padding-left:1em;
-	padding-right:1em;
-	background-color:#FFFFFF;
-	font-size:20px;
-	line-height:180%;
-	border-left:1px solid #ddd;
-	border-bottom:1px solid #ddd;
-	border-right:1px solid #ddd;
-	min-height:14.7em;
+#information{
+	padding-right:30px;
 }
-ul.nav-tabs~article>p{
-	margin:0;
-}
-
-ul.nav-tabs~article p span{
-	float:left;
-	font-size:300%;
-	font-family:algerian,courier;
-	line-height:120%;
-	width:1em;
-}
-
-#News{
-	padding-left:0;
-}
-
-#News ul li{
-	line-height:1.5em;
-	list-style-type:none;
-	margin-bottom:1.2em;
-}
-
-span.glyphicon-circle-arrow-right{
-	font-size:18px;
-	padding-right:1em;
-}
-
-#News ul li>a{
-	color:black;
-}
-
-span.new{
-	font-style:italic;
-	color:red;
-}
-
-span.glyphicon-fire{
-	font-style:none;
-	font-size:20px;
-}
-
-span.time{
-	font-size:15px;
-	display:inline;
-	height:1.5em;
-}
-
-a.more{
-	color:red;
-	font-size:15px;
-	font-style:italic;
-	margin:0;
-	padding:0;
-	display:block;
-	position:absolute;
-	bottom:0;
-	right:25px;
-}
-
-a.more:hover{
-	text-decoration:none;
-	font-weight:bold;
-}
-
 
 footer ul{
 	list-style-type:none;

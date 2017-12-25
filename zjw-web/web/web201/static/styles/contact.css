@@ -3,6 +3,7 @@ body{
 	margin-left:10%;
 	margin-right:10%;
 	margin-top:1em;
+	min-width:500px;
 }
 
 #logo{
@@ -131,7 +132,7 @@ article{
 	background-color:white;
 }
 
-form{
+#contact_form{
 	padding:10px 20px;
 }
 

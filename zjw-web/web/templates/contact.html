@@ -9,7 +9,7 @@
 <article>
 	<div class="row">
 		<div class="col-md-6 col-sm-8 col-xs-12 col-md-push-3 col-sm-push-2">
-			<form role="form" action="{% url 'comments:contact' %}" method="post" >
+			<form id="contact_form" role="form" action="{% url 'comments:contact' %}" method="post" >
 				{% csrf_token %}
 				<fieldset>
 					<legend>联系我们</legend>

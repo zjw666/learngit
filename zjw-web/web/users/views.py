@@ -15,5 +15,8 @@ def register(request):
 		form = RegisterForm()
 	return render(request,'register.html',context={'form':form,'next':redirect_to})
 	
+def change(request):
+	return render(request,'personal.html')
+	
 
 			
