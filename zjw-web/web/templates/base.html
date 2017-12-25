@@ -22,9 +22,9 @@
 				<div class="pull-right">
 					<span class="glyphicon glyphicon-user"></span><span>&nbsp;</span>
 					{% if user.is_authenticated %}
-						<span>欢迎你：<a class="user" href="#">{{user.username}}</a></span><div class="separate"></div><a class="user" href="#"><span class="glyphicon glyphicon-off"></span> 注销</a>
+						<span>欢迎你：<a class="user" href="#">{{user.username}}</a></span><div class="separate"></div><a class="user" href="{% url 'logout' %}?next={{request.path}}"><span class="glyphicon glyphicon-off"></span> 注销</a>
 					{% else %}
-						<a class="user" href="#">您还未登录，点击登录</a><div class="separate"></div><a class="user" href="#">注册</a>
+						<a class="user" href="{% url 'login' %}?next={{request.path}}">您还未登录，点击登录</a><div class="separate"></div><a class="user" href="{% url 'users:register' %}?next={{request.path}}">注册</a>
 					{% endif %}
 				</div>
 				<div class="row">

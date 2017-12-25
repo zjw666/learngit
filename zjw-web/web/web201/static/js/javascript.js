@@ -217,4 +217,7 @@ function input_add_class(){    //为用户登录的输入框添加样式
 	$("form.user_form #id_username").attr({"placeholder":"请输入用户名",
 							"oninvalid":"setCustomValidity('请输入用户名');",
 							"oninput":"setCustomValidity('');"})
+	$("form.user_form #id_email").attr({"placeholder":"请输入邮箱",
+							"oninvalid":"setCustomValidity('请输入邮箱');",
+							"oninput":"setCustomValidity('');"})
 }
