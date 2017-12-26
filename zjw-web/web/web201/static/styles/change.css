@@ -48,6 +48,7 @@ div.separate{
 	display:inline-block;
 	margin:0 5px -2px 5px;
 }
+
 nav{
 	margin-top:0.5em;
 	line-height:1.7;
@@ -92,7 +93,7 @@ nav{
 
 .nav .open > a, .nav .open > a:focus, .nav .open > a:hover{
 	background-color: #DC143C;
-	font-weight:bold !important; 
+	font-weight:bold !important;
 }
 
 div.navbar-header{
@@ -132,45 +133,66 @@ article{
 	background-color:white;
 }
 
-#user_name{
-	display:inline-block;
+article div.col-md-2{
+	padding-right:0;
+	height:100%;
 }
 
-img.sex{
-	width:13px;
-	height:15px;
-	margin-top:-10px;
-	margin-left:5px;
+article h3{
+	text-align:center;
+	background-color:#f2dede;
+	margin-top:0;
+	margin-bottom:0;
+	padding-top:10px;
+	padding-bottom:10px;
+	font-weight:bold;
+	
 }
 
-span.glyphicon-edit{
-	font-size:20px;
-	color:black;
+#article-content{
+	padding-left:0;
+	min-height:300px;
 }
 
-div.circle{
+#type-news{
+	list-style-type:none;
+	padding-top:15px;
+	padding-left:0;
+}
+
+#type-news li{
+	margin-bottom:5px;
+	text-align:center;
+}
+
+#type-news li:hover{
 	background-color:#ddd;
-	display:inline-block;
-	margin-top:10px;
-	width:35px;
-	height:35px;
-	border-radius:50%;
 }
 
-div.circle a{
-	top:20%;
-	left:20%;
-	position:relative;
+.current-news{
+	background-color:#ddd;
 }
 
-#person_pic{
-	width:100%;
-	padding:5% 0 5% 5%;
+#type-news li a{
+	color:black;
+	font-size:17px;
+	font-weight:bold;
+	text-decoration:none;
 }
 
-#information{
-	padding-right:30px;
+#row{
+	margin:0;
 }
+
+#row div:first-child{
+	padding:0;
+}
+
+#border{
+	border-left:1px solid #ddd;
+}
+
+
 
 footer ul{
 	list-style-type:none;
