@@ -2,6 +2,7 @@ body{
 	margin-left:10%;
 	margin-right:10%;
 	margin-top:10%;
+	min-width:500px;
 }
 
 .errorlist{
@@ -48,6 +49,34 @@ button{
 
 button:hover{
 	background-color:red !important;
+}
+
+.user_captcha{
+	width:60%;
+	display:inline-block;
+}
+
+span.captcha_status{
+	font-size:20px;
+	margin-right:10px;
+	margin-left:5px;
+	position:relative;
+	top:5px;
+}
+
+span.glyphicon-remove-sign{
+	color:red;
+}
+
+span.glyphicon-ok-sign{
+	color:green;
+}
+
+img.captcha{
+	cursor:pointer;
+	width:25%;
+	height:34px;
+	float:right;
 }
 
 footer ul{

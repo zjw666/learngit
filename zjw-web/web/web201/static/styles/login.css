@@ -38,6 +38,33 @@ div.form-group>div>label{
 	margin-right:20px;
 }
 
+#id_captcha_1{
+	width:60%;
+	display:inline-block;
+}
+
+span.captcha_status{
+	font-size:20px;
+	margin-right:10px;
+	margin-left:5px;
+	position:relative;
+	top:5px;
+}
+
+span.glyphicon-remove-sign{
+	color:red;
+}
+
+span.glyphicon-ok-sign{
+	color:green;
+}
+
+img.captcha{
+	cursor:pointer;
+	width:25%;
+	height:34px;
+	float:right;
+}
 
 #register_button{
 	display:inline;

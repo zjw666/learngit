@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 	'web201',
 	'comments',
 	'users',
+	'captcha',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 MEDIA_URL = '/media/'
+
+CAPTCHA_IMAGE_SIZE = (100,30)
+
+CAPTCHA_FOREGROUND_COLOR = 'red'
+
+CAPTCHA_OUTPUT_FORMAT = u'%(text_field)s %(image)s %(hidden_field)s'

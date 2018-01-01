@@ -23,6 +23,7 @@ $(function(){
 	words_num_check();        //设置新闻翻页提示的标题长度
 	news_type_check();        //添加新闻导航栏的当前激活功能
 	input_add_class();        //为用户登录的输入框添加样式
+	pic_width_height();       //控制用户头像长宽比
 });
 
 $('ul.nav-tabs li').click(function(){            //标签页之间内容转换
@@ -48,6 +49,7 @@ $(window).resize(function(){   //使遮罩宽度与头像宽度保持一致
 	$('#mask').width($('img[alt="photo"]').width());
 	button_change();
 	news_change();
+	pic_width_height();
 });
 
 $('#img-container').hover(     //头像按钮淡入淡出以及遮罩透明度变化
@@ -220,4 +222,77 @@ function input_add_class(){    //为用户登录的输入框添加样式
 	$("form.user_form #id_email").attr({"placeholder":"请输入邮箱",
 							"oninvalid":"setCustomValidity('请输入邮箱');",
 							"oninput":"setCustomValidity('');"})
+	$("#id_captcha_1").attr({"placeholder":"请输入验证码",
+							"oninvalid":"setCustomValidity('请输入验证码');",
+							"oninput":"setCustomValidity('');"})
 }
+
+function pic_width_height(){  //控制用户头像长宽比
+	var pic_width = $("#person_pic").width();
+	$("#person_pic").height(pic_width);
+}
+
+$("input[type=file]").change(function(){	//上传头像图片预览
+	var fileobj = $(this)[0];
+	if (fileobj && fileobj.files[0]){
+		var headimage = fileobj.files[0]
+		if (headimage.type.split('/')[0] == 'image'){
+			if(headimage.size/1024/1024 <= 2 ){
+					$('#pic_name').text(headimage.name);
+					if (typeof FileReader != 'undefined'){
+						var reader = new FileReader();
+						reader.onloadstart = function(){
+							$('#progress').show();
+							$("div[role=progressbar]").width(0);
+						};
+						reader.onprogress = function(e){
+							console.log(e.loaded/e.total*100+"%");
+							$("div[role=progressbar]").width(e.loaded/e.total*100+"%");
+						};
+						reader.readAsDataURL(headimage);
+						reader.onload = function(){
+							var dataURL = reader.result;
+							$("#person_pic").attr("src",dataURL);
+						};
+					}else{
+						var URL = window.URL || window.webkitURL;
+						var imageURL = URL.createObjectURL(headimage);
+						$("#person_pic").attr("src",imageURL);
+					} 
+			}else{
+				alert("图片大小必须小于2M")
+				fileobj.value = '';
+				$('#pic_name').text("上传图片失败");
+			}
+		}else{
+			alert("上传文件必须为图片格式");
+			fileobj.value = '';
+			$('#pic_name').text("上传图片失败");
+		}
+	}
+});
+
+$("img.captcha").click(function(){   //更新验证码图片ajax
+	$.getJSON("/captcha/refresh",function(data){
+		$("img.captcha").attr("src",data.image_url);
+		$("#id_captcha_0").attr("value",data.key);
+		$("#id_captcha_1").keyup();
+	});
+});
+
+$("#id_captcha_1").keyup(function(){    //验证码输入验证ajax
+	var response=$('#id_captcha_1').val();
+	var hashkey=$('#id_captcha_0').val();
+	json_data={
+		'response':response,
+		'hashkey':hashkey
+	}
+	$.getJSON("/ajax_captcha",json_data,function(data){
+		$("span.captcha_status").remove();
+		if (data.status){
+			$("#id_captcha_1").after('<span class="captcha_status glyphicon glyphicon-ok-sign"></span>');
+		}else{
+			$("#id_captcha_1").after('<span class="captcha_status glyphicon glyphicon-remove-sign"></span>');
+		}
+	});
+});

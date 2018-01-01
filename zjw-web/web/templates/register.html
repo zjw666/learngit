@@ -61,6 +61,12 @@
 								{{form.password2}}
 								{{form.password2.errors}}
 							</div>
+							<div class="form-group">
+								<input id="id_captcha_1" class="form-control user_captcha" placeholder="请输入验证码" autocomplete="off" autocapitalize="off" spellcheck="false" name="captcha_1" type="text" >
+								<img class="captcha" alt="captcha" src="{{image_url}}">
+								<input id="id_captcha_0" name="captcha_0" value="{{hashkey}}" type="hidden">
+								{{form.captcha.errors}}
+							</div>
 							<button id="register" type="submit" class="btn btn-default">注册</button>
 							<input type="hidden" name="next" value="{{ next }}"/>
 							<div id="login_button" class="pull-right">

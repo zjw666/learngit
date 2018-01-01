@@ -8,25 +8,61 @@
 {% block main %}
 <article>
 	<div class="row">
-		<div class="col-md-2 col-sm-3 col-xs-4">
+		<div class="col-md-2 col-sm-3 col-xs-3">
 			<div>
 				<h3>修改设置</h3>
 				<ul id="type-news">
-					<li><a href="#">个人信息</a></li>
-					<li><a href="#">修改密码</a></li>
+					<li class="active"><a href="{% url 'users:change' %}">个人信息</a></li>
+					<li><a href="{% url 'password_change' %}">修改密码</a></li>
 				</ul>
 			</div>
 		</div>
-		<div id="border" class="col-md-10 col-sm-9 col-xs-8">
-			<img id="person_pic"  src='{{user.pic.url}}' alt="" />
-			<form role="form" action="{% url 'users:change' %}" method="post">
-				{% for field in form %}
-				<div class="form-group">
-					{{ field.label_tag }}
-					{{field}}
-					{{field.error}}
+		<div id="border" class="col-md-10 col-sm-9 col-xs-9">
+			<h4>修改个人信息</h4>
+			<form role="form" action="{% url 'users:change' %}" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="username">用户名：</label>
+							<input class="form-control" name="username" type="text" value="{{user.username}}" disabled />
+						</div>
+						<div class="form-group">
+							<label for="{{form.sex.id_for_label}}">性别：</label>
+							{% for radio in form.sex %}
+								{{radio}}
+							{% endfor %}
+							{{form.sex.error}}
+						</div>
+						<div class="form-group">
+							<label for="{{form.signature.id_for_label}}">个性签名：</label>
+							{{form.signature}}
+							{{form.signature.error}}
+						</div>
+						<div class="form-group">
+							<label for="{{form.hobby.id_for_label}}">爱好：</label>
+							{{form.hobby}}
+							{{form.hobby.error}}
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-6">
+						<img id="person_pic"  src='{{user.pic.url}}' alt="" />
+						<div id="file" class="form-group">
+							<label for="{{form.pic.id_for_label}}">更改头像：</label>
+							<div id="file_upload" class="btn btn-default">
+								<span class="glyphicon glyphicon-folder-open"></span>
+								{{form.pic}}
+							</div>
+							<span id="pic_name">未上传图片</span>
+							{{form.pic.error}}
+						</div>
+						<div id="progress" class="progress progress-striped active" hidden="hidden">
+							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+							</div>
+						</div>
+					</div>
 				</div>
-				{% endfor %}
+				<button class="btn btn-default" type="sumbit">提交更改</button>
 			</form>
 		</div>
 	</div>

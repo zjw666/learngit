@@ -24,6 +24,8 @@ urlpatterns = [
 	url(r'',include('comments.urls')),
 	url(r'',include('users.urls')),
 	url(r'',include('django.contrib.auth.urls')),
+	url(r'^captcha/',include('captcha.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

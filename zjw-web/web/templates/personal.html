@@ -15,7 +15,7 @@
 		<div id="information" class="col-md-9 col-sm-9 col-xs-8">
 			<h3 id="user_name">{{user1.username}}</h3>
 			{% if user.is_authenticated and user.username == user1.username %}
-				<div class="circle pull-right"><a href="{% url 'users:change' %}?personal_name={{user.username}}"><span class="glyphicon glyphicon-edit"></span></a></div>
+				<div class="circle pull-right"><a href="{% url 'users:change' %}"><span class="glyphicon glyphicon-edit"></span></a></div>
 			{% endif %}
 			{% if user1.sex == '1' %}
 				<img class="sex" src="{% static 'images/man.png' %}" alt="男" />

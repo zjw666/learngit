@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+<link href="{% static 'styles/change_done.css' %}" rel="stylesheet" media="screen" />
+{% endblock css %}
+
+{% block main %}
+<article>
+	<div class="row">
+		<div class="col-md-2 col-sm-3 col-xs-3">
+			<div>
+				<h3>修改设置</h3>
+				<ul id="type-news">
+					<li class="active"><a href="#">个人信息</a></li>
+					<li><a href="#">修改密码</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="border" class="col-md-10 col-sm-9 col-xs-9">
+			<h4>信息修改成功!</h4>
+		</div>
+	</div>
+</article>
+{% endblock main %}
+

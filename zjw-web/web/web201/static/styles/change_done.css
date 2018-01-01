@@ -194,60 +194,14 @@ article h3{
 
 #border{
 	border-left:1px solid #ddd;
+	height:400px;
 }
 
 h4{
 	font-weight:bold;
-	text-align:center;
 }
 
-input[type=radio]{
-	margin-left:10px;
-}
 
-textarea{
-	resize:none
-}
-
-#person_pic{
-	width:50%;
-	margin-top:15px;
-	margin-left:15%;
-	border:1px solid #ddd;
-}
-
-#file{
-	margin-top:5px;
-	margin-left:15%;
-	width:60%;
-}
-
-#file input{
-	display:inline-block;
-	opacity:0;
-	position:absolute;
-	width:100%;
-	height:100%;
-	top:0;
-	left:0;
-	cursor:pointer;
-}
-
-#file_upload{
-	position:relative;
-}
-
-#pic_name{
-	padding-left:5px;
-}
-#progress{
-	width:80%;
-	height:10px;
-}
-
-form{
-	margin-bottom:10px;
-}
 
 footer ul{
 	list-style-type:none;
