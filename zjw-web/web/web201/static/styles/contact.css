@@ -205,13 +205,21 @@ div.type{
 	margin-left:20px;
 }
 
-#comment_line{
+.comment_line{
 	height:2px;
 	border:none;
 	background-color:white;
 }
 
-div.well{
+.reply_button{
+	color:black;
+}
+
+.reply_button:hover{
+	color:black;
+}
+
+div.comment_well{
 	padding:10px 20px;
 	margin:10px 20px;
 }
@@ -223,6 +231,16 @@ div.well h4{
 ul.media-list img{
 	width:60px;
 	height:60px;
+}
+
+.reply_form{
+	background-color:white;
+	margin-top:10px;
+	margin-bottom:0;
+	margin-left:0;
+	padding:0;
+	height:100px;
+	border:1px solid #ddd;
 }
 
 footer ul{

@@ -68,7 +68,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h3 id="well">评论区</h3>
-			<div class="well">
+			<div class="well comment_well">
 				<ul class="media-list">
 				{% for comment in comment_list %}
 					<li class="media">
@@ -78,22 +78,29 @@
 						<div class="media-body">
 							<h4 class="media-heading">{{comment.author.username}}</h4>
 							<p>{{comment.content}}</p>
+							<a href="#comment_{{comment.id}}" class="reply_button" data-toggle="collapse" reply="{{comment.author.username}}">回复</a>
 							<span class="pull-right">{{comment.created_time}}</span>
+							<div id="comment_{{comment.id}}" class="collapse reply_form">
+							</div>
 							{% for reply in comment.reply_set.all %}
 							<div class="media">
-								<a href="{% url 'users:info' %}?name={{comment.author.username}}" class="media-left">
+								<a href="{% url 'users:info' %}?name={{reply.author.username}}" class="media-left">
 									<img src="{{reply.author.pic.url}}" class="media-object img-circle" alt="photo" />
 								</a>
 								<div class="media-body">
 									<h4 class="media-heading">{{reply.author.username}}</h4>
 									<p>{{reply.content}}</p>
+									<a href="#reply_{{reply.id}}" class="reply_button" reply="{{reply.author.username}}">回复</a>
 									<span class="pull-right">{{reply.created_time}}</span>
+									<div id="reply_{{reply.id}}" class="collapse well">
+										这是回复表单所在的地方
+									</div>
 								</div>
 							</div>
 							{% endfor %}
 						</div>
 					</li>
-					<hr id="comment_line" />
+					<hr class="comment_line" />
 				{% empty %}
 				暂无评论
 				{% endfor %}
