@@ -146,12 +146,69 @@ form textarea{
 	padding-left:10px;
 }
 
-#check button{
+span.captcha_status{
+	font-size:20px;
+	margin-right:10px;
+	margin-left:5px;
+	position:relative;
+	top:5px;
+}
+
+span.glyphicon-remove-sign{
+	color:red;
+}
+
+span.glyphicon-ok-sign{
+	color:green;
+}
+
+img.captcha{
+	width:35%;
+	height:34px;
+	cursor:pointer;
 	float:right;
+}
+
+.errorlist{
+	color:red;
+	list-style-type:none;
+	padding:0 20px;
+}
+
+
+div.captcha1{
+	display:inline-block;
+	float:right;
+	width:60%;
+}
+
+div.type{
+	position:relative;
+	top:5px;
+	display:inline-block;
+}
+
+#id_captcha_1{
+	width:50%;
+	display:inline-block;
+}
+
+.modal{
+	top:25%;
+}
+
+.modal h4{
+	display:inline-block;
 }
 
 #well{
 	margin-left:20px;
+}
+
+#comment_line{
+	height:2px;
+	border:none;
+	background-color:white;
 }
 
 div.well{
@@ -167,8 +224,6 @@ ul.media-list img{
 	width:60px;
 	height:60px;
 }
-
-
 
 footer ul{
 	list-style-type:none;

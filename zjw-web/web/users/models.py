@@ -7,7 +7,7 @@ SEX = (
 	('2','girl'),
 )
 
-class User(AbstractUser):
+class User(AbstractUser):       #自定义用户模型
 	pic = models.ImageField(upload_to='pic',default="zjw.jpg")
 	signature = models.CharField(max_length=50,blank=True,default="无个性签名")
 	sex = models.CharField(max_length=1,choices=SEX)

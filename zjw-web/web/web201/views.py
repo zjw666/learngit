@@ -3,11 +3,9 @@ from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from .models import Article
 from django.core.paginator import Paginator
-from comments.forms import CommentForm
-from comments.models import Comment
 from django.db.models import Q
 
-def home(request):
+def home(request):   #首页
 	articles = Article.objects.all().order_by('-time')[0:4]
 	if articles:
 		first_article = articles[0]
@@ -17,21 +15,21 @@ def home(request):
 		other_articles = []
 	return render(request,'index.html',context={'first_article':first_article,'other_articles':other_articles})
 	
-def introduction(request):
+def introduction(request):    #介绍页
 	return render(request,'introduction.html')
 	
-def teachers(request,name):
+def teachers(request,name):  #老师页
 	if name=='li':
 		return render(request,'teachers-li.html')
 	if name=='wang':
 		return render(request,'teachers-wang.html')
 
-def students(request):
+def students(request):  #学生页
 	return render(request,'students.html')
 
-def news(request,type):
+def news(request,type):   #新闻页
 	articles = Article.objects.all().filter(category__name = type).order_by('-time')
-	p = Paginator(articles,10)
+	p = Paginator(articles,10)   #分页，10篇文章一页
 	if p.num_pages <= 1:
 		article_list = articles
 		data = ''
@@ -83,14 +81,8 @@ def news(request,type):
 		'article_list':article_list,'data':data
 	})
 
-def contact(request):
-	response = request.GET.get('response',False)
-	form = CommentForm()
-	comment_list = Comment.objects.all().filter(allow = True).order_by('-created_time')
-	context={'form':form,'comment_list':comment_list,'response':response}
-	return render(request,'contact.html',context=context)
 
-def detail(request,type,pk):
+def detail(request,type,pk):   #文章内容页
 	post=get_object_or_404(Article,pk=pk)
 	post.increase_views()
 	article_list=Article.objects.all().filter(category__name = type).order_by('-time')
@@ -117,7 +109,7 @@ def detail(request,type,pk):
 		next_title=Article.objects.get(id__exact=next).title
 	return render(request,'content.html',context={'post':post,'pre':pre,'next':next,'pre_title':pre_title,'next_title':next_title})
 
-def search(request):
+def search(request):   #搜索页
 	q = request.GET.get('q')
 	error_msg = ''
 	if not q:

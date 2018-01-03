@@ -12,56 +12,54 @@
 			<form id="contact_form" role="form" action="{% url 'comments:contact' %}" method="post" >
 				{% csrf_token %}
 				<fieldset>
-					<legend>联系我们</legend>
-					<div class="form-group">
-						<label for="{{ form.name.id_for_label }}">姓名</label>
-						{{form.name}}
-						{{form.name.errors}}
-					</div>
-					<div class="form-group">
-						<label for="{{ form.sex.id_for_label }}">性别</label>
-						<div>
-							{% for radio in form.sex %}
-								{{radio}}
-							{% endfor %}
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="{{ form.birth.id_for_label }}">出生年月</label>
-						{{form.birth}}
-						{{form.birth.errors}}
-					</div>
-					<div class="form-group">
-						<label for="{{ form.email.id_for_label }}">邮箱</label>
-						{{form.email}}
-						{{form.email.errors}}
-					</div>
+					<legend>评论</legend>
 					<div class="form-group">
 						<label for="{{ form.content.id_for_label }}">发送的消息</label>
 						{{form.content}}
 						{{form.content.errors}}
 					</div>
 					<div class="form-group" id='check'>
-						<label>类型</label>
 						<div>
-							<label for="{{ form.public.id_for_label }}">
-								{{form.public}}
-								{{form.public.errors}}
-								公开
-							</label>
-							<label for="{{ form.important.id_for_label }}">
-								{{form.important}}
-								{{form.important.errors}}
-								重要
-							</label>
-							<button type="submit" class="btn btn-default">提交</button>
+							<div class="type">
+								<label for="{{ form.public.id_for_label }}">
+									{{form.public}}
+									{{form.public.errors}}
+									公开
+								</label>
+								<label for="{{ form.important.id_for_label }}">
+									{{form.important}}
+									{{form.important.errors}}
+									重要
+								</label>
+							</div>
+							<div class="captcha1">
+								{{form.captcha}}
+								{{form.captcha.errors}}
+							</div>
 						</div>
 					</div>
+					<input name="author" type="hidden" value="{{request.user.id}}" />
+					<button type="submit" class="btn btn-default">提交</button>
 				</fieldset>
 			</form>
+			<div class="modal fade" id="Modal" aria-labelledby="myModal" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModal">注意</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">评论前需要先登录，现在登录？</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+							<button type="button" class="btn btn-danger" id="modal-login">登录</button>
+						</div>
+					</div>
+				</div>
+			</div>
 			{% if response %}
 				<div class="alert alert-success alert-dismissable">
-				提交成功！您发送的消息经筛选后将可能会出现在下方的评论栏中，敬请关注
+				提交成功！您发送的消息将会出现在下方的评论栏中，敬请关注
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
 				</div>
 			{% endif %}
@@ -74,27 +72,28 @@
 				<ul class="media-list">
 				{% for comment in comment_list %}
 					<li class="media">
-						<a href="#" class="media-left">
-							<img src="{% static 'images/tmp.jpg' %}" class="media-object img-circle" alt="photo" />
+						<a href="{% url 'users:info' %}?name={{comment.author.username}}" class="media-left">
+							<img src="{{comment.author.pic.url}}" class="media-object img-circle" alt="photo" />
 						</a>
 						<div class="media-body">
-							<h4 class="media-heading">{{comment.name}}</h4>
-							<span class="pull-right">{{comment.created_time}}</span>
+							<h4 class="media-heading">{{comment.author.username}}</h4>
 							<p>{{comment.content}}</p>
+							<span class="pull-right">{{comment.created_time}}</span>
 							{% for reply in comment.reply_set.all %}
 							<div class="media">
-								<a href="#" class="media-left">
-									<img src="{% static 'images/tmp.jpg' %}" class="media-object img-circle" alt="photo" />
+								<a href="{% url 'users:info' %}?name={{comment.author.username}}" class="media-left">
+									<img src="{{reply.author.pic.url}}" class="media-object img-circle" alt="photo" />
 								</a>
 								<div class="media-body">
-									<h4 class="media-heading">{{reply.name}}</h4>
-									<span class="pull-right">{{reply.created_time}}</span>
+									<h4 class="media-heading">{{reply.author.username}}</h4>
 									<p>{{reply.content}}</p>
+									<span class="pull-right">{{reply.created_time}}</span>
 								</div>
 							</div>
 							{% endfor %}
 						</div>
 					</li>
+					<hr id="comment_line" />
 				{% empty %}
 				暂无评论
 				{% endfor %}
