@@ -49,7 +49,7 @@
 							<h4 class="modal-title" id="myModal">注意</h4>
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						</div>
-						<div class="modal-body">评论前需要先登录，现在登录？</div>
+						<div class="modal-body">评论或回复前需要先登录，现在登录？</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 							<button type="button" class="btn btn-danger" id="modal-login">登录</button>
@@ -86,21 +86,28 @@
 									<div class="form-group">
 										<textarea class="form-control" name="content" placeholder="请输入回复的内容" oninvalid="setCustomValidity('请输入你要回复的内容');" title="请输入回复的内容" required></textarea>
 									</div>
-									<button type="button" class="btn btn-default pull-right">提交</button>
+									<button type="button" class="btn btn-default pull-right" person="{{comment.author.username}}" comment="{{comment.id}}">提交</button>
 								</form>
 							</div>
 							{% for reply in comment.reply_set.all %}
+							<hr class="comment_line" />
 							<div class="media">
 								<a href="{% url 'users:info' %}?name={{reply.author.username}}" class="media-left">
 									<img src="{{reply.author.pic.url}}" class="media-object img-circle" alt="photo" />
 								</a>
 								<div class="media-body">
-									<h4 class="media-heading">{{reply.author.username}}</h4>
+									<h4 class="media-heading">{{reply.author.username}} <span class="glyphicon glyphicon-share-alt"></span> {{reply.reply_to}}</h4>
 									<p>{{reply.content}}</p>
-									<a href="#reply_{{reply.id}}" class="reply_button" reply="{{reply.author.username}}">回复</a>
+									<a href="#reply_{{reply.id}}" class="reply_button" data-toggle="collapse" reply="{{reply.author.username}}">回复</a>
 									<span class="pull-right">{{reply.created_time}}</span>
-									<div id="reply_{{reply.id}}" class="collapse well">
-										这是回复表单所在的地方
+									<div id="reply_{{reply.id}}" class="collapse reply_form well">
+										<form role="form" method="post" action="#">
+											{% csrf_token %}
+											<div class="form-group">
+												<textarea class="form-control" name="content" placeholder="请输入回复的内容" oninvalid="setCustomValidity('请输入你要回复的内容');" title="请输入回复的内容" required></textarea>
+											</div>
+											<button type="button" class="btn btn-default pull-right" person="{{reply.author.username}}" comment="{{comment.id}}">提交</button>
+										</form>
 									</div>
 								</div>
 							</div>

@@ -14,4 +14,4 @@ class ReplyForm(forms.ModelForm):
 	content = forms.CharField(widget=forms.Textarea(attrs={'class':"form-control",'required':'required','oninvalid':"setCustomValidity('请输入你要回复的内容');",'oninput':"setCustomValidity('');"}))
 	class Meta:
 		model = Reply
-		fields = ['content','author','comment']
+		fields = ['content','author','comment','reply_to']

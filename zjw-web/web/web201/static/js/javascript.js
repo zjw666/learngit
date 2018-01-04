@@ -285,7 +285,7 @@ $("img.captcha").click(function(){   //更新验证码图片ajax
 $("#id_captcha_1").keyup(function(){    //验证码输入验证ajax
 	var response=$('#id_captcha_1').val();
 	var hashkey=$('#id_captcha_0').val();
-	json_data={
+	var json_data={
 		'response':response,
 		'hashkey':hashkey
 	}
@@ -299,15 +299,104 @@ $("#id_captcha_1").keyup(function(){    //验证码输入验证ajax
 	});
 });
 
-$("#contact_form textarea").focus(function(){  //提示用户评论前需登录
+$("#contact_form textarea,.reply_form textarea").focus(function(){  //提示用户评论前需登录
 	if ($("input[name=author]").val() == "None"){
 		$("#Modal").modal({backdrop:'static'});
 		$(this).blur();
 	}
 });
 
-$("#modal-login").click(function(){
+$("#modal-login").click(function(){   //为模态框登录按钮绑定事件
 	window.open("/login/?next=/comment/",'_self');
+});
+
+$(".reply_form button").click(function(){   //ajax提交回复表单
+	var textarea_content=$($($(this).prev()).find('textarea')),
+		content=$(textarea_content).val(),
+		author=$("input[name=author]").val(),
+		reply_to=$(this).attr("person"),
+		comment=$(this).attr("comment");
+	var button = this;
+	var json_data={
+		'content':content,
+		'author':author,
+		'reply_to':reply_to,
+		'comment':comment
+	}
+	$(textarea_content).val("");        //清空回复框内容
+	$($(button).parent().parent().siblings("a")).click();   //关闭回复框
+	$.ajax({
+		url:'/reply_ajax/',
+		type:'POST',
+		dataType:'json',
+		data:json_data,
+		success:function(result){
+			if (result.reply_status){   //生成新的回复，并插入到对应评论的回复列表中
+				var reply_list=$(button).parents("li.media").find("div.media"),
+					date = new Date(result.time),
+					div_media=$('<div></div>').attr("class","media"),
+					a_media=$('<a></a>').attr({
+						"href":"/personal/name="+result.author_name,
+						"class":"media-left"
+					}),
+					img=$('<img>').attr({
+						"src":result.url,
+						"class":"media-object img-circle",
+						"alt":"photo"
+					}),
+					div_body=$('<div></div>').attr("class","media-body"),
+					h4=$('<h4></h4>').attr("class","media-heading"),
+					span_h4=$('<span></span>').attr("class","glyphicon glyphicon-share-alt"),
+					p=$('<p></p>').text(content),
+					a_media_body=$('<a></a>').attr({
+						"href":"#reply_"+result.reply_id,
+						"class":"reply_button",
+						"reply":result.author_name,
+						"data-toggle":"collapse"
+					}).text("回复"),
+					span=$('<span></span>').attr("class","pull-right").text(date.getFullYear()+'年'+(date.getMonth()+1)+'月'+date.getDate()+'日'),
+					div_form=$('<div></div>').attr({
+						"class":"collapse well reply_form",
+						"id":"reply_"+result.reply_id
+					}),
+					form=$('<form></form>').attr({
+						"role":"form",
+						"method":"post",
+						"action":"#"
+					}),
+					div_form_group=$('<div></div>').attr("class","form-group"),
+					textarea=$('<textarea></textarea>').attr({
+						"class":"form-control",
+						"name":"content",
+						"placeholder":"请输入回复的内容",
+						"oninvalid":"setCustomValidity('请输入你要回复的内容');",
+						"title":"请输入回复的内容",
+						"required":"required"
+					}),
+					form_button=$('<button></button>').attr({
+						"type":"button",
+						"class":"btn btn-default pull-right",
+						"person":result.author_name,
+						"comment":comment
+					}).text("提交");
+					$(div_form_group).append(textarea);
+					$(form).append(div_form_group,form_button);
+					$(div_form).append(form);
+					$(h4).append(result.author_name,' ',span_h4,' ',reply_to);
+					$(div_body).append(h4,p,a_media_body,span,div_form);
+					$(a_media).append(img);
+					$(div_media).append(a_media,div_body);
+					if (reply_list.length != 0){
+						$(reply_list[reply_list.length-1]).after(div_media);
+					}else{
+						$("#comment_"+comment).after(div_media);
+					}
+					$(div_media).before('<hr class="comment_line" />');
+			}else{
+				alert("回复失败，请刷新页面重试，如有问题，请联系网站管理人员");
+			}
+		}
+	});
 });
 
 

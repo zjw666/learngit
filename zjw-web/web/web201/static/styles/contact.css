@@ -219,6 +219,10 @@ div.type{
 	color:black;
 }
 
+.reply_button:focus{
+	color:black;
+}
+
 div.comment_well{
 	padding:10px 20px;
 	margin:10px 20px;

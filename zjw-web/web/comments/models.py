@@ -15,4 +15,5 @@ class Comment(Base):
 	important = models.BooleanField(default=False)
 	
 class Reply(Base):
+	reply_to = models.CharField(max_length=150)
 	comment = models.ForeignKey(Comment,on_delete=models.CASCADE)
