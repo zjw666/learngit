@@ -51,7 +51,7 @@ button:hover{
 	background-color:red !important;
 }
 
-.user_captcha{
+#id_captcha_1{
 	width:60%;
 	display:inline-block;
 }
