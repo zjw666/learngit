@@ -80,7 +80,14 @@
 							<p>{{comment.content}}</p>
 							<a href="#comment_{{comment.id}}" class="reply_button" data-toggle="collapse" reply="{{comment.author.username}}">回复</a>
 							<span class="pull-right">{{comment.created_time}}</span>
-							<div id="comment_{{comment.id}}" class="collapse reply_form">
+							<div id="comment_{{comment.id}}" class="collapse reply_form well">
+								<form role="form" method="post" action="#">
+									{% csrf_token %}
+									<div class="form-group">
+										<textarea class="form-control" name="content" placeholder="请输入回复的内容" oninvalid="setCustomValidity('请输入你要回复的内容');" title="请输入回复的内容" required></textarea>
+									</div>
+									<button type="button" class="btn btn-default pull-right">提交</button>
+								</form>
 							</div>
 							{% for reply in comment.reply_set.all %}
 							<div class="media">

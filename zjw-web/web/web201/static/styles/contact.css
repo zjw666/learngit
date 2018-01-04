@@ -234,13 +234,15 @@ ul.media-list img{
 }
 
 .reply_form{
-	background-color:white;
 	margin-top:10px;
 	margin-bottom:0;
 	margin-left:0;
 	padding:0;
-	height:100px;
-	border:1px solid #ddd;
+	border:none;
+}
+
+.reply_form textarea{
+	height:200px;
 }
 
 footer ul{
