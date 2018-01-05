@@ -244,39 +244,28 @@ div.marker{
 
 #classification{
 	margin:10px auto;
+	width:100%;
+	padding:0 10px;
 }
 
-#classification li{
-	width:20%;
-	background-color:#f2dede;
+#classification button{
 	float:left;
-	height:40px;
-	overflow:hidden;
+	width:20%;
+	border-radius:0;
+	margin-left:0;
+	margin-right:0;
 }
 
 #li{
-	width:50% !important;
 	clear:left;
 }
 
-#wang{
+#li,#wang{
 	width:50% !important;
 }
 
-#classification li a{
-	color:black;
-	text-align:center;
-	font-weight:bold;
-	font-size:1.1em;
-}
-
-#classification li a:hover{
-	background-color:#E9967A;
-}
-
-
 .cur{
-	background-color:#E9967A !important;
+	background-color:#ddd !important;
 }
 
 

@@ -5,7 +5,6 @@ from .models import User
 from captcha.models import CaptchaStore
 from captcha.helpers import captcha_image_url
 from django.http import JsonResponse
-from django.contrib.auth.views import login
 from django.contrib.auth import login as auth_login
 
 def register(request):  #注册

@@ -85,7 +85,7 @@ $('#img-container button').click(function(){   //实现老师头像按钮的页�
 });
 
 
-$('#classification li').click(function(){    //头像分类动画
+$('#classification button').click(function(){    //头像分类动画
 	$(this).addClass("cur");
 	$(this).siblings().removeClass("cur");
 	var id=$(this).attr("id");
