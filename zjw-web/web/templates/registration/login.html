@@ -37,8 +37,8 @@
 								<label for="{{ form.password.id_for_label }}">密码</label>
 								{{form.password}}
 								{{form.password.errors}}
+								{{ form.non_field_errors }}
 							</div>
-							{{ form.non_field_errors }}
 							<div class="form-group">
 								{{form.captcha}}
 								{{form.captcha.errors}}

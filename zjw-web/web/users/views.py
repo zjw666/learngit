@@ -29,7 +29,20 @@ def register(request):  #注册
 	return render(request,'register.html',context={'form':form,'next':redirect_to,'hashkey':hashkey,'image_url':image_url})
 
 def login_user(request):  #登录
-	return login(request,authentication_form=LoginForm)
+	redirect_to = request.POST.get('next', request.GET.get('next', ''))
+	if request.method == "POST":
+		form = LoginForm(request,data=request.POST)
+		form.error_messages={'invalid_login': ("用户不存在或密码不正确，请注意它们都是区分大小写的")}
+		if form.is_valid():
+			auth_login(request,form.get_user())
+			if redirect_to:
+				return redirect(redirect_to)   #跳转至登录前页面
+			else:
+				return redirect('/')
+	else:
+		form = LoginForm()
+	return render(request,'registration/login.html',context={'form':form})
+	
 	
 def info(request):    #查看个人信息
 	name = request.POST.get('name', request.GET.get('name', ''))

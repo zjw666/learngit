@@ -59,7 +59,7 @@
 			</div>
 			{% if response %}
 				<div class="alert alert-success alert-dismissable">
-				提交成功！您发送的消息将会出现在下方的评论栏中，敬请关注
+				提交成功！您发送的消息若为公开，将会出现在下方的评论栏中，敬请关注
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
 				</div>
 			{% endif %}
@@ -70,7 +70,7 @@
 			<h3 id="well">评论区</h3>
 			<div class="well comment_well">
 				<ul class="media-list">
-				{% for comment in comment_list %}
+				{% for comment in comment_list|dictsortreversed:"id" %}
 					<li class="media">
 						<a href="{% url 'users:info' %}?name={{comment.author.username}}" class="media-left">
 							<img src="{{comment.author.pic.url}}" class="media-object img-circle" alt="photo" />
@@ -86,8 +86,9 @@
 									<div class="form-group">
 										<textarea class="form-control" name="content" placeholder="请输入回复的内容" oninvalid="setCustomValidity('请输入你要回复的内容');" title="请输入回复的内容" required></textarea>
 									</div>
-									<button type="button" class="btn btn-default pull-right" person="{{comment.author.username}}" comment="{{comment.id}}">提交</button>
+									<button type="button" class="btn btn-default pull-right form_button" person="{{comment.author.username}}" comment="{{comment.id}}">提交</button>
 								</form>
+								<div class="box"></div>
 							</div>
 							{% for reply in comment.reply_set.all %}
 							<hr class="comment_line" />
@@ -106,7 +107,7 @@
 											<div class="form-group">
 												<textarea class="form-control" name="content" placeholder="请输入回复的内容" oninvalid="setCustomValidity('请输入你要回复的内容');" title="请输入回复的内容" required></textarea>
 											</div>
-											<button type="button" class="btn btn-default pull-right" person="{{reply.author.username}}" comment="{{comment.id}}">提交</button>
+											<button type="button" class="btn btn-default pull-right form_button" person="{{reply.author.username}}" comment="{{comment.id}}">提交</button>
 										</form>
 									</div>
 								</div>
@@ -119,6 +120,33 @@
 				暂无评论
 				{% endfor %}
 				</ul>
+				{% if data %}
+					<ul id="pages" class="pagination pagination-sm pagination-xs">
+					{% if data.first %}
+						<li><a href="?page=1">1</a></li>
+					{% endif %}
+					{% if data.left %}
+						{% if data.left_has_more %}
+							<li><span>...</span></li>
+						{% endif %}
+						{% for i in data.left %}
+							<li><a href="?page={{i}}">{{i}}</a></li>
+						{% endfor %}
+					{% endif %}
+					<li class="active"><a href="?page={{data.page}}">{{data.page}}</a></li>
+					{% if data.right %}
+						{% for i in data.right %}
+							<li><a href="?page={{i}}">{{i}}</a></li>
+						{% endfor %}
+						{% if data.right_has_more %}
+							<li><span>...</span></li>
+						{% endif %}
+					{% endif %}
+					{% if data.last %}
+						<li><a href="?page={{data.total_pages}}">{{data.total_pages}}</a></li>
+					{% endif %}
+					</ul>
+				{% endif %}
 			</div>
 		</div>
 	</div>

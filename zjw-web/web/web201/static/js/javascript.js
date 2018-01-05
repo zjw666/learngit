@@ -310,7 +310,7 @@ $("#modal-login").click(function(){   //为模态框登录按钮绑定事件
 	window.open("/login/?next=/comment/",'_self');
 });
 
-$(".reply_form button").click(function(){   //ajax提交回复表单
+$(document).on("click",".form_button",function(){   //ajax提交回复表单,这里的提交按钮要采用未来元素绑定事件法
 	var textarea_content=$($($(this).prev()).find('textarea')),
 		content=$(textarea_content).val(),
 		author=$("input[name=author]").val(),
@@ -336,7 +336,7 @@ $(".reply_form button").click(function(){   //ajax提交回复表单
 					date = new Date(result.time),
 					div_media=$('<div></div>').attr("class","media"),
 					a_media=$('<a></a>').attr({
-						"href":"/personal/name="+result.author_name,
+						"href":"/personal/?name="+result.author_name,
 						"class":"media-left"
 					}),
 					img=$('<img>').attr({
@@ -375,7 +375,7 @@ $(".reply_form button").click(function(){   //ajax提交回复表单
 					}),
 					form_button=$('<button></button>').attr({
 						"type":"button",
-						"class":"btn btn-default pull-right",
+						"class":"btn btn-default pull-right form_button",
 						"person":result.author_name,
 						"comment":comment
 					}).text("提交");
