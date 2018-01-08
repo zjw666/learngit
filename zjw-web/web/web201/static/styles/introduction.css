@@ -6,6 +6,16 @@ body{
 	min-width:500px;
 }
 
+@media (max-width:600px){
+	body{
+		background-color:#fdfcf8;
+		margin-left:0;
+		margin-right:0;
+		margin-top:1em;
+		min-width:500px;
+	}
+}
+
 #logo{
 	min-width:4em;
 	padding-left:10%;
@@ -127,6 +137,10 @@ div.navbar-header a{
 ul.navbar-nav{
 	margin-left:0;
 	margin-right:0;
+}
+
+.navbar-collapse.in{
+	border-top:1px solid white !important;
 }
 
 ul.nav-pills.nav-stacked li a{

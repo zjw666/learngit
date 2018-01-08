@@ -6,6 +6,16 @@ body{
 	min-width:500px;
 }
 
+@media (max-width:600px){
+	body{
+		background-color:#fdfcf8;
+		margin-left:0;
+		margin-right:0;
+		margin-top:1em;
+		min-width:500px;
+	}
+}
+
 #logo{
 	min-width:4em;
 	padding-left:10%;
@@ -129,6 +139,10 @@ ul.navbar-nav{
 	margin-right:0;
 }
 
+.navbar-collapse.in{
+	border-top:1px solid white !important;
+}
+
 article{
 	border:1px solid #ddd;
 	background-color:white;
@@ -160,9 +174,11 @@ span.glyphicon-map-marker{
 	background:none;
 	color:red;
 }
+
 div.marker{
-		position:absolute;
+	position:absolute;
 }
+
 #zjw{
 	top:56%;
 	left:48%;
@@ -285,13 +301,13 @@ div.marker{
 
 .source li{
 	float:left;
-	padding-right:10px;
 	padding-bottom:10px;
 }
 
 .source li img{
-	max-width:90px;
-	max-height:90px;
+	width:90px;
+	height:90px;
+	padding-right:10px;
 }
 
 .source li span{

@@ -243,14 +243,6 @@ $("input[type=file]").change(function(){	//上传头像图片预览
 					$('#pic_name').text(headimage.name);
 					if (typeof FileReader != 'undefined'){
 						var reader = new FileReader();
-						reader.onloadstart = function(){
-							$('#progress').show();
-							$("div[role=progressbar]").width(0);
-						};
-						reader.onprogress = function(e){
-							console.log(e.loaded/e.total*100+"%");
-							$("div[role=progressbar]").width(e.loaded/e.total*100+"%");
-						};
 						reader.readAsDataURL(headimage);
 						reader.onload = function(){
 							var dataURL = reader.result;

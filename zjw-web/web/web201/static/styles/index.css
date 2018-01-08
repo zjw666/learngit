@@ -6,6 +6,16 @@ body{
 	min-width:500px;
 }
 
+@media (max-width:600px){
+	body{
+		background-color:#fdfcf8;
+		margin-left:0;
+		margin-right:0;
+		margin-top:1em;
+		min-width:500px;
+	}
+}
+
 #logo{
 	min-width:4em;
 	padding-left:10%;
@@ -129,6 +139,10 @@ ul.navbar-nav{
 	margin-right:0;
 }
 
+.navbar-collapse.in{
+	border-top:1px solid white !important;
+}
+
 #Carousel b{
 	font-size:20px;
 }
@@ -137,14 +151,38 @@ ul.navbar-nav{
 	margin-bottom:1em;
 }
 
+#Carousel img{
+	width:100%;
+}
+
 ul.nav-tabs a{
 	font-size:20px;
 	font-weight:bold;
 	color:gray;
 }
 
-ul.nav-tabs li.active a{
+ul.nav-tabs{
+	width:100%;
+	border-bottom:0;
+}
+
+
+ul.nav-tabs li{
+	display: table-cell;
+	width:1%;
+	float: none;
+	text-align:center;
+	margin-bottom:-1px;
+	border-bottom:1px solid #ddd;
+}
+
+ul.nav-tabs li a{
+	margin-right:0;
+}
+
+ul.nav-tabs li.active{
 	color:black;
+	border-bottom:0;
 }
 
 ul.nav-tabs~article{
