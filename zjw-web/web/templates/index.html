@@ -21,23 +21,23 @@
 			<div class="carousel-inner">
 				<div class="item active">
 					<img src="{% static 'images/slide1.jpg' %}" alt="闪电" />
-					<div class="carousel-caption"><b>Thunderstorm</b></div>
+					<div class="carousel-caption"><b>闪电</b></div>
 				</div>
 				<div class="item">
 					<img src="{% static 'images/slide2.jpg' %}" alt="模拟课程" />
-					<div class="carousel-caption"><b>Simulation course</b></div>
+					<div class="carousel-caption"><b>模拟课程</b></div>
 				</div>
 				<div class="item">
 					<img src="{% static 'images/slide3.jpg' %}" alt="生日" />
-					<div class="carousel-caption"><b>Birthday</b></div>
+					<div class="carousel-caption"><b>生日</b></div>
 				</div>
 				<div class="item">
 					<img src="{% static 'images/slide4.jpg' %}" alt="聚餐" />
-					<div class="carousel-caption"><b>Lunch</b></div>
+					<div class="carousel-caption"><b>聚餐</b></div>
 				</div>
 				<div class="item">
 					<img src="{% static 'images/slide5.jpg' %}" alt="小明" />
-					<div class="carousel-caption"><b>Xiao Ming</b></div>
+					<div class="carousel-caption"><b>小明</b></div>
 				</div>
 			</div>
 			<!-- 轮播导航-->
@@ -53,22 +53,20 @@
 	</div>
 	<div class="col-md-7 col-sm-12 col-xs-12">
 		<ul class="nav nav-tabs ">
-			<li name="Welcome" class="active"><a href="#Welcome">Welcome</a></li>
-			<li name="Introduction"><a href="#Introduction">Introduction</a></li>
-			<li name="News" ><a href="#News">News</a></li>
+			<li name="Welcome" class="active"><a href="#Welcome">欢 迎</a></li>
+			<li name="Introduction"><a href="#Introduction">介 绍</a></li>
+			<li name="News" ><a href="#News">新 闻</a></li>
 		</ul>
 		<article id="Welcome">
-			<p><span>W</span>elcome to our office!!! We'd like to make friends with you and invite you to join our family. 
-			Let's have fun and make progress together. For more information about us, please look at the <a href="{% url 'web201:introduction' %}">Introduction</a> page.
+			<p><span>欢</span>迎来到海洋地质办公室201！这里既有钻研科学的学术大牛，又有引领时尚的颜值担当，除了人见人爱的海院主播，还有努力奋斗的编程小白。
+			如果你对我们感兴趣，请前往 <a href="{% url 'web201:introduction' %}">介绍</a> 了解更多关于海洋地质办公室201的信息.
 			</p>
 		</article>
 		<article id="Introduction">
-			<p><span>O</span>ur office is called "Marine Geology Office 201". The office is located in the Ocean Academic building, which is in opposite of
-			 the YuanZheng hotel. In this office, 11 students study and work everday, including 1 postdoctor, 5 doctors and 5 masters. They
-			 all are students of <a href="{% url 'web201:teachers' 'li'%}">Prof ChunFeng Li</a> and <a href="{% url 'web201:teachers' 'wang'%}">Prof Yingmin Wang</a>. The main research interests of us are Marine
-			  Geology, Geophysics and Sedimentary.
+			<p><span>我</span>们的办公室在美丽的浙江大学舟山校区。位于圆正酒店对面的海洋科学楼的2层。办公室共有11名中国学生，包括博士后1人，博士5人, 硕士5人，其中一部分属于
+			 <a href="{% url 'web201:teachers' 'li'%}">李春峰教授</a> 的学生，另外一部分则是<a href="{% url 'web201:teachers' 'wang'%}">王英民教授</a> 的学生。我们主要的研究方向是海洋地质和地球物理。
 			</p>
-			<a class="more" href="{% url 'web201:introduction' %}">more...</a>
+			<a class="more" href="{% url 'web201:introduction' %}">更多...</a>
 		</article>
 		<article id="News">
 			<ul>
@@ -90,7 +88,7 @@
 				</li>
 				{% endfor %}
 			</ul>
-			<a class="more" href="{% url 'web201:news' 'life' %}">more...</a>
+			<a class="more" href="{% url 'web201:news' 'life' %}">更多...</a>
 		</article>
 	</div>
 </div>

@@ -22,6 +22,7 @@ body{
 	padding-right:10%
 }
 
+
 #title{
 	padding-top:5%;
 }
@@ -181,8 +182,11 @@ ul.nav-tabs li a{
 }
 
 ul.nav-tabs li.active{
-	color:black;
 	border-bottom:0;
+}
+
+ul.nav-tabs li.active a{
+	color:black;
 }
 
 ul.nav-tabs~article{
@@ -207,6 +211,11 @@ ul.nav-tabs~article p span{
 	font-family:algerian,courier;
 	line-height:120%;
 	width:1em;
+	margin-right:10px;
+}
+
+article{
+	letter-spacing:5px;
 }
 
 #News{
