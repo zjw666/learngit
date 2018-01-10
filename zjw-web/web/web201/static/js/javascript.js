@@ -216,11 +216,11 @@ function input_add_class(){    //为用户登录的输入框添加样式
 	$("#id_password").attr({"placeholder":"请输入密码",
 							"oninvalid":"setCustomValidity('请输入密码');",
 							"oninput":"setCustomValidity('');"})
-	$("form.user_form #id_username").attr({"placeholder":"请输入用户名",
-							"oninvalid":"setCustomValidity('请输入用户名');",
+	$("form.user_form #id_username").attr({"placeholder":"请输入用户名或邮箱",
+							"oninvalid":"setCustomValidity('请输入用户名或邮箱');",
 							"oninput":"setCustomValidity('');"})
-	$("form.user_form #id_email").attr({"placeholder":"请输入邮箱",
-							"oninvalid":"setCustomValidity('请输入邮箱');",
+	$("form.user_form #id_email").attr({"placeholder":"请输入邮箱地址",
+							"oninvalid":"setCustomValidity('请输入正确的邮箱地址');",
 							"oninput":"setCustomValidity('');"})
 	$("#id_captcha_1").attr({"placeholder":"请输入验证码",
 							"class":"form-control",

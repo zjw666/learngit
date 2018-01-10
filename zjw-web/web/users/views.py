@@ -12,20 +12,26 @@ def register(request):  #注册
 	name = request.POST.get('username')
 	hashkey = CaptchaStore.generate_key()   #生成验证码秘钥
 	image_url = captcha_image_url(hashkey)  #生成验证码图片
+	email_already_exist = False
 	if request.method == 'POST':
 		form = RegisterForm(request.POST)
-		if form.is_valid():
-			human = True
-			form.save()
-			user = get_object_or_404(User,username=name)
-			auth_login(request,user) #注册成功后立即登录
-			if redirect_to:
-				return redirect(redirect_to)   #跳转至注册前页面
-			else:
-				return redirect('/')
+		email_address = request.POST.get('email','')
+		try:                                           #验证邮箱是否已经存在
+			get_object_or_404(User,email=email_address)
+			email_already_exist = True
+		except:
+			if form.is_valid():
+				human = True
+				form.save()
+				user = get_object_or_404(User,username=name)
+				auth_login(request,user) #注册成功后立即登录
+				if redirect_to:
+					return redirect(redirect_to)   #跳转至注册前页面
+				else:
+					return redirect('/')
 	else:
 		form = RegisterForm()
-	return render(request,'register.html',context={'form':form,'next':redirect_to,'hashkey':hashkey,'image_url':image_url})
+	return render(request,'register.html',context={'form':form,'next':redirect_to,'hashkey':hashkey,'image_url':image_url,'email_already_exist':email_already_exist})
 
 def login_user(request):  #登录
 	redirect_to = request.POST.get('next', request.GET.get('next', ''))
@@ -77,8 +83,3 @@ def ajax_captcha(request):  #验证码输入验证
 		else:
 			data={'status':0}
 		return JsonResponse(data)
-		
-	
-	
-
-			
