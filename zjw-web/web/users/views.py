@@ -5,7 +5,7 @@ from .models import User
 from captcha.models import CaptchaStore
 from captcha.helpers import captcha_image_url
 from django.http import JsonResponse
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login,authenticate
 
 def register(request):  #注册
 	redirect_to = request.POST.get('next', request.GET.get('next', ''))
@@ -22,9 +22,8 @@ def register(request):  #注册
 		except:
 			if form.is_valid():
 				human = True
-				form.save()
-				user = get_object_or_404(User,username=name)
-				auth_login(request,user) #注册成功后立即登录
+				user = form.save()
+				auth_login(request,user,backend='django.contrib.auth.backends.ModelBackend') #注册成功后立即登录
 				if redirect_to:
 					return redirect(redirect_to)   #跳转至注册前页面
 				else:

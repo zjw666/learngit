@@ -37,10 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	'django.contrib.sites',
 	'web201',
 	'comments',
 	'users',
 	'captcha',
+	'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+	'allauth.socialaccount.providers.github',
+	'allauth.socialaccount.providers.weixin',
+	'allauth.socialaccount.providers.weibo',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+				 'django.template.context_processors.request',
             ],
         },
     },
@@ -108,6 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = (
 	'django.contrib.auth.backends.ModelBackend',
 	'users.backends.EmailBackend',
+	'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 
