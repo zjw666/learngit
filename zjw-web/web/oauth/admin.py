@@ -1,3 +1,4 @@
 from django.contrib import admin
+from .models import OAuth_ex
 
-# Register your models here.
+admin.site.register(OAuth_ex)

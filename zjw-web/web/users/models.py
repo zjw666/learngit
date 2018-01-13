@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.conf import settings
+from django.core.files import File 
+
+import urllib
 
 SEX = (
 	('1','boy'),
@@ -14,3 +18,7 @@ class User(AbstractUser):       #自定义用户模型
 	hobby = models.TextField(max_length=200,blank=True,default="无")
 	class Meta(AbstractUser.Meta):
 		pass
+	
+	def download_image(self,image_url,name):    #1
+		result = urllib.request.urlretrieve(image_url)
+		self.pic.save('%s.jpg' % name,File(open(result[0],'rb')))

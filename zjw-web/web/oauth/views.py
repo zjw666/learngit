@@ -6,23 +6,21 @@ from .models import OAuth_ex
 from django.contrib.auth import login as auth_login
 from users.models import User
 
-import time,uuid,os
+import time,uuid
 	
 def git_login(request):
-	oauth_git = OAuth_GITHUB(settings.GITHUB_APP_ID,GITHUB_KEY,GITHUB_CALLBACK_URL)
+	oauth_git = OAuth_GITHUB(settings.GITHUB_APP_ID,settings.GITHUB_KEY,settings.GITHUB_CALLBACK_URL)
 	url = oauth_git.get_auth_url()
 	return HttpResponseRedirect(url)
 
 def git_check(request):
 	request_code = request.GET.get('code')
-	oauth_git = OAuth_GITHUB(settings.GITHUB_APP_ID,GITHUB_KEY,GITHUB_CALLBACK_URL)
-	try:
-		access_token = oauth_git.get_access_token(request_code)
-		time.sleep(0.1)
-	except:
-		print("登录错误")
+	oauth_git = OAuth_GITHUB(settings.GITHUB_APP_ID,settings.GITHUB_KEY,settings.GITHUB_CALLBACK_URL)
+	access_token = oauth_git.get_access_token(request_code)
+	time.sleep(0.1)
 	infos = oauth_git.get_user_info()
 	nickname = infos.get('login','')
+	image_url = infos.get('avatar_url','')
 	open_id = str(oauth_git.openid)
 	githubs = OAuth_ex.objects.filter(openid=open_id,type=1)
 	if githubs:
@@ -38,14 +36,17 @@ def git_check(request):
 	if users:
 		user = users[0]
 	else:
+		while User.objects.filter(username=nickname):
+			nickname = 'github_'+nickname
 		user = User(username=nickname,email=email,sex='1')
 		pwd = str(uuid.uuid1())
 		user.set_password(pwd)
 		user.is_active = True
+		user.download_image(image_url,nickname)
 		user.save()
 	oauth_ex = OAuth_ex(user = user,openid = open_id,type=1)
 	oauth_ex.save()
-	auth_login(request,githubs[0].user,backend='django.contrib.auth.backends.ModelBackend')
+	auth_login(request,user,backend='django.contrib.auth.backends.ModelBackend')
 	print("登录并绑定成功")
 	return HttpResponseRedirect('/')
 	
