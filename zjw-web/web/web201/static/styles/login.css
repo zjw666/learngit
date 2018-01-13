@@ -83,6 +83,16 @@ button:hover{
 	background-color:red !important;
 }
 
+#oauth_button{
+	height:15px;
+}
+
+
+#oauth_button img{
+	width:20px;
+	height:20px;
+}
+
 footer ul{
 	list-style-type:none;
 }

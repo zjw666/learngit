@@ -25,7 +25,7 @@ urlpatterns = [
 	url(r'',include('users.urls')),
 	url(r'',include('django.contrib.auth.urls')),
 	url(r'^captcha/',include('captcha.urls')),
-	url(r'^accounts/', include('allauth.urls')),
+	url(r'^oauth/',include('oauth.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -37,17 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'django.contrib.sites',
 	'web201',
 	'comments',
 	'users',
 	'captcha',
-	'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-	'allauth.socialaccount.providers.github',
-	'allauth.socialaccount.providers.weixin',
-	'allauth.socialaccount.providers.weibo',
+	'oauth',
 ]
 
 MIDDLEWARE = [
@@ -73,7 +67,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-				 'django.template.context_processors.request',
             ],
         },
     },
@@ -116,7 +109,6 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = (
 	'django.contrib.auth.backends.ModelBackend',
 	'users.backends.EmailBackend',
-	'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 
@@ -151,8 +143,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 MEDIA_URL = '/media/'
 
+
+#Captcha
+
 CAPTCHA_IMAGE_SIZE = (100,30)
 
 CAPTCHA_FOREGROUND_COLOR = 'red'
 
 CAPTCHA_OUTPUT_FORMAT = u'%(text_field)s %(image)s %(hidden_field)s'
+
+
+#Oauth
+
+GITHUB_APP_ID = 'e3ae38784d613837fa93'
+
+GITHUB_KEY = '64a26a79c12534bdbd2e84f2d517dd666c0b2ea8'
+
+GITHUB_CALLBACK_URL = 'http://127.0.0.1:8000/oauth/github_check'
+
+
