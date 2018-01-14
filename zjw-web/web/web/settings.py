@@ -137,12 +137,26 @@ LOGOUT_REDIRECT_URL = '/'
 
 LOGIN_REDIRECT_URL = '/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 MEDIA_URL = '/media/'
 
+
+#Email
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = False
+
+EMAIL_HOST = 'smtpdm.aliyun.com'
+
+EMAIL_PORT = 25
+
+EMAIL_HOST_USER = 'zjw@mail.zjw666.top'
+
+EMAIL_HOST_PASSWORD = 'zjw063616ZJW'
+
+DEFAULT_FROM_EMAIL = 'Marine Geology Office 201 <zjw@mail.zjw666.top>'
 
 #Captcha
 

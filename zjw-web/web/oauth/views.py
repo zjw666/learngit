@@ -77,7 +77,6 @@ def bind_email(request):
 	image_url = request.GET.get('image_url',request.POST.get('image_url',''))
 	if request.method == 'POST':
 		form = BindEmail(request.POST)
-		print("这里")
 		if form.is_valid():
 			openid = form.cleaned_data['openid']
 			nickname = form.cleaned_data['nickname']
