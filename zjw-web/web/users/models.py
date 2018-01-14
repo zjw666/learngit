@@ -21,4 +21,4 @@ class User(AbstractUser):       #自定义用户模型
 	
 	def download_image(self,image_url,name):    #1
 		result = urllib.request.urlretrieve(image_url)
-		self.pic.save('%s.jpg' % name,File(open(result[0],'rb')))
+		self.pic.save(name,File(open(result[0],'rb')))

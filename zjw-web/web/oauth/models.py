@@ -3,9 +3,9 @@ from users.models import User
 
 
 type=(
-	(1,'github'),
-	(2,'qq'),
-	(3,'weibo')
+	('1','github'),
+	('2','qq'),
+	('3','weibo')
 )
 class OAuth_ex(models.Model):
 	user = models.ForeignKey(User)

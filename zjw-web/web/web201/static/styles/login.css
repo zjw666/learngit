@@ -87,8 +87,11 @@ button:hover{
 	height:15px;
 }
 
+.right{
+	height:30px;
+}
 
-#oauth_button img{
+.type{
 	width:20px;
 	height:20px;
 }

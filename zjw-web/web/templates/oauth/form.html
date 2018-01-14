@@ -25,36 +25,32 @@
 				</div>
 				<div class="col-md-5 col-sm-6 col-xs-12">
 					<div class="well">
-						<h2>登录</h2>
-						<form role="form" action="{% url 'login' %}" method="post" class="user_form">
+						<h2>绑定账号</h2>
+						<p>欢迎您登录：
+						{% if type == '1' %}
+							<img class="type" src="{% static 'images/github.png' %}" alt="GITHUB" />
+						{% elif type == '2' %}
+							<img class="type" src="{% static 'images/tx.png' %}" alt="QQ" />
+						{% elif type == '3' %}
+							<img class="type" src="{% static 'images/weibo.png' %}" alt="WEIBO" />
+						{% endif %}
+						<b>{{nickname}}</b>，请您绑定本站账号</p>
+						<form role="form" action="{% url 'oauth:bind_email' %}" method="post">
 							{% csrf_token %}
-							<div class="form-group">
-								<label for="{{ form.username.id_for_label }}">用户名</label>
-								{{form.username}}
-								{{form.username.errors}}
-							</div>
-							<div class="form-group">
-								<label for="{{ form.password.id_for_label }}">密码</label>
-								{{form.password}}
-								{{form.password.errors}}
-								{{ form.non_field_errors }}
-							</div>
-							<div class="form-group">
-								{{form.captcha}}
-								{{form.captcha.errors}}
-							</div>
-							<button id="register" type="submit" class="btn btn-default">登录</button>
-							<input type="hidden" name="next" value="{{next}}">
-							<div id="register_button" class="pull-right">
-								<span>没有账号？</span><a href="{% url 'users:register' %}">立即注册</a><span> | </span><a href="{% url 'password_reset' %}">忘记密码？</a>
-							</div>
-							<div id="oauth_button">
-								<div class="pull-right">
-									<span>其他账号登录：</span>
-									<a href="{% url 'oauth:github_login' %}"><img class="type" src="{% static 'images/github.png' %}" alt="GITHUB" /></a>&nbsp;
-									<a href="#"><img class="type" src="{% static 'images/tx.png' %}" alt="QQ" /></a>&nbsp;
-									<a href="#"><img class="type" src="{% static 'images/weibo.png' %}" alt="WEIBO" /></a>
+							{% for field in form %}
+								{% if field.is_hidden %}
+									{{field}}
+								{% else %}
+								<div class="form-group">
+									{{ field.label_tag }}
+									{{ field }}
+									{{ field.errors }}
 								</div>
+								{% endif %}
+							{% endfor %}
+							{{ form.non_field_errors }}
+							<div class="right">
+								<button id="register" type="submit" class="btn btn-default pull-right">绑定</button>
 							</div>
 						</form>
 					</div>
