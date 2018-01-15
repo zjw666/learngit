@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render,redirect,get_object_or_404
 from .forms import RegisterForm,ChangeForm,LoginForm
-from .models import User
+from .models import User,EmailVerify
 from captcha.models import CaptchaStore
 from captcha.helpers import captcha_image_url
 from django.http import JsonResponse
 from django.contrib.auth import login as auth_login,authenticate
+from django.core.mail import send_mail
+from django.conf import settings
+
+import uuid
 
 def register(request):  #注册
 	redirect_to = request.POST.get('next', request.GET.get('next', ''))
@@ -82,3 +86,28 @@ def ajax_captcha(request):  #验证码输入验证
 		else:
 			data={'status':0}
 		return JsonResponse(data)
+		
+def active(request):
+	if request.user.is_authenticated():
+		email_record = EmailVerify.objects.filter(user=request.user)
+		print("这里")
+		if not email_record:
+			email_record = EmailVerify(code=str(uuid.uuid1()),user=request.user)
+			email_record.save()
+			email_title = '账号邮箱激活'
+			email_message = '''尊敬的用户:
+			
+							    欢迎您访问海洋地质办公室201网站.
+								
+							    请点击链接激活账号邮箱：http://127.0.0.1:8000/active_check/%s
+								
+							    海洋地质办公室201网站管理员ZJW''' % email_record.code
+			send_result = send_mail(email_title,email_message,settings.DEFAULT_FROM_EMAIL,[request.user.email],fail_silently=False)
+			if send_result:
+				print("发送成功")
+			else:
+				print("发送失败")
+	return redirect('/')
+				
+			
+		

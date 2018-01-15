@@ -186,6 +186,13 @@ div.circle a{
 	padding-right:30px;
 }
 
+#email_active{
+	display:inline-block;
+	margin-left:3%;
+	position:relative;
+	top:-5px;
+}
+
 footer ul{
 	list-style-type:none;
 }

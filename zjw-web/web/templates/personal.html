@@ -14,13 +14,20 @@
 		<div class="claearfix visible-xs"></div>
 		<div id="information" class="col-md-9 col-sm-9 col-xs-8">
 			<h3 id="user_name">{{user1.username}}</h3>
-			{% if user.is_authenticated and user.username == user1.username %}
-				<div class="circle pull-right"><a href="{% url 'users:change' %}" title="修改个人资料"><span class="glyphicon glyphicon-edit"></span></a></div>
-			{% endif %}
 			{% if user1.sex == '1' %}
 				<img class="sex" src="{% static 'images/man.png' %}" alt="男" />
 			{% else %}
 				<img class="sex" src="{% static 'images/woman.png' %}" alt="女" />
+			{% endif %}
+			{% if user.is_authenticated and user.username == user1.username %}
+				<div class="circle pull-right">
+					<a href="{% url 'users:change' %}" title="修改个人资料">
+						<span class="glyphicon glyphicon-edit"></span>
+					</a>
+				</div>
+				<div id="email_active">
+					<button class="btn btn-default btn-sm">激活邮箱&nbsp;<span class="glyphicon glyphicon-envelope"></span></button>&nbsp;<span id="active_text">邮箱未激活</span>
+				</div>
 			{% endif %}
 			<p>{{user1.signature}}</p>
 			<hr/>

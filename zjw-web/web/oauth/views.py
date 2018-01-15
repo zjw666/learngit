@@ -41,7 +41,6 @@ def git_check(request):
 		return HttpResponseRedirect('/')
 	else:
 		try:
-			print(abc)
 			email = oauth_git.get_email()
 		except:
 			url = "%s?nickname=%s&openid=%s&type=%s&signature=%s&image_url=%s" % (reverse('oauth:bind_email'),nickname,open_id,type,signature,image_url)

@@ -391,4 +391,22 @@ $(document).on("click",".form_button",function(){   //ajax提交回复表单,这
 	});
 });
 
+$("#email_active button").click(function(){
+	window.open('/active/','_blank');
+	$(this).addClass("disabled");
+	$(this).attr("disabled","disabled");
+	span_text = $("#active_text"); 
+	var time = 60;
+	var Interval = window.setInterval(function(){
+		$(span_text).text(time);
+		time -= 1;
+		if (time < 0 ){
+			clearInterval(Interval);
+			$("#email_active button").removeClass("disabled");
+			$("#email_active button").attr("disabled",false);
+			$(span_text).text("再次发送邮件");
+		}
+	},1000);
+});
+
 

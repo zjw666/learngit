@@ -22,3 +22,13 @@ class User(AbstractUser):       #自定义用户模型
 	def download_image(self,image_url,name):    #1
 		result = urllib.request.urlretrieve(image_url)
 		self.pic.save(name,File(open(result[0],'rb')))
+		
+
+class EmailVerify(models.Model):
+	code = models.CharField(max_length=50)
+	user = models.OneToOneField(User,on_delete=models.CASCADE)
+	send_time = models.DateTimeField(auto_now_add=True)
+	actived = models.BooleanField(default = False)
+	
+	def __unicode__(self):
+		return (self.user.email,self.actived)
