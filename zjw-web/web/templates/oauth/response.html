@@ -21,9 +21,11 @@
 			<p class="text-center">
               {{message|safe}}
             </p>
+			{% if goto_page %}
 			<p class="text-center">
 				本页面在 <b><span id="time_left"></span></b> 秒后自动跳转，若未跳转，请点击<a href="{{goto_url}}">此处</a>
             </p>
+			{% endif %}
 		</div>
 		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

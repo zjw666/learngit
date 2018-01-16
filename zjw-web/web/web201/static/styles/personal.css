@@ -155,6 +155,7 @@ img.sex{
 	height:15px;
 	margin-top:-10px;
 	margin-left:5px;
+	margin-right:10px;
 }
 
 span.glyphicon-edit{
@@ -188,9 +189,21 @@ div.circle a{
 
 #email_active{
 	display:inline-block;
-	margin-left:3%;
 	position:relative;
 	top:-5px;
+}
+
+.help_text{
+	padding-top:17px;
+	padding-right:5px;
+}
+
+.actived{
+	color:green;
+}
+
+.unactived{
+	color:red;
 }
 
 footer ul{

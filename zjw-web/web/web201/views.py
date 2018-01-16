@@ -28,7 +28,7 @@ def students(request):  #学生页
 	return render(request,'students.html')
 
 def news(request,type):   #新闻页
-	articles = Article.objects.all().filter(category__name = type).order_by('-time')
+	articles = Article.objects.filter(category__name = type).order_by('-time')
 	p = Paginator(articles,10)   #分页，10篇文章一页
 	if p.num_pages <= 1:
 		article_list = articles
@@ -85,7 +85,7 @@ def news(request,type):   #新闻页
 def detail(request,type,pk):   #文章内容页
 	post=get_object_or_404(Article,pk=pk)
 	post.increase_views()
-	article_list=Article.objects.all().filter(category__name = type).order_by('-time')
+	article_list=Article.objects.filter(category__name = type).order_by('-time')
 	index_list=[]
 	for i in range(len(article_list)):
 			index_list.append(article_list[i].pk)

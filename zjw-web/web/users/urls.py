@@ -10,4 +10,5 @@ urlpatterns = [
 	url(r'^ajax_captcha/',views.ajax_captcha,name='ajax_captcha'),
 	url(r'^login/',views.login_user,name='login'),
 	url(r'^active/',views.active,name='active'),
+	url(r'^active_check/(?P<code>[a-zA-Z0-9-]*)/$',views.active_check,name='active_check'),
 ]

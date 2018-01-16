@@ -1,9 +1,6 @@
 $(function(){
-	$('ul.nav-tabs~article').hide();    //隐藏全部标签内容
-	$('#Welcome').show();               //使标签首页内容显示
-	$("[data-toggle='tooltip']").tooltip();  //激活提示工具
-	$("ul.nav-pills.nav-stacked.affix").width($("#scroll").width());  //使affix导航栏宽度动态变化
-	$('#img-container button').hide();  //隐藏头像中的访问主页按钮
+	tabs_init();
+	init();
 	button_change();          //初始化头像按钮大小
 	$data=$("#list").clone();  //克隆头像列表，为头像分类动画做准备
 	person_object = {
@@ -25,6 +22,17 @@ $(function(){
 	input_add_class();        //为用户登录的输入框添加样式
 	pic_width_height();       //控制用户头像长宽比
 });
+
+function init(){   //杂项初始化
+	$("[data-toggle='tooltip']").tooltip();  //激活提示工具
+	$("ul.nav-pills.nav-stacked.affix").width($("#scroll").width());  //使affix导航栏宽度动态变化
+	$('#img-container button').hide();  //隐藏头像中的访问主页按钮
+}
+
+function tabs_init(){   //首页标签初始化
+	$('ul.nav-tabs~article').hide();    //隐藏全部标签内容
+	$('#Welcome').show();               //使标签首页内容显示
+}
 
 $('ul.nav-tabs li').click(function(){            //标签页之间内容转换
 	$('ul.nav-tabs li').removeClass("active");
@@ -227,6 +235,9 @@ function input_add_class(){    //为用户登录的输入框添加样式
 							"required":"required",
 							"oninvalid":"setCustomValidity('请输入验证码');",
 							"oninput":"setCustomValidity('');"})
+	$("#id_new_password1,#id_new_password2").attr({"placeholder":"请输入重置的密码",
+							"oninvalid":"setCustomValidity('请输入重置的密码');",
+							"oninput":"setCustomValidity('');"})
 }
 
 function pic_width_height(){  //控制用户头像长宽比
@@ -391,18 +402,17 @@ $(document).on("click",".form_button",function(){   //ajax提交回复表单,这
 	});
 });
 
-$("#email_active button").click(function(){
+$("#email_active button").click(function(){  //邮箱激活按钮
 	window.open('/active/','_blank');
-	$(this).addClass("disabled");
 	$(this).attr("disabled","disabled");
 	span_text = $("#active_text"); 
+	$(span_text).removeClass("unactived");
 	var time = 60;
 	var Interval = window.setInterval(function(){
 		$(span_text).text(time);
 		time -= 1;
 		if (time < 0 ){
 			clearInterval(Interval);
-			$("#email_active button").removeClass("disabled");
 			$("#email_active button").attr("disabled",false);
 			$(span_text).text("再次发送邮件");
 		}

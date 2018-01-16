@@ -19,15 +19,22 @@
 			{% else %}
 				<img class="sex" src="{% static 'images/woman.png' %}" alt="女" />
 			{% endif %}
-			{% if user.is_authenticated and user.username == user1.username %}
+			{% if user.is_authenticated and user.username == user1.username %}		
 				<div class="circle pull-right">
 					<a href="{% url 'users:change' %}" title="修改个人资料">
 						<span class="glyphicon glyphicon-edit"></span>
 					</a>
 				</div>
-				<div id="email_active">
-					<button class="btn btn-default btn-sm">激活邮箱&nbsp;<span class="glyphicon glyphicon-envelope"></span></button>&nbsp;<span id="active_text">邮箱未激活</span>
-				</div>
+				<span class="pull-right help_text">修改个人资料</span>
+				{% if user.emailverify.actived %}
+					<div id="email_active">
+						<button type="button" class="btn btn-default btn-sm" disabled="disabled">激活邮箱&nbsp;<span class="glyphicon glyphicon-envelope"></span></button>&nbsp;<span id="active_text" class="actived">邮箱已激活</span>
+					</div>
+				{% else %}
+					<div id="email_active">
+						<button type="button" class="btn btn-default btn-sm">激活邮箱&nbsp;<span class="glyphicon glyphicon-envelope"></span></button>&nbsp;<span id="active_text" class="unactived">邮箱未激活</span>
+					</div>
+				{% endif %}
 			{% endif %}
 			<p>{{user1.signature}}</p>
 			<hr/>

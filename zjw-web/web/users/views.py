@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,redirect,get_object_or_404,render_to_response
 from .forms import RegisterForm,ChangeForm,LoginForm
 from .models import User,EmailVerify
 from captcha.models import CaptchaStore
@@ -9,7 +9,7 @@ from django.contrib.auth import login as auth_login,authenticate
 from django.core.mail import send_mail
 from django.conf import settings
 
-import uuid
+import uuid,datetime
 
 def register(request):  #注册
 	redirect_to = request.POST.get('next', request.GET.get('next', ''))
@@ -89,25 +89,95 @@ def ajax_captcha(request):  #验证码输入验证
 		
 def active(request):
 	if request.user.is_authenticated():
-		email_record = EmailVerify.objects.filter(user=request.user)
-		print("这里")
-		if not email_record:
+		email_records = EmailVerify.objects.filter(user=request.user)
+		if not email_records:
 			email_record = EmailVerify(code=str(uuid.uuid1()),user=request.user)
 			email_record.save()
 			email_title = '账号邮箱激活'
-			email_message = '''尊敬的用户:
-			
-							    欢迎您访问海洋地质办公室201网站.
-								
-							    请点击链接激活账号邮箱：http://127.0.0.1:8000/active_check/%s
-								
-							    海洋地质办公室201网站管理员ZJW''' % email_record.code
+			email_message = '''尊敬的%s用户:
+				
+									欢迎您访问海洋地质办公室201网站。
+									
+									请点击链接激活账号邮箱：http://127.0.0.1:8000/active_check/%s
+									
+								    如果不是您本人的操作，请忽略该邮件。
+									
+									海洋地质办公室201网站管理员ZJW''' % (request.user.username,email_record.code)
 			send_result = send_mail(email_title,email_message,settings.DEFAULT_FROM_EMAIL,[request.user.email],fail_silently=False)
-			if send_result:
-				print("发送成功")
+		else:
+			email_record = email_records[0]
+			if email_record.actived:
+				data={}
+				data['goto_url'] = '/'
+				data['goto_time'] = 10000
+				data['goto_page'] = True
+				data['message_title'] = '邮箱激活失败'
+				data['message'] = u'该邮箱已经被激活了，无法重复激活！'
+				return render_to_response('oauth/response.html',data)
 			else:
-				print("发送失败")
+				email_record.code = str(uuid.uuid1())
+				email_record.save()
+				email_title = '账号邮箱激活'
+				email_message = '''尊敬的%s用户:
+				
+									    欢迎您访问海洋地质办公室201网站.
+									
+									    请点击链接激活账号邮箱：http://127.0.0.1:8000/active_check/%s
+										
+									    如果不是您本人的操作，请忽略该邮件。
+									
+									    海洋地质办公室201网站管理员ZJW''' % (request.user.username,email_record.code)
+				send_result = send_mail(email_title,email_message,settings.DEFAULT_FROM_EMAIL,[request.user.email],fail_silently=False)
+		if send_result:
+			data={}
+			data['goto_url'] = '/'
+			data['goto_time'] = 10000
+			data['goto_page'] = False
+			data['message_title'] = '发送邮件成功'
+			data['message'] = u'一封带有激活链接的邮件已成功发送至你的邮箱中，请前往查看邮件，并点击激活链接进行账户邮箱激活。<br/> 如果你没有收到邮件, 请确保您所输入的邮箱地址是正确的, 并检查您的垃圾邮件文件夹。<br/><b>注意激活链接的有效期为3天，请及时激活</b>'
+			return render_to_response('oauth/response.html',data)
+		else:
+			data={}
+			data['goto_url'] = '/'
+			data['goto_time'] = 10000
+			data['goto_page'] = False
+			data['message_title'] = '发送邮件失败'
+			data['message'] = u'请确认你账户的邮箱地址输入正确，并检查邮箱是否已满。若问题无法解决，请联系网站管理员。'
+			return render_to_response('oauth/response.html',data)
 	return redirect('/')
+	
+def active_check(request,code):
+	email_records = EmailVerify.objects.filter(code=code)
+	if email_records:
+		email_record = email_records[0]
+		if email_record.actived:
+			data={}
+			data['goto_url'] = '/'
+			data['goto_time'] = 10000
+			data['goto_page'] = False
+			data['message_title'] = '邮箱激活失败'
+			data['message'] = u'该邮箱已经被激活了，无法重复激活！'
+			return render_to_response('oauth/response.html',data)
+		else:
+			send_time = email_record.send_time
+			diff = send_time - datetime.date.today()
+			if diff.days <= 3:
+				email_record.actived = True
+				email_record.save()
+				data={}
+				data['goto_url'] = '/'
+				data['goto_time'] = 10000
+				data['goto_page'] = False
+				data['message_title'] = '邮箱激活成功'
+				data['message'] = u'您的账户邮箱已经成功激活，当您忘记密码时，可使用该邮箱找回。'
+				return render_to_response('oauth/response.html',data)
+	data={}
+	data['goto_url'] = '/'
+	data['goto_time'] = 10000
+	data['goto_page'] = True
+	data['message_title'] = '邮箱激活失败'
+	data['message'] = u'该激活链接有效期已过，请重新发送激活邮件完成邮箱激活'
+	return render_to_response('oauth/response.html',data)
 				
 			
 		

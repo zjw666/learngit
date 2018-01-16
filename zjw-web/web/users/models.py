@@ -27,8 +27,8 @@ class User(AbstractUser):       #自定义用户模型
 class EmailVerify(models.Model):
 	code = models.CharField(max_length=50)
 	user = models.OneToOneField(User,on_delete=models.CASCADE)
-	send_time = models.DateTimeField(auto_now_add=True)
-	actived = models.BooleanField(default = False)
+	send_time = models.DateField(auto_now=True)
+	actived = models.BooleanField(default=False)
 	
 	def __unicode__(self):
 		return (self.user.email,self.actived)
