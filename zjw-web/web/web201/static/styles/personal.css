@@ -193,6 +193,10 @@ div.circle a{
 	top:-5px;
 }
 
+.email{
+	display:inline-block;
+}
+
 .help_text{
 	padding-top:17px;
 	padding-right:5px;

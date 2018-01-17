@@ -175,4 +175,14 @@ GITHUB_KEY = '64a26a79c12534bdbd2e84f2d517dd666c0b2ea8'
 
 GITHUB_CALLBACK_URL = 'http://127.0.0.1:8000/oauth/github_check'
 
+QQ_APP_ID = ''
 
+QQ_KEY = ''
+
+QQ_CALLBACK_URL = 'http://127.0.0.1:8000/oauth/qq_check'
+
+WEIBO_APP_ID = '1295041918'
+
+WEIBO_KEY = '368f7e717f6d4ce8eddd8a59f248f0f9'
+
+WEIBO_CALLBACK_URL = 'http://127.0.0.1:8000/oauth/weibo_check'

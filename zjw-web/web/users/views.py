@@ -154,7 +154,7 @@ def active_check(request,code):
 			data={}
 			data['goto_url'] = '/'
 			data['goto_time'] = 10000
-			data['goto_page'] = False
+			data['goto_page'] = True
 			data['message_title'] = '邮箱激活失败'
 			data['message'] = u'该邮箱已经被激活了，无法重复激活！'
 			return render_to_response('oauth/response.html',data)

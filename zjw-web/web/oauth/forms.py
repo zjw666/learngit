@@ -6,8 +6,9 @@ from .models import OAuth_ex
 
 
 class BindEmail(forms.Form):
-	image_url = forms.CharField(widget=forms.HiddenInput(attrs={'id':'image_url'}))
-	signature = forms.CharField(widget=forms.HiddenInput(attrs={'id':'signature'}))
+	sex = forms.CharField(widget=forms.HiddenInput(attrs={'id':'sex'}))
+	image_url = forms.CharField(widget=forms.HiddenInput(attrs={'id':'image_url'}),required=False)
+	signature = forms.CharField(widget=forms.HiddenInput(attrs={'id':'signature'}),required=False)
 	type = forms.CharField(widget=forms.HiddenInput(attrs={'id':'type'}))
 	openid = forms.CharField(widget=forms.HiddenInput(attrs={'id':'openid'}))
 	nickname = forms.CharField(widget=forms.HiddenInput(attrs={'id':'nickname'}))

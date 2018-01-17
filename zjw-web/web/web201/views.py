@@ -84,13 +84,16 @@ def news(request,type):   #新闻页
 
 def detail(request,type,pk):   #文章内容页
 	post=get_object_or_404(Article,pk=pk)
-	post.increase_views()
+	post.increase_views(request)
 	article_list=Article.objects.filter(category__name = type).order_by('-time')
 	index_list=[]
 	for i in range(len(article_list)):
-			index_list.append(article_list[i].pk)
+		index_list.append(article_list[i].pk)
 	index = index_list.index(int(pk))
-	if index <= 0:
+	if len(index_list) == 1:
+		pre=-1
+		next=-1
+	elif index <= 0:
 		pre=-1
 		next = index_list[index+1]
 	elif index >= len(index_list)-1:
@@ -107,7 +110,9 @@ def detail(request,type,pk):   #文章内容页
 		next_title='这是最后一篇新闻了'
 	else:
 		next_title=Article.objects.get(id__exact=next).title
-	return render(request,'content.html',context={'post':post,'pre':pre,'next':next,'pre_title':pre_title,'next_title':next_title})
+	response = render(request,'content.html',context={'post':post,'pre':pre,'next':next,'pre_title':pre_title,'next_title':next_title})
+	response.set_cookie("article_%s_readed" % post.id,"True",300)
+	return response
 
 def search(request):   #搜索页
 	q = request.GET.get('q')

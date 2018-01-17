@@ -20,7 +20,10 @@ class Article(models.Model):    #文章
 	def get_absolute_url(self):   #获取文章的url
 		return reverse('web201:detail',kwargs={'type':self.category.name,'pk':self.pk})
 		
-	def increase_views(self):  #点赞
-		self.views += 1
-		self.save(update_fields=['views'])
+	def increase_views(self,request):  #点赞
+		try:
+			request.COOKIES["article_%s_readed" % self.id]
+		except:
+			self.views += 1
+			self.save(update_fields=['views'])
 

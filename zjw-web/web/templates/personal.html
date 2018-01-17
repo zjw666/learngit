@@ -35,6 +35,8 @@
 						<button type="button" class="btn btn-default btn-sm">激活邮箱&nbsp;<span class="glyphicon glyphicon-envelope"></span></button>&nbsp;<span id="active_text" class="unactived">邮箱未激活</span>
 					</div>
 				{% endif %}
+				<br/>
+				<p class="badge email">邮箱：{{request.user.email}}</p>
 			{% endif %}
 			<p>{{user1.signature}}</p>
 			<hr/>

@@ -43,7 +43,7 @@
 					<div class="col-sm-4 col-xs-12">
 						<form role="form" id="search" method="get" action="{% url 'web201:search' %}">
 							<div class="input-group">
-								<input type="search" class="form-control" placeholder="搜索..." required name="q" oninvalid="setCustomValidity('请输入搜素的内容');" title="请输入搜索的内容"/>
+								<input type="search" class="form-control" placeholder="搜索..." required name="q" oninvalid="setCustomValidity('请输入搜素的内容');" title="请输入搜索的内容" oninput="setCustomValidity('');" />
 								<span class="input-group-btn">
 									<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 								</span>
