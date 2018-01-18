@@ -38,7 +38,11 @@
 				<br/>
 				<p class="badge email">邮箱：{{request.user.email}}</p>
 			{% endif %}
-			<p>{{user1.signature}}</p>
+			{% if user1.signature %}
+				<p>{{user1.signature}}</p>
+			{% else %}
+				<p>无个性签名</p>
+			{% endif %}
 			<hr/>
 			<p>爱好：{{user1.hobby}}</p>
 		</div>

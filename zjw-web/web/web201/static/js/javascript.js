@@ -1,6 +1,6 @@
 $(function(){
-	tabs_init();
-	init();
+	tabs_init();            //首页标签初始化
+	init();                  //杂项初始化
 	button_change();          //初始化头像按钮大小
 	$data=$("#list").clone();  //克隆头像列表，为头像分类动画做准备
 	person_object = {
@@ -309,7 +309,28 @@ $("#contact_form textarea,.reply_form textarea").focus(function(){  //提示用�
 	}
 });
 
-$("#modal-login").click(function(){   //为模态框登录按钮绑定事件
+
+$("#email_actived_button").click(function(){   //为邮箱激活模态框登录按钮绑定事件
+	window.open("/active/",'_blank');
+	$("#email_modal .close").click();
+});
+
+$("#id_important").change(function(){    //提示用户启用邮箱服务前需激活邮箱ajax
+	if (this.checked){
+		var author = $("input[name=author]").val();
+		if (author != "None"){
+			var json_data = {'author':author};
+			$.getJSON("/email_actived_check/",json_data,function(data){
+				if (data.status){
+					$("#email_modal").modal({backdrop:'static'});
+					$("#id_important").attr("checked",false);
+				}
+			});
+		};
+	}
+});
+
+$("#modal-login").click(function(){   //为登录验证模态框登录按钮绑定事件
 	window.open("/login/?next=/comment/",'_self');
 });
 

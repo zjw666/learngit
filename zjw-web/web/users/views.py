@@ -49,7 +49,7 @@ def login_user(request):  #登录
 				return redirect('/')
 	else:
 		form = LoginForm()
-	return render(request,'registration/login.html',context={'form':form})
+	return render(request,'registration/login.html',context={'form':form,'next':redirect_to})
 	
 	
 def info(request):    #查看个人信息
@@ -96,14 +96,14 @@ def active(request):
 			email_title = '账号邮箱激活'
 			email_message = '''尊敬的%s用户:
 				
-									欢迎您访问海洋地质办公室201网站。
+    欢迎您访问海洋地质办公室201网站。
 									
-									请点击链接激活账号邮箱：http://127.0.0.1:8000/active_check/%s
+    请点击链接激活账号邮箱：http://127.0.0.1:8000/active_check/%s
 									
-								    如果不是您本人的操作，请忽略该邮件。
+    如果不是您本人的操作，请忽略该邮件。
 									
-									海洋地质办公室201网站管理员ZJW''' % (request.user.username,email_record.code)
-			send_result = send_mail(email_title,email_message,settings.DEFAULT_FROM_EMAIL,[request.user.email],fail_silently=False)
+                                 海洋地质办公室201网站管理员ZJW''' % (request.user.username,email_record.code)
+			send_result = send_mail(email_title,email_message,settings.DEFAULT_FROM_EMAIL,[request.user.email],fail_silently=True)
 		else:
 			email_record = email_records[0]
 			if email_record.actived:
@@ -120,14 +120,14 @@ def active(request):
 				email_title = '账号邮箱激活'
 				email_message = '''尊敬的%s用户:
 				
-									    欢迎您访问海洋地质办公室201网站.
+    欢迎您访问海洋地质办公室201网站.
 									
-									    请点击链接激活账号邮箱：http://127.0.0.1:8000/active_check/%s
+    请点击链接激活账号邮箱：http://127.0.0.1:8000/active_check/%s
 										
-									    如果不是您本人的操作，请忽略该邮件。
+    如果不是您本人的操作，请忽略该邮件。
 									
-									    海洋地质办公室201网站管理员ZJW''' % (request.user.username,email_record.code)
-				send_result = send_mail(email_title,email_message,settings.DEFAULT_FROM_EMAIL,[request.user.email],fail_silently=False)
+                                 海洋地质办公室201网站管理员ZJW''' % (request.user.username,email_record.code)
+				send_result = send_mail(email_title,email_message,settings.DEFAULT_FROM_EMAIL,[request.user.email],fail_silently=True)
 		if send_result:
 			data={}
 			data['goto_url'] = '/'

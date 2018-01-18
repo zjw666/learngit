@@ -1,6 +1,8 @@
 from django import forms
 from .models import Comment,Reply
 from captcha.fields import CaptchaField
+from users.models import EmailVerify
+from django.core.exceptions import ValidationError
 
 CHOICES=(('1','男'),('2','女'))
 class CommentForm(forms.ModelForm):
@@ -9,6 +11,7 @@ class CommentForm(forms.ModelForm):
 	class Meta:
 		model = Comment
 		fields = ['content','public','important','author']
+
 		
 class ReplyForm(forms.ModelForm):
 	content = forms.CharField(widget=forms.Textarea(attrs={'class':"form-control",'required':'required','oninvalid':"setCustomValidity('请输入你要回复的内容');",'oninput':"setCustomValidity('');"}))

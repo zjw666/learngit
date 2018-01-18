@@ -16,7 +16,6 @@ class BindEmail(forms.Form):
 	password = forms.CharField(label=u'用户密码',widget=forms.PasswordInput(attrs={'class':'form-control','id':'password','placeholder':u'若尚未注册过本站账号，则该密码作为账户密码',"oninvalid":"setCustomValidity('请输入绑定用户的密码');",'oninput':"setCustomValidity('');"}))
 	
 	def clean_email(self):
-		print("验证邮箱")
 		email = self.cleaned_data.get('email')
 		type = self.cleaned_data.get('type')
 		users = User.objects.filter(email=email)
@@ -26,7 +25,6 @@ class BindEmail(forms.Form):
 		return email
 		
 	def clean_password(self):
-		print("验证密码")
 		email = self.cleaned_data.get('email')
 		password = self.cleaned_data.get('password')
 		users = User.objects.filter(email=email)

@@ -1,8 +1,12 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render,redirect
 from .models import Comment
 from .forms import CommentForm,ReplyForm
 from django.http import JsonResponse
 from django.core.paginator import Paginator
+from users.models import User
+from django.core.mail import send_mail
+from django.conf import settings
 
 def contact(request): #联系页
 	if request.method == 'POST':
@@ -34,10 +38,44 @@ def reply_ajax(request):
 		form = ReplyForm(request.POST)
 		if form.is_valid():
 			reply = form.save()
+			reply_to = User.objects.filter(username=request.POST.get("reply_to"))
+			reply_to_name = reply_to[0].username
+			reply_comment_name = reply.comment.author.username
+			email_title = '回复提醒'
+			if reply.comment.important:
+				if reply_comment_name != reply.author.username:
+					email_message1 = '''尊敬的%s用户:
+					
+    %s用户回复了你在关于"%.10s"下的评论，赶快去看看吧！
+											
+    海洋地质办公室唯一官网：http://127.0.0.1:8000/
+										
+                                         海洋地质办公室201网站管理员ZJW''' % (reply_comment_name,reply.author.username,reply.comment.content)
+					send_mail(email_title,email_message1,settings.DEFAULT_FROM_EMAIL,[reply.comment.author.email],fail_silently=True)
+				if reply_to_name != reply_comment_name:
+					email_message2 = '''尊敬的%s用户:
+					
+    %s用户回复了你在关于"%.10s"下的评论，赶快去看看吧！
+											
+    海洋地质办公室唯一官网：http://127.0.0.1:8000/
+										
+                                         海洋地质办公室201网站管理员ZJW''' % (reply_to_name,reply.author.username,reply.comment.content)
+					send_mail(email_title,email_message2,settings.DEFAULT_FROM_EMAIL,[reply_to[0].email],fail_silently=True)		
 			data = {'reply_status':1,'reply_id':reply.id,'url':reply.author.pic.url,'author_name':reply.author.username,'time':reply.created_time}
 		else:
 			data = {'reply_status':0}
-	return JsonResponse(data)		
+	return JsonResponse(data)	
+
+def email_actived_check(request):
+	if request.is_ajax():
+		author = request.GET.get('author')
+		users = User.objects.filter(id=author)
+		if users and hasattr(users[0],'emailverify') and users[0].emailverify.actived:
+			data = {'status':0}
+		else:
+			data = {'status':1}
+	return JsonResponse(data)
+		
 		
 def comment_paginator(request,comment_list):
 	p = Paginator(comment_list,5)   #分页
@@ -86,3 +124,4 @@ def comment_paginator(request,comment_list):
 	}
 	return (data,comment_list)
 
+	
