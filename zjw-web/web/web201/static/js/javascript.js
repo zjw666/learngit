@@ -21,6 +21,8 @@ $(function(){
 	news_type_check();        //添加新闻导航栏的当前激活功能
 	input_add_class();        //为用户登录的输入框添加样式
 	pic_width_height();       //控制用户头像长宽比
+	bind_emojionArea();       //绑定表情输入框，提示用户评论需登录
+	emoji_change();          //将unicode字符转化为图片
 });
 
 function init(){   //杂项初始化
@@ -302,13 +304,33 @@ $("#id_captcha_1").keyup(function(){    //验证码输入验证ajax
 	});
 });
 
+/*
 $("#contact_form textarea,.reply_form textarea").focus(function(){  //提示用户评论前需登录
 	if ($("input[name=author]").val() == "None"){
 		$("#Modal").modal({backdrop:'static'});
 		$(this).blur();
 	}
 });
+*/
 
+$("#contact_form").submit(function(e){                    //用户登陆后才能提交评论表单
+	var author = $("input[name=author]").val();
+	var content = $("#contact_form textarea").val();
+	if (author == "None"){
+		e.preventDefault();
+		$("#Modal").modal({backdrop:'static'});
+	}
+	if (!content.trim()){
+		alert("内容不能为空");
+	}
+});
+
+$("#contact_form button").click(function(){
+	var content = $("#contact_form textarea").val();
+	if (!content.trim()){
+		alert("内容不能为空");
+	}
+});
 
 $("#email_actived_button").click(function(){   //为邮箱激活模态框登录按钮绑定事件
 	window.open("/active/",'_blank');
@@ -326,7 +348,7 @@ $("#id_important").change(function(){    //提示用户启用邮箱服务前需�
 					$("#id_important").attr("checked",false);
 				}
 			});
-		};
+		}
 	}
 });
 
@@ -340,87 +362,109 @@ $(document).on("click",".form_button",function(){   //ajax提交回复表单,这
 		author=$("input[name=author]").val(),
 		reply_to=$(this).attr("person"),
 		comment=$(this).attr("comment");
-	var button = this;
-	var json_data={
-		'content':content,
-		'author':author,
-		'reply_to':reply_to,
-		'comment':comment
-	}
-	$(textarea_content).val("");        //清空回复框内容
-	$($(button).parent().parent().siblings("a")).click();   //关闭回复框
-	$.ajax({
-		url:'/reply_ajax/',
-		type:'POST',
-		dataType:'json',
-		data:json_data,
-		success:function(result){
-			if (result.reply_status){   //生成新的回复，并插入到对应评论的回复列表中
-				var reply_list=$(button).parents("li.media").find("div.media"),
-					date = new Date(result.time),
-					div_media=$('<div></div>').attr("class","media"),
-					a_media=$('<a></a>').attr({
-						"href":"/personal/?name="+result.author_name,
-						"class":"media-left"
-					}),
-					img=$('<img>').attr({
-						"src":result.url,
-						"class":"media-object img-circle",
-						"alt":"photo"
-					}),
-					div_body=$('<div></div>').attr("class","media-body"),
-					h4=$('<h4></h4>').attr("class","media-heading"),
-					span_h4=$('<span></span>').attr("class","glyphicon glyphicon-share-alt"),
-					p=$('<p></p>').text(content),
-					a_media_body=$('<a></a>').attr({
-						"href":"#reply_"+result.reply_id,
-						"class":"reply_button",
-						"reply":result.author_name,
-						"data-toggle":"collapse"
-					}).text("回复"),
-					span=$('<span></span>').attr("class","pull-right").text(date.getFullYear()+'年'+(date.getMonth()+1)+'月'+date.getDate()+'日'),
-					div_form=$('<div></div>').attr({
-						"class":"collapse well reply_form",
-						"id":"reply_"+result.reply_id
-					}),
-					form=$('<form></form>').attr({
-						"role":"form",
-						"method":"post",
-						"action":"#"
-					}),
-					div_form_group=$('<div></div>').attr("class","form-group"),
-					textarea=$('<textarea></textarea>').attr({
-						"class":"form-control",
-						"name":"content",
-						"placeholder":"请输入回复的内容",
-						"oninvalid":"setCustomValidity('请输入你要回复的内容');",
-						"title":"请输入回复的内容",
-						"required":"required"
-					}),
-					form_button=$('<button></button>').attr({
-						"type":"button",
-						"class":"btn btn-default pull-right form_button",
-						"person":result.author_name,
-						"comment":comment
-					}).text("提交");
-					$(div_form_group).append(textarea);
-					$(form).append(div_form_group,form_button);
-					$(div_form).append(form);
-					$(h4).append(result.author_name,' ',span_h4,' ',reply_to);
-					$(div_body).append(h4,p,a_media_body,span,div_form);
-					$(a_media).append(img);
-					$(div_media).append(a_media,div_body);
-					if (reply_list.length != 0){
-						$(reply_list[reply_list.length-1]).after(div_media);
-					}else{
-						$("#comment_"+comment).after(div_media);
-					}
-					$(div_media).before('<hr class="comment_line" />');
-			}else{
-				alert("回复失败，请刷新页面重试，如有问题，请联系网站管理人员");
+	if (author != "None"){
+		if (content.trim()){
+			var button = this;
+			var json_data={
+				'content':content,
+				'author':author,
+				'reply_to':reply_to,
+				'comment':comment
 			}
+			$(textarea_content).val("");        //清空回复框内容
+			$($(textarea_content).next().children()[0]).html(''); //清空关联的表情框内容
+			$($(button).parent().parent().siblings("a")).click();   //关闭回复框
+			$.ajax({
+				url:'/reply_ajax/',
+				type:'POST',
+				dataType:'json',
+				data:json_data,
+				success:function(result){
+					if (result.reply_status){   //生成新的回复，并插入到对应评论的回复列表中
+						var reply_list=$(button).parents("li.media").find("div.media"),
+							date = new Date(result.time),
+							div_media=$('<div></div>').attr("class","media"),
+							a_media=$('<a></a>').attr({
+								"href":"/personal/?name="+result.author_name,
+								"class":"media-left"
+							}),
+							img=$('<img>').attr({
+								"src":result.url,
+								"class":"media-object img-circle",
+								"alt":"photo"
+							}),
+							div_body=$('<div></div>').attr("class","media-body"),
+							h4=$('<h4></h4>').attr("class","media-heading"),
+							span_h4=$('<span></span>').attr("class","glyphicon glyphicon-share-alt"),
+							p=$('<p></p>').text(content),
+							a_media_body=$('<a></a>').attr({
+								"href":"#reply_"+result.reply_id,
+								"class":"reply_button",
+								"reply":result.author_name,
+								"data-toggle":"collapse"
+							}).text("回复"),
+							span=$('<span></span>').attr("class","pull-right").text(date.getFullYear()+'年'+(date.getMonth()+1)+'月'+date.getDate()+'日'),
+							div_form=$('<div></div>').attr({
+								"class":"collapse well reply_form",
+								"id":"reply_"+result.reply_id
+							}),
+							form=$('<form></form>').attr({
+								"role":"form",
+								"method":"post",
+								"action":"#"
+							}),
+							div_form_group=$('<div></div>').attr("class","form-group"),
+							textarea=$('<textarea></textarea>').attr({
+								"class":"form-control",
+								"name":"content",
+								"placeholder":"请输入回复的内容",
+								"oninvalid":"setCustomValidity('请输入你要回复的内容');",
+								"title":"请输入回复的内容",
+								"required":"required"
+							}),
+							form_button=$('<button></button>').attr({
+								"type":"button",
+								"class":"btn btn-default pull-right form_button",
+								"person":result.author_name,
+								"comment":comment
+							}).text("提交");
+							$(div_form_group).append(textarea);
+							$(form).append(div_form_group,form_button);
+							$(div_form).append(form);
+							$(h4).append(result.author_name,' ',span_h4,' ',reply_to);
+							$(div_body).append(h4,p,a_media_body,span,div_form);
+							$(a_media).append(img);
+							$(div_media).append(a_media,div_body);
+							if (reply_list.length != 0){
+								$(reply_list[reply_list.length-1]).after(div_media);
+							}else{
+								$("#comment_"+comment).after(div_media);
+							}
+							$(div_media).before('<hr class="comment_line" />');
+							$(textarea).emojioneArea({                        //绑定表情输入框，提示用户评论需登录
+											events:{
+												focus:function(editor){
+													if ($("input[name=author]").val() == "None"){
+													$("#Modal").modal({backdrop:'static'});
+													$(editor).blur();	
+													}
+												}	
+											}
+										});
+							var value = $(p).text();                             //将unicode表情字符转化为图片
+							var code = $("<div></div>").text(value).html();    //防止跨站脚本攻击
+							$(p).html(emojione.toImage(code));
+					}else{
+						alert("回复失败，请刷新页面重试，如有问题，请联系网站管理人员");
+					}
+				}
+			});
+		}else{
+			alert("回复内容不能为空！");
 		}
-	});
+	}else{
+		$("#Modal").modal({backdrop:'static'});
+	}
 });
 
 $("#email_active button").click(function(){  //邮箱激活按钮
@@ -440,4 +484,26 @@ $("#email_active button").click(function(){  //邮箱激活按钮
 	},1000);
 });
 
+function bind_emojionArea(){     //绑定表情输入框，提示用户评论需登录
+	var textarea = $(".contact_article textarea");
+	if (textarea.length){
+		$(textarea).emojioneArea({
+			events:{
+				focus:function(editor){
+					if ($("input[name=author]").val() == "None"){
+					$("#Modal").modal({backdrop:'static'});
+					$(editor).blur();	
+					}
+				}	
+			}
+		});
+	}
+}
 
+function emoji_change(){   //将unicode表情字符转化为图片
+	$(".media-body p").each(function(){
+		var value = $(this).text();
+		var code = $("<div></div>").text(value).html();    //防止跨站脚本攻击
+		$(this).html(emojione.toImage(code));
+	});
+}

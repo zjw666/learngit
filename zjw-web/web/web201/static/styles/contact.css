@@ -156,6 +156,10 @@ form textarea{
 	display:block;
 }
 
+.emojionearea-editor:focus::before{   
+	content:none !important;
+}
+
 #check div label{
 	padding-left:10px;
 }
@@ -246,6 +250,20 @@ div.comment_well{
 	margin:10px 20px;
 }
 
+.media-body p{
+	letter-spacing:1px;
+	word-spacing:3px;
+	font-size:16px;
+}
+
+.media-body p img.emojione{
+	width:20px;
+	height:20px;
+	display:inline-block;
+	margin:0 2px;
+	vertical-align: middle;
+}
+
 div.well h4{
 	padding-top:10px;
 }
@@ -267,6 +285,14 @@ ul.media-list img{
 	height:200px;
 }
 
+div.media,li.media,div.media-body{
+	overflow:visible;
+}
+
+a.media-left{
+	height:70px !important;
+}
+
 #pages{
 	display:table;
 	margin:10px auto;
@@ -276,6 +302,14 @@ ul.media-list img{
 	display:table-cell;
 }
 
+.btn-default:focus{
+	background-color: #fff !important;
+	border-color:#ccc !important;
+}
+
+#contact_form div.emojionearea-editor{
+	height:300px !important;
+}
 
 footer ul{
 	list-style-type:none;

@@ -6,7 +6,7 @@
 {% endblock css %}
 
 {% block main %}	
-<article>
+<article class="contact_article">
 	<div class="row">
 		<div class="col-md-6 col-sm-8 col-xs-12 col-md-push-3 col-sm-push-2">
 			<form id="contact_form" role="form" action="{% url 'comments:contact' %}" method="post" >
@@ -27,7 +27,7 @@
 								</label>
 								<label for="{{ form.important.id_for_label }}">
 									{{form.important}}
-									邮件提醒
+									回复提醒
 								</label>
 							</div>
 							<div class="captcha1">
@@ -87,9 +87,11 @@
 				<ul class="media-list">
 				{% for comment in comment_list|dictsortreversed:"id" %}
 					<li class="media">
-						<a href="{% url 'users:info' %}?name={{comment.author.username}}" class="media-left">
-							<img src="{{comment.author.pic.url}}" class="media-object img-circle" alt="photo" />
-						</a>
+						<div class="media-left">
+							<a href="{% url 'users:info' %}?name={{comment.author.username}}">
+								<img src="{{comment.author.pic.url}}" class="media-object img-circle" alt="photo" />
+							</a>
+						</div>
 						<div class="media-body">
 							<h4 class="media-heading">{{comment.author.username}}</h4>
 							<p>{{comment.content}}</p>
@@ -108,9 +110,11 @@
 							{% for reply in comment.reply_set.all %}
 							<hr class="comment_line" />
 							<div class="media">
-								<a href="{% url 'users:info' %}?name={{reply.author.username}}" class="media-left">
-									<img src="{{reply.author.pic.url}}" class="media-object img-circle" alt="photo" />
-								</a>
+								<div class="media-left">
+									<a href="{% url 'users:info' %}?name={{reply.author.username}}" >
+										<img src="{{reply.author.pic.url}}" class="media-object img-circle" alt="photo" />
+									</a>
+								</div>
 								<div class="media-body">
 									<h4 class="media-heading">{{reply.author.username}} <span class="glyphicon glyphicon-share-alt"></span> {{reply.reply_to}}</h4>
 									<p>{{reply.content}}</p>
@@ -167,3 +171,15 @@
 	</div>
 </article>
 {% endblock main %}
+
+{% block extra_js %}
+<link href="https://cdn.bootcss.com/emojione/2.1.1/assets/sprites/emojione.sprites.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/emojione/2.1.1/lib/js/emojione.min.js"></script>
+<link href="{% static 'styles/emojionearea.min.css' %}" rel="stylesheet">
+<script src="{% static 'js/emojionearea.js' %}"></script>
+<script type="text/javascript">
+	$.ajaxSetup({
+		data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+	});
+</script>
+{% endblock extra_js %}
