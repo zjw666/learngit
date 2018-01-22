@@ -40,7 +40,7 @@ def login_user(request):  #登录
 	redirect_to = request.POST.get('next', request.GET.get('next', ''))
 	if request.method == "POST":
 		form = LoginForm(request,data=request.POST)
-		form.error_messages={'invalid_login': ("用户不存在或密码不正确，请注意它们都是区分大小写的")}
+		change_form_error(form)
 		if form.is_valid():
 			auth_login(request,form.get_user())
 			if redirect_to:
@@ -179,5 +179,5 @@ def active_check(request,code):
 	data['message'] = u'该激活链接有效期已过，请重新发送激活邮件完成邮箱激活'
 	return render_to_response('oauth/response.html',data)
 				
-			
-		
+def change_form_error(form):
+	form.error_messages={'invalid_login': ("用户名不存在或密码不正确，请注意它们都是区分大小写的")}

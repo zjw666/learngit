@@ -21,10 +21,7 @@
 		<div id="article-content" class="col-md-10 col-sm-9 col-xs-12">
 			<ul id="content-news">
 				{% if error_msg %}
-				<div class="alert alert-danger alert-dismissable">
-				{{error_msg}}
-				<button type="button" class="close" data-dismiss="alert">&times;</button>
-				</div>
+					<div>搜索内容不能为空</div>
 				{% endif %}
 				{% for post in article_list %}
 					<li>
@@ -33,7 +30,9 @@
 						<hr/>
 					</li>
 				{% empty %}
+					{% if not error_msg %}
 					<div>没有搜索到匹配的结果</div>
+					{% endif %}
 				{% endfor %}
 			</ul>
 		</div>

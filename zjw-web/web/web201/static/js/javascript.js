@@ -350,6 +350,12 @@ $("#contact_form").submit(function(e){                    //用户登陆后才�
 	}
 });
 
+$("#contact_form button").click(function(){             //评论内容不能为空
+	var content = $("#contact_form textarea").val();
+	if (!content.trim()){
+		$("#contentModal").modal({backdrop:'static'});
+	}	
+});
 
 $("#email_actived_button").click(function(){   //为邮箱激活模态框登录按钮绑定事件
 	window.open("/active/",'_blank');
@@ -479,7 +485,7 @@ $(document).on("click",".form_button",function(){   //ajax提交回复表单,这
 				}
 			});
 		}else{
-			alert("回复内容不能为空！");
+			$("#contentModal").modal({backdrop:'static'});
 		}
 	}else{
 		$("#Modal").modal({backdrop:'static'});
