@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from .models import User
 from django import forms
 from captcha.fields import CaptchaField
+from django.core.exceptions import ValidationError
 
 CHOICES=(('1','男'),('2','女'))
 class RegisterForm(UserCreationForm):  #注册表单
@@ -25,6 +26,13 @@ class ChangeForm(forms.ModelForm):   #个人信息更改表单
 	class Meta:
 		model = User
 		fields = ['pic','sex','signature','hobby']
+	
+	def clean_pic(self):
+		pic = self.cleaned_data['pic']
+		if pic._size/1024/1024 > 1:
+			raise ValidationError(u'上传图片大小不能超过1M')
+		else:
+			return pic
 
 class LoginForm(AuthenticationForm):  #登录表单
 	captcha = CaptchaField(error_messages={"invalid":u"验证码错误","required":u"请输入验证码"},required=True)

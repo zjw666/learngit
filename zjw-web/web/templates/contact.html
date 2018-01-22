@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load myfilter %}
 
 {% block css %}
 <link href="{% static 'styles/contact.css' %}" rel="stylesheet" media="screen" />
+<link rel="stylesheet" href="{% static 'styles/colorful.css' %}"media="screen" />
 {% endblock css %}
 
 {% block main %}	
 <article class="contact_article">
 	<div class="row">
-		<div class="col-md-6 col-sm-8 col-xs-12 col-md-push-3 col-sm-push-2">
+		<div class="col-md-8 col-sm-8 col-xs-12 col-md-push-2 col-sm-push-2">
 			<form id="contact_form" role="form" action="{% url 'comments:contact' %}" method="post" >
 				{% csrf_token %}
 				<fieldset>
@@ -72,6 +74,20 @@
 					</div>
 				</div>
 			</div>
+			<div class="modal fade" id="contentModal" aria-labelledby="mycontentModal" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="mycontentModal">注意</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">评论或回复的内容不能为空！</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+						</div>
+					</div>
+				</div>
+			</div>
 			{% if response %}
 				<div class="alert alert-success alert-dismissable">
 				提交成功！您发送的消息若为公开，将会出现在下方的评论栏中，敬请关注
@@ -94,7 +110,7 @@
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading">{{comment.author.username}}</h4>
-							<p>{{comment.content}}</p>
+							<p>{{comment.content|markdown_change|safe}}</p>
 							<a href="#comment_{{comment.id}}" class="reply_button" data-toggle="collapse" reply="{{comment.author.username}}">回复</a>
 							<span class="pull-right">{{comment.created_time}}</span>
 							<div id="comment_{{comment.id}}" class="collapse reply_form well">
@@ -117,7 +133,7 @@
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading">{{reply.author.username}} <span class="glyphicon glyphicon-share-alt"></span> {{reply.reply_to}}</h4>
-									<p>{{reply.content}}</p>
+									<p>{{reply.content|markdown_change|safe}}</p>
 									<a href="#reply_{{reply.id}}" class="reply_button" data-toggle="collapse" reply="{{reply.author.username}}">回复</a>
 									<span class="pull-right">{{reply.created_time}}</span>
 									<div id="reply_{{reply.id}}" class="collapse reply_form well">

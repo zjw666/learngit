@@ -23,6 +23,7 @@ $(function(){
 	pic_width_height();       //控制用户头像长宽比
 	bind_emojionArea();       //绑定表情输入框，提示用户评论需登录
 	emoji_change();          //将unicode字符转化为图片
+	placeholder();           //解决低版本的IE下没有placeholder属性问题
 });
 
 function init(){   //杂项初始化
@@ -247,12 +248,12 @@ function pic_width_height(){  //控制用户头像长宽比
 	$("#person_pic").height(pic_width);
 }
 
-$("input[type=file]").change(function(){	//上传头像图片预览
+$(document).on("change","input[type=file]",function(){	//上传头像图片预览，未来元素绑定法
 	var fileobj = $(this)[0];
-	if (fileobj && fileobj.files[0]){
+	if (fileobj && fileobj.files){   //是否能获取file对象
 		var headimage = fileobj.files[0]
 		if (headimage.type.split('/')[0] == 'image'){
-			if(headimage.size/1024/1024 <= 2 ){
+			if(headimage.size/1024/1024 <= 1 ){
 					$('#pic_name').text(headimage.name);
 					if (typeof FileReader != 'undefined'){
 						var reader = new FileReader();
@@ -267,7 +268,7 @@ $("input[type=file]").change(function(){	//上传头像图片预览
 						$("#person_pic").attr("src",imageURL);
 					} 
 			}else{
-				alert("图片大小必须小于2M")
+				alert("图片大小必须小于1M")
 				fileobj.value = '';
 				$('#pic_name').text("上传图片失败");
 			}
@@ -276,6 +277,30 @@ $("input[type=file]").change(function(){	//上传头像图片预览
 			fileobj.value = '';
 			$('#pic_name').text("上传图片失败");
 		}
+	}else{    //不能获取file对象，一般都是低版本的IE
+		try{
+			fileobj.select();
+			fileobj.blur();
+			var path = document.selection.createRange().text;    
+			var fso = new ActiveXObject("Scripting.FileSystemObject");
+			var fileSize = fso.GetFile(path).size;
+			if (fileSize/1024/1024 >= 1){        //检查图片大小
+				var file_clone = fileobj.cloneNode(false);
+				fileobj.parentNode.replaceChild(file_clone,fileobj);    //由于低版本IE无法修改input file的值，直接克隆一个替换原来的实现清空操作
+				$('#pic_name').text("上传图片失败");
+				alert("图片大小必须小于1M");
+			}else{                                //预览图片
+				var text_list = $("input[type=file]").val().split("\\");
+				var pic_name = text_list[text_list.length-1];
+				$('#pic_name').text(pic_name);
+				var pic = document.getElementById("person_pic");
+				pic.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src=\"" + path + "\")";    //滤镜预览图片
+				pic.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';                 //设置img的src为base64编码的透明图片，要不会显示红xx
+			}
+		}catch(e){
+			alert(e+"\n"+"如果错误为：Error:Automation 服务器不能创建对象；"+"\n"+"请按以下方法配置浏览器："+"\n"+"请打开【Internet选项-安全-Internet-自定义级别-ActiveX控件和插件-对未标记为可安全执行脚本的ActiveX控件初始化并执行脚本（不安全）-点击启用-确定】");
+		}
+		
 	}
 });
 
@@ -319,18 +344,12 @@ $("#contact_form").submit(function(e){                    //用户登陆后才�
 	if (author == "None"){
 		e.preventDefault();
 		$("#Modal").modal({backdrop:'static'});
-	}
-	if (!content.trim()){
-		alert("内容不能为空");
+	}else if (!content.trim()){
+		e.preventDefault();
+		$("#contentModal").modal({backdrop:'static'});
 	}
 });
 
-$("#contact_form button").click(function(){
-	var content = $("#contact_form textarea").val();
-	if (!content.trim()){
-		alert("内容不能为空");
-	}
-});
 
 $("#email_actived_button").click(function(){   //为邮箱激活模态框登录按钮绑定事件
 	window.open("/active/",'_blank');
@@ -506,4 +525,37 @@ function emoji_change(){   //将unicode表情字符转化为图片
 		var code = $("<div></div>").text(value).html();    //防止跨站脚本攻击
 		$(this).html(emojione.toImage(code));
 	});
+}
+
+function placeholder(){       //解决低版本的IE下没有placeholder属性问题
+	if (! ('placeholder' in document.createElement('input'))){     //判断是否支持placeholder属性
+		$("input[placeholder]").each(function(){
+			$(this).parent().append("<span class='placeholder'>" + $(this).attr("placeholder") + "</span>");
+			if ($(this).val() != ""){
+				$(this).parent().find('span.placeholder').hide();
+			}
+		});
+		$("input[placeholder]").focus(function(){
+			$(this).parent().find('span.placeholder').hide();
+		});
+		$("input[placeholder]").blur(function(){
+			if ($(this).val()== ""){
+				$(this).parent().find('span.placeholder').show();
+			}
+		});
+		$("span.placeholder").click(function(){    //当点击span元素时，输入框获得焦点
+			$(this).parent().find('input').focus();
+		}).css({
+			"color":"gray",
+			"position":"absolute",
+			"bottom":"10%",
+			"left":"10px",
+			"zIndex":"10"
+		});
+		$("span.placeholder").parent().css("position","relative");
+		$("ul.errorlist").css({
+			"position":"absolute",
+		});
+		$("ul.errorlist").parent().after("<div style='height:20px'></div>");
+	}
 }

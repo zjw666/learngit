@@ -16,6 +16,12 @@ body{
 	}
 }
 
+.errorlist{
+	color:red;
+	list-style-type:none;
+	padding:0 20px;
+}
+
 #logo{
 	min-width:4em;
 	padding-left:10%;

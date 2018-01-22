@@ -223,6 +223,10 @@ div.type{
 	margin-left:20px;
 }
 
+div.codehilite pre,blockquote{
+	background-color:white;
+}
+
 .comment_line{
 	height:2px;
 	border:none;
