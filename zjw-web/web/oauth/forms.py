@@ -34,6 +34,7 @@ class BindEmail(forms.Form):
 				return password
 			else:
 				raise ValidationError(u'密码不正确，绑定失败')
+		return password
 		
 		
 		

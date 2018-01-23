@@ -152,7 +152,7 @@ article div.col-md-2{
 	height:100%;
 }
 
-article h3{
+#border h3{
 	text-align:center;
 	background-color:#f2dede;
 	margin-top:0;
@@ -277,6 +277,19 @@ article h3{
 	height:50px;
 	color:black;
 	font-size:15px;
+	position:relative;
+}
+
+#pages-content div{
+	position:absolute;
+}
+
+#left-page{
+	left:10px;
+}
+
+#right-page{
+	right:0;
 }
 
 .news-text{

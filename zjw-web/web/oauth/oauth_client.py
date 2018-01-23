@@ -1,5 +1,6 @@
 import json
 import urllib
+import re
 
 class OAuth_Base(object):
 	def __init__(self,client_id,client_key,redirect_url):
@@ -75,7 +76,7 @@ class OAuth_QQ(OAuth_Base):
 		params = {
 			'client_id':self.client_id,
 			'response_type':'code',
-			'redirect_url':self.redirect_url,
+			'redirect_uri':self.redirect_url,
 			'scope':'get_user_info',
 			'state':1
 		}
@@ -92,13 +93,14 @@ class OAuth_QQ(OAuth_Base):
 		}
 		response = self._get('https://graph.qq.com/oauth2.0/token',params)
 		result = urllib.parse.parse_qs(response,True)
-		self.access_token = result[b'access_token'][0]    #1
+		self.access_token = result[b'access_token'][0]		
 		return self.access_token
 		
 	def get_open_id(self):
 		params ={'access_token':self.access_token}
 		response = self._get('https://graph.qq.com/oauth2.0/me',params)
-		result = json.loads(response.decode('utf-8'))    #1
+		response = re.split("[()]",response.decode('utf-8'))[1]
+		result = json.loads(response)	
 		self.openid = result.get('openid','')
 		return self.openid
 	

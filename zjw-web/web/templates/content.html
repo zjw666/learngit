@@ -20,21 +20,34 @@
 		</div>
 		<div id="article-content" class="col-md-10 col-sm-9 col-xs-12">
 			<article id="{{length}}">
-				<h2>{{post.title}}</h2>
+				<h3>{{post.title}}</h3>
 				<p><span>作者：{{post.author}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>时间：{{post.time|date}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>阅读量：{{post.views}}</span></p>
 				<div>{{post.content}}</div>
 			</article>
 			<div id="pages-content">
-				<div class="pull-left">
-					<span id="left-text" class="news-text hidden-xs text-right" index="{{pre}}">{{pre_title}}</span>
+				<div id="left-page">
+					<span id="left-text" class="news-text hidden-sm text-right hidden-xs" index="{{pre}}">{{pre_title}}</span>
 					<button id='left' class='btn btn-default btn-sm'><span class="glyphicon glyphicon-chevron-left"></span></button>
 				</div>
-				<div class="pull-right">
+				<div id="right-page">
 					<button id='right' class='btn btn-default btn-sm'><span class="glyphicon glyphicon-chevron-right"></span></button>
-					<span id="right-text" class="news-text hidden-xs" index="{{next}}">{{next_title}}</span>
+					<span id="right-text" class="news-text hidden-sm hidden-xs" index="{{next}}">{{next_title}}</span>
 				</div>
+			</div>
+			<div class="jiathis_style pull-right">
+				<span class="pull-left">分享到：</span>
+				<a class="jiathis_button_qzone"></a>
+				<a class="jiathis_button_tsina"></a>
+				<a class="jiathis_button_tqq"></a>
+				<a class="jiathis_button_weixin"></a>
+				<a class="jiathis_button_renren"></a>
+				<a class="jiathis_button_douban"></a>
 			</div>
 		</div>
 	</div>
 </article>
-{% endblock main %}		
+{% endblock main %}
+
+{% block extra_js %}
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+{% endblock extra_js %}		

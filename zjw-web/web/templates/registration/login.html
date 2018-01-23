@@ -52,7 +52,7 @@
 								<div class="pull-right">
 									<span>其他账号登录：</span>
 									<a href="{% url 'oauth:github_login' %}"><img class="type" src="{% static 'images/github.png' %}" alt="GITHUB" /></a>&nbsp;
-									<a href="#"><img class="type" src="{% static 'images/tx.png' %}" alt="QQ" /></a>&nbsp;
+									<a href="{% url 'oauth:qq_login' %}"><img class="type" src="{% static 'images/tx.png' %}" alt="QQ" /></a>&nbsp;
 									<a href="{% url 'oauth:weibo_login' %}"><img class="type" src="{% static 'images/weibo.png' %}" alt="WEIBO" /></a>
 								</div>
 							</div>

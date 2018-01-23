@@ -175,9 +175,9 @@ GITHUB_KEY = '64a26a79c12534bdbd2e84f2d517dd666c0b2ea8'
 
 GITHUB_CALLBACK_URL = 'http://127.0.0.1:8000/oauth/github_check'
 
-QQ_APP_ID = ''
+QQ_APP_ID = '101459356'
 
-QQ_KEY = ''
+QQ_KEY = 'c206d5845254c91add18a54da17de2de'
 
 QQ_CALLBACK_URL = 'http://127.0.0.1:8000/oauth/qq_check'
 
