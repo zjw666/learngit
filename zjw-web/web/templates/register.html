@@ -29,7 +29,7 @@
 						<form role="form" action="{% url 'users:register' %}" method="post">
 							{% csrf_token %}
 							<div class="form-group">
-								<label for="{{ form.username.id_for_label }}">用户名</label><span class="necessary">（必填）</span>
+								<label for="{{ form.username.id_for_label }}">用户名</label><span class="necessary">（必填，不可修改）</span>
 								{{form.username}}
 								{{form.username.errors}}
 							</div>
@@ -43,7 +43,7 @@
 								{{form.sex.errors}}
 							</div>
 							<div class="form-group">
-								<label for="{{ form.email.id_for_label }}">邮箱</label><span class="necessary">（必填）</span>
+								<label for="{{ form.email.id_for_label }}">邮箱</label><span class="necessary">（必填，不可修改）</span>
 								{{form.email}}
 								{{form.email.errors}}
 								{% if email_already_exist %}
