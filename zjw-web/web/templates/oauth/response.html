@@ -31,7 +31,7 @@
 		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="{% static 'js/javascript.js' %}"></script>
 		<script type="text/javascript">
-			{% if goto_page %}
+			{% if goto_page %}     <!-- 页面跳转 -->
 				$(function(){
 					var time = {{goto_time}} / 1000;
 					intervalid = window.setInterval(function(){
